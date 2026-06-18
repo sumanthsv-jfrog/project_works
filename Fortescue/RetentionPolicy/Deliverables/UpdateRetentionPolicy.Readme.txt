@@ -1,0 +1,82 @@
+================================================================================
+  UpdateRetentionPolicy.sh - README
+================================================================================
+
+PURPOSE
+-------
+Updates an existing Artifactory Lifecycle cleanup policy with a new set of
+repositories. Identical in structure to CreateRetentionPolicy.sh but uses
+HTTP PUT instead of POST.
+
+Use this script to cycle through repositories one at a time on a single-node
+Artifactory instance after the initial policy has been created.
+
+DEPENDENCIES
+------------
+  - bash (3.2+)
+  - curl
+  - jq
+
+USAGE
+-----
+  ./UpdateRetentionPolicy.sh <artifactory_url> <bearer_token> [repos_file]
+
+  Example:
+    bash UpdateRetentionPolicy.sh \
+      https://psblr.jfrog.io \
+      cmVmdGtuOjAxO... \
+      repos.txt
+
+PARAMETERS
+----------
+  artifactory_url   (required)  Artifactory base URL, without /artifactory
+  bearer_token      (required)  Identity token or Access token
+  repos_file        (required)  Path to repos file. Defaults to repos.txt
+
+REQUIRED FILES
+--------------
+  policy.json
+      Policy template. Must exist in the same directory as the script.
+      The script injects repos from repos.txt into searchCriteria.repos.
+
+  repos.txt
+      One repository name per line.
+
+      IMPORTANT: For single-node Artifactory, include only ONE repo at a time.
+
+      Update repos.txt before each run:
+        echo 'next-repo-name' > repos.txt
+
+API ENDPOINT
+------------
+  The policy name is set by the POLICY_NAME variable inside the script.
+  It must match the key field in policy.json and the policy that was
+  originally created by CreateRetentionPolicy.sh.
+
+DIFFERENCE FROM CreateRetentionPolicy.sh
+-----------------------------------------
+  CreateRetentionPolicy.sh   HTTP POST   Use when policy does not exist yet
+  UpdateRetentionPolicy.sh   HTTP PUT    Use when policy already exists
+
+RECOMMENDED CYCLE
+-----------------
+  1. Update repos.txt with the next repo from your filtered CSV
+       echo 'gunvor-docker-local' > repos.txt
+
+  2. Run this script
+       ./UpdateRetentionPolicy.sh https://psblr.jfrog.io <token>
+
+  3. Wait for policy run to complete in Artifactory
+
+  4. Check Artifactory logs and verify performance usage
+
+  5. Repeat from Step 1 for the next repo
+
+SINGLE-NODE WARNING
+-------------------
+  >> Always include only ONE repository in repos.txt at a time.
+  >> Monitor Artifactory after each run before moving to the next repo.
+  >> There is no need to delete and recreate the policy between repos --
+     this script handles successive updates cleanly.
+
+================================================================================

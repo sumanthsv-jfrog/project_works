@@ -1,0 +1,79 @@
+================================================================================
+  GetRepositoryByCreationTime.sh - README
+================================================================================
+
+PURPOSE
+-------
+Fetches all LOCAL repositories from Artifactory and generates CSV reports
+with repo name, type, package type, used space, artifact count, creation
+date, and age in years.
+
+DEPENDENCIES
+------------
+  - bash (3.2+)   -- do NOT run with sh
+  - curl          -- for API calls
+  - jq            -- for JSON parsing
+
+CONFIGURATION
+-------------
+Edit these two variables at the top of the script before running:
+
+  ARTIFACTORY_URL="https://your-instance.jfrog.io/artifactory"
+  TOKEN="your-bearer-token-here"
+
+The bearer token must have Admin role to access api/storageinfo.
+
+USAGE
+-----
+  ./GetRepositoryByCreationTime.sh
+
+The script will prompt:
+
+  How many years old? (e.g. 6, or press Enter to skip):
+
+  - Enter a number  --> full report + filtered report for repos older than N years
+  - Press Enter     --> full report only
+
+OUTPUT FILES
+------------
+  jfrog_local_repos_<timestamp>.csv
+      Full inventory of all LOCAL repositories.
+
+  jfrog_local_repos_older_than_Nyrs_<timestamp>.csv
+      Repos older than N years only (created when filter is entered).
+
+  jfrog_packagetype_summary_<timestamp>.csv
+      Repos grouped by package type with repo count, artifact count,
+      and total used space per package type.
+
+CSV COLUMNS
+-----------
+  Repo Name       Repository key (unique name in Artifactory)
+  Repo Type       Always LOCAL
+  Package Type    e.g. Maven, Docker, Npm, Generic, PyPI
+  Used Space      Storage used (KB / MB / GB / TB)
+  Artifact Count  Number of files in the repository
+  Created Date    Human-readable creation timestamp (UTC)
+  Age (Years)     Integer age from creation date to today
+
+TERMINAL OUTPUT
+---------------
+At the end of the run, a Package Type Breakdown table is printed:
+
+  Package Type              Repos      Artifacts       Total Size
+  ----------------------------------------------------------------
+  Docker                    98         12450           2.34 TB
+  Maven                     124        89320           1.56 TB
+  Generic                   87         3210            345.67 GB
+
+Total size handles KB / MB / GB / TB safely without integer overflow.
+
+PERFORMANCE NOTE
+----------------
+The script makes one API call per repo (api/storage/<repo>) to fetch the
+creation timestamp. A 0.2s sleep between calls is applied intentionally
+to avoid overloading a single-node Artifactory instance.
+
+  456 repos  ~  2 minutes runtime
+
+================================================================================

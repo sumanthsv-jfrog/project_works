@@ -1,0 +1,69 @@
+# If this is an upgrade over an existing platform chart(>= 10.0.0), explicitly pass 'gaUpgradeReady=true' to upgrade
+gaUpgradeReady: false
+databaseUpgradeReady: true
+global:
+  imageRegistry: releases-docker.jfrog.io
+  jfrogUrl: '{{ include "jfrog-platform.jfrogUrl" . }}'
+  masterKey: FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+  joinKey: EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+  customCertificates:
+    enabled: true
+    certificateSecretName: "artifactory-trusted-certs"
+
+postgresql:
+  image:
+    tag: 17.6.0-debian-12-r2
+ 
+artifactory:
+  enabled: true
+  nginx:
+    enabled: true
+  mc:
+    enabled: true
+  jfconnect:
+    enabled: true
+  probes:
+    timeoutSeconds: 15
+  artifactory:
+    unifiedSecretInstallation: false
+    replicaCount: 1
+    admin:
+      password: ""
+    consoleLog: false
+    openMetrics:
+      enabled: true
+
+
+persistence:
+    storageClass: "aws-pg-sc"
+    #mountPath: "/var/opt/jfrog/artifactory"
+    #enabled: true
+    ## A manually managed Persistent Volume and Claim
+    ## Requires persistence.enabled: true
+    ## If defined, PVC must be created manually before volume will be bound
+    # existingClaim:
+
+    #accessMode: ReadWriteOnce
+    ## Storage default size. Should be increased for production deployments.
+    #size: 20Gi
+
+xray:
+  enabled: false
+  serviceAccount: 
+    create: false
+  rbac: 
+    create: false
+  xray:
+    openMetrics:
+      enabled: true 
+distribution:
+  enabled: false
+
+pipelines:
+  enabled: false
+
+pdnServer:
+  enabled: false
+
+insight:
+  enabled: false

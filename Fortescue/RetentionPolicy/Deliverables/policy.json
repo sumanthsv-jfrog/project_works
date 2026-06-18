@@ -1,0 +1,27 @@
+{
+  "key": "testpolicy",
+  "description": "packages older than 2 years and not downloaded in 2 years",
+  "cronExp": "",
+  "itemType": "package",
+  "durationInMinutes": 300,
+  "enabled": false,
+  "skipTrashcan": false,
+  "searchCriteria": {
+    "packageTypes": ["docker"],
+    "repos": ["repo1", "repo2"],
+    "excludedRepos": [],
+    "includedPackages": ["**"],
+    "excludedPackages": [],
+    "includeAllProjects": true,
+    "includedProjects": [],
+    "includeAllStages": true,
+    "includedStages": [],
+    "createdBeforeInMonths": 24,
+    "lastDownloadedBeforeInMonths": 24,
+    "keepLastNVersions": 0,
+    "includedPackageVersions": ["**"],
+    "excludedPackageVersions": [],
+    "includedFolderPaths": [],
+    "excludedFolderPaths": []
+  }
+}

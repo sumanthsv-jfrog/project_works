@@ -1,0 +1,60 @@
+================================================================================
+  CreateRetentionPolicy.sh - README
+================================================================================
+
+PURPOSE
+-------
+Creates a new Artifactory Lifecycle cleanup policy via the REST API.
+Reads the policy template from policy.json and injects the repo list
+from repos.txt into searchCriteria.repos before POSTing to Artifactory.
+
+DEPENDENCIES
+------------
+  - bash (3.2+)
+  - curl
+  - jq
+
+USAGE
+-----
+  bash CreateRetentionPolicy.sh <artifactory_url> <bearer_token> [repos_file]
+
+  Example:
+    bash CreateRetentionPolicy.sh \
+      https://psblr.jfrog.io \
+      cmVmdGtuOjAxO... \
+      repos.txt
+
+PARAMETERS
+----------
+  artifactory_url   (required)  Artifactory base URL, without /artifactory
+  bearer_token      (required)  Identity token or Access token
+  repos_file        (required)  Path to repos file. Defaults to repos.txt
+
+REQUIRED FILES
+--------------
+  policy.json
+      Policy template defining cleanup criteria. Must exist in the same
+      directory as the script. See README_policy.json.txt for details.
+
+  repos.txt
+      One repository name per line.
+
+      IMPORTANT: For single-node Artifactory, include only ONE repo at a time
+      to avoid putting excessive load on the instance.
+
+      Example repos.txt:
+        dockerrb-local-dev
+
+API ENDPOINT
+------------
+  The policy name is set by the POLICY_NAME variable inside the script.
+  Edit this variable if you need a different policy name. It must match
+  the key field in policy.json exactly.
+
+SINGLE-NODE WARNING
+-------------------
+  >> Always include only ONE repository in repos.txt at a time.
+  >> After each run, check Artifactory logs and monitor performance usage before proceeding.
+  >> Use UpdateRetentionPolicy.sh to move to the next repository.
+
+================================================================================

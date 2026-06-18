@@ -1,0 +1,68 @@
+# This file is maintained automatically by "terraform init".
+# Manual edits may be lost in future updates.
+
+provider "registry.terraform.io/jfrog/artifactory" {
+  version     = "12.11.6"
+  constraints = "~> 12.0"
+  hashes = [
+    "h1:OOvc4VICrTDtDfAlMl5FpD92NGO4RBw85PPRgPZJao4=",
+    "zh:0dde99e7b343fa01f8eefc378171fb8621bedb20f59157d6cc8e3d46c738105f",
+    "zh:2c1a8bebde9a1b3a59e4baee8a73d800f840f86d3725e2cf9ba793da4e20011c",
+    "zh:4231ea69b642d32f462e10a718758f1090fd7b3007853a4a9639951994f8a6e0",
+    "zh:4d1c07c0238988cc8046f321b746759739f146e22ff7178899e42110393b6741",
+    "zh:61b6a9fd0fac45ddbf52e39930876082b755f5ceb300417974ca5361ebbe86b8",
+    "zh:6bd306efd96388f18495d956e3d7938aa59c4c2a34512703f97111c24b68600e",
+    "zh:7d6c8446485e09adef815384f34bc0e474ad012dce3f2f90985693dee366c9aa",
+    "zh:86cddf6f369c811e790968b3e00be568ba316ab97380c849ed07505a0e2c1889",
+    "zh:9996196e0a92185d908a03dad4e3de077f7e38d2d8620533b53389e1325482f4",
+    "zh:9e47d44b821dce6a59108e1f813b764751b05272cbaa2e2e8760d7f87fb887cd",
+    "zh:a321698dfd2a8eae07feac89d590695f157b36f03966eccaebddc7d830e455cf",
+    "zh:a81bf876febb2c691f26186be1f5f28d1264bcac4f439c9ac08f1dbee2d5da5d",
+    "zh:da25517b47d0247015f661c9146a98ed5b55508d59ccb95465be42c7c31dc5ea",
+    "zh:fbde0d65b386f6aa2c46c72c61eb1738de19c5610e806d23f6af397f9bdb303c",
+  ]
+}
+
+provider "registry.terraform.io/jfrog/platform" {
+  version     = "2.2.10"
+  constraints = "~> 2.0"
+  hashes = [
+    "h1:K38f4ym0NmMBP58ElUodoc9WxStabdGj0Kn4dKhqDEQ=",
+    "zh:0b64b184d662bec16dc4c81459edbdeb34fd8988952c67ab470fd56461fce6c6",
+    "zh:0cbc3caa1433757a185ef2d99dcb4280d222ec134185fa70d7697e48a2fc288d",
+    "zh:4772ac27b0cf6cd38c332408cfa497ab8ee204f6374ba5cafd31179662ae66be",
+    "zh:4a9e5410a240d3aa4de7245703188d2cc809e092ad3e636976f0c258d38f7e3c",
+    "zh:5586beca30db865d001aa7950b842307ca39857c24a9edb0fbdd092acd7ace80",
+    "zh:70ebae270786caea28bfe4c082071c2e82737d2d8a6f8ee5f3c3f6bc0382538c",
+    "zh:a1c402eafc635d173af905526e5fab8c2434f0bdfc6ee2dd378d574140992fd8",
+    "zh:b4a45c1006a68d34eaede05c89b80bda71313c6ca5b62d28f61301abdfab8cce",
+    "zh:b85d2fcaa2a6b36a88dd7e3240ce6ec5822cd31d6797efd2e8898d9020486135",
+    "zh:be83a20ab871a240ee114c6c8d01d472a86cf44e943a315c5ec842def6c6e493",
+    "zh:f5cf5ec981dbf7e94824cf412c089c8a9a531d39a05b211fd85b779b57165c92",
+    "zh:f7113f8541b2458bf79e29ae727eda8ee6dfc36c11e040ecb31d1c373667b062",
+    "zh:f809ab383cca0a5f83072981c64208cbd7fa67e986a86ee02dd2c82333221e32",
+    "zh:fbf639e057703af5fec48a37f9415d7cb568ad31cbb532a8e4b1daa5ccbe4244",
+  ]
+}
+
+provider "registry.terraform.io/jfrog/xray" {
+  version     = "3.1.10"
+  constraints = "~> 3.0"
+  hashes = [
+    "h1:EdhVShuJPBQ6zcPE0srGg717NVT5sgfD33iis4MKWqw=",
+    "zh:0d7f5d9a06ec02a3837a7d40785f8316547c140ee78e290fa34682c4b67d54f2",
+    "zh:0dde99e7b343fa01f8eefc378171fb8621bedb20f59157d6cc8e3d46c738105f",
+    "zh:6db8ff5fcfefb46eac7298412d365577fb4edc84e736c97e0a2b9e3287276c51",
+    "zh:8024e4b8b6602acc8caa69ac87ef5f084c921da22d79a15287e05124f66755cc",
+    "zh:8a14c0fcddb75c10ae7b159ef4776303f7c321a4d4eb129f483cf0dca2e2042b",
+    "zh:8e4d436132b922143c3b56838c630c5aa4f5f9239825b34afb58a941e02da510",
+    "zh:985b25335ac0779fa4847fe7ba935738286f17006b231f43d519c3c881ea7bd7",
+    "zh:a3c9f58a2e3c1d47d813de48d25dd57a3613a2fccdf916931b6ddf175d349306",
+    "zh:b65b1dffd77e8b4f2c396f9a26e2dd64b95dca356090c0875f7b7c79bdce821c",
+    "zh:d4ea55dd02be20a775689a3687034a6ce0118d9c6c8a30df98afe67e96ecadb8",
+    "zh:d7e39cff631fe455fe8043646ea1d96e66a3d12816b8d420e7281f53919305ee",
+    "zh:d910db61428e0dda1c04ed4058298545198ad913ef03911f50fa6d738b7c3b0d",
+    "zh:eb25adb2b17006cf183c6698376ccbc0ce2e60b76b522d9f863d9cbe71fe6878",
+    "zh:fd7efb1d388b75da169bd3e899f487f29624447ca849547038e68b928ea7c762",
+  ]
+}

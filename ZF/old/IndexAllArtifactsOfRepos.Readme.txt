@@ -1,0 +1,72 @@
+IndexAllArtifactsOfRepos.sh
+===========================
+
+Triggers Xray indexing for repositories that are not fully indexed. The script
+checks index completion for each repository in the input file, identifies repos
+below 100%, and calls the Xray index API for those repositories.
+
+
+Prerequisites
+-------------
+
+  - bash
+  - curl
+  - jq
+  - A JFrog Access Token with permission to call Artifactory and Xray APIs
+
+
+Usage
+-----
+
+  ./IndexAllArtifactsOfRepos.sh <ARTIFACTORY_URL> <ACCESS_TOKEN> <REPO_LIST_FILE>
+
+Show built-in help:
+
+  ./IndexAllArtifactsOfRepos.sh --help
+
+
+Arguments
+---------
+
+  ARTIFACTORY_URL   (required)  Base Artifactory URL
+                                e.g. https://mycompany.jfrog.io/artifactory
+
+  ACCESS_TOKEN      (required)  JFrog Access Token (Bearer)
+
+  REPO_LIST_FILE    (required)  Text file with one repository name per line
+                                (maximum 5 repositories per run)
+
+
+How It Works
+------------
+
+  1. Validates that REPO_LIST_FILE exists and contains no more than 5 repos
+  2. Fetches index status (completed, potential, percentage) for each repo
+  3. Identifies repositories with index completion below 100%
+  4. Triggers Xray indexing for those repositories via the index API
+
+
+
+
+Notes
+-----
+
+  - Indexing may take significant time depending on repo size and artifact count.
+  - Avoid running against a large number of repositories at once.
+  - REPO_LIST_FILE must contain one repository name per line (not a CSV).
+    Extract repo names from GetIndexStatus.sh output before using as input.
+  - Repositories must already have Xray indexing enabled (use
+    EnableIndexingForRepos.sh first if needed).
+
+
+Examples
+--------
+
+Index artifacts for repositories listed in repos.txt:
+
+  ./IndexAllArtifactsOfRepos.sh https://mycompany.jfrog.io/artifactory $JFROG_ACCESS_TOKEN repos.txt
+
+Example repos.txt format (one repo per line, max 5):
+
+  my-local-repo
+  my-federated-repo
