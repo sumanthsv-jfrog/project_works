@@ -1,0 +1,15 @@
+mutation {
+  customCatalogLabel {
+    assignCustomCatalogLabelToPublicPackageVersions(
+      publicPackageVersionsLabel: {
+        publicPackageVersions: [
+          {publicPackage: {name: "adler-32", type: "npm"}, version: "1.3.1"}
+,
+          {publicPackage: {name: "ansi-colors", type: "npm"}, version: "4.1.3"}
+
+        ],
+        labelName: "worksafe_new_label"
+      }
+    )
+  }
+}
