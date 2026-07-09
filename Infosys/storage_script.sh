@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#
+# Run command sed 's/^[^{]*//' storage_file_downloade.txt| tr "'" '"' 
 # Build CSV reports from a JFrog storage-summary file (one object per line).
 #
 #   repos_detail.csv      projectKey,repoKey,packageType,size,sizeBytes
