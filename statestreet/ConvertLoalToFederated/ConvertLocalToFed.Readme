@@ -1,0 +1,27 @@
+This script automates the conversion of JFrog Artifactory Local repositories to Federated repositories within a given JFrog Platform Deployment (JPD). After conversion, it adds specified JPD members to the newly created federation configuration, enabling replication between the federation members.
+Pre-requisites:
+
+Bash Environment: A Linux or macOS environment with Bash shell.
+
+curl: For making REST API calls to the JFrog Platform.
+
+jq: A lightweight and flexible command-line JSON processor.
+
+JFrog Access Token: An Identity Token or API Key for an administrator user in the source JPD, as the migration and configuration steps require high privileges.
+
+A list of repositories: The script expects the file $reposfile (localrepos.txt) to exist and be populated with a list of local repository keys (one key per line) that need to be converted.
+
+Federation Eligibility: Ensure the local repositories you are converting are eligible for federation (e.g., they must not be virtual or remote repositories).
+
+File Preparation
+Before running the script, you must populate the localrepos.txt file with the keys of the local repositories you intend to convert.
+
+localrepos.txt example:
+#cat localrepos.txt 
+sumfed1
+sumfed2
+
+Execution:
+./ConvertLocalToFed.sh https://JFrog_URL admin <YOUR_TOKEN> "jpd-member1.jfrog.io"
+
+

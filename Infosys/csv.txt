@@ -1,0 +1,71 @@
+nexus.magnolia-cms.com/repository/public,Not a valid registry
+nexus.onap.org/,Unable to access the registry
+nexus3.onap.org:10001,Unable to access the registry
+node-precompiled-binaries.grpc.io/,May be Generic repository might help.
+nodejs.org/,May be Generic repository might help.
+nodejs.org/dist,May be Generic repository might help.
+nodejs.org/dist/,May be Generic repository might help.
+nodejs.org/download/release,May be Generic repository might help.
+npm.daypilot.org/,Valid npm repository
+npm.magnolia-cms.com/repository/npm-enterprise/,its a private registry
+npmmirror.com/mirrors/electron,Unable to access the registry
+nuget.telerik.com/nuget,its a private registry
+nvcr.io/,its a private registry
+ollama.com/download/,May be Generic repository might help.
+operator.min.io/,Valid Docker repository
+oss.sonatype.org/content/groups/public/,Valid Maven repository
+packages.broadcom.com/artifactory/spring-enterprise,its a private registry
+packages.cloud.google.com/,Not a valid registry
+packages.confluent.io/maven/,Valid Maven repository
+packages.drupal.org/,May be Generic repository might help.
+packages.microsoft.com:443,Valid Debian repository
+pecl.php.net,May be Generic repository might help.
+pkg.jenkins.io/redhat-stable/,Valid RPM repository
+plugins.gradle.org/,Valid Gradle repository
+plugins.gradle.org/m2,Valid Gradle repository
+plugins.gradle.org/m2/,Valid Gradle repository
+portal.dl.kx.com,May be Generic repository might help.
+projects.registry.vmware.com,Valid Docker repository
+proxy.golang.org/,Valid Go repository
+pub.dartlang.org,Valid Pub repository
+pub.dev,Valid Pub repository
+public.ecr.aws,Valid Docker repository
+pypi.org/,Valid PyPI repository
+pypi.org/simple,Unable to access the registry
+pypi.python.org/,Valid PyPI repository
+quay.io/,Valid Docker repository
+ray-project.github.io/kuberay-helm/,Not a valid registry
+registry-1.docker.io,Not a valid registry
+registry-1.docker.io/,Not a valid registry
+registry-1.docker.io/TopazCloudContainerRegistry,Not a valid registry
+registry.gitlab.com,Valid Docker repository
+registry.k8s.io,Valid Docker repository
+registry.k8s.io/,Valid Docker repository
+registry.npmjs.org,Valid npm repository
+registry.redhat.io,Valid Docker repository
+registry.redhat.io/,Valid Docker repository
+registry.yarnpkg.com,Valid npm repository
+releases-docker.jfrog.io,Valid Docker repository
+releases.ansible.com/ansible-tower/,May be Generic repository might help.
+releases.jfrog.io/artifactory/artifactory-pro-rpms/,Valid RPM repository
+releases.jfrog.io/artifactory/jfrog-mc/rpm/,Valid RPM repository
+releases.jfrog.io/artifactory/jfrog-releases/data-transfer/,May be Generic repository might help.
+releases.jfrog.io/artifactory/jfrog-rpms/,Valid RPM repository
+releases.jfrog.io/artifactory/jfrog-xray/xray-rpm,Valid RPM repository
+releases.jfrog.io/artifactory/pipelines-tasks,May be Generic repository might help.
+releases.jfrog.io/artifactory/pipelines-templates,May be Generic repository might help.
+repo.adobe.com/nexus/content/repositories/public,Not a valid registry
+repo.almalinux.org/almalinux/9/CRB/x86_64/os/Packages,Valid RPM repository
+repo.anaconda.com/pkgs/main,Valid Conda repository
+repo.catchpoint.net/repo/,Valid Maven repository
+repo.clojars.org/,Valid Maven repository
+repo.eclipse.org,Valid Maven repository
+repo.eclipse.org/content/repositories/releases/,Valid Maven repository
+repo.grails.org/grails/core/org/grails/plugins/mongodb/,Valid Maven repository
+repo.grails.org/grails/plugins/org/grails/plugins/mongodb/,Valid Maven repository
+repo.hortonworks.com/content/repositories/releases/,Unable to access the registry
+repo.jenkins-ci.org/public/,Valid Maven repository
+repo.jenkins-ci.org/releases/,Valid Maven repository
+repo.magento.com,May be Generic repository might help.
+repo.maven.apache.org/,Valid Maven repository
+repo.maven.apache.org/maven2,Valid Maven repository

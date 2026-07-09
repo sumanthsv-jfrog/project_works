@@ -1,0 +1,81 @@
+================================================================================
+  ot_repo_mapping.sh - README
+================================================================================
+
+PURPOSE
+-------
+Runs against an OT Artifactory instance. Lists every REMOTE repository,
+reads the URL each one points to, and derives the source ("Corp") repository
+name from that URL (the last path segment).
+
+Use this script first to build a mapping between OT smart-remote repo keys and
+their corresponding Corp repo keys. The output feeds into ot_artifact_check.sh
+(--repo and --repo-prefix arguments).
+
+DEPENDENCIES
+------------
+  - bash (3.2+)   -- do NOT run with sh
+  - curl          -- for API calls
+  - jq            -- for JSON parsing
+
+CONFIGURATION
+-------------
+Set these environment variables before running:
+
+  OT_URL        Base URL incl. context, e.g. https://ot.example.com/artifactory   [required]
+  OT_TOKEN      Access token (Bearer)                                             [preferred]
+  OT_USER       ) basic-auth alternative to OT_TOKEN
+  OT_PASSWORD   )
+  OT_INSECURE   set to 1 to skip TLS verification (self-signed certs)
+
+Example:
+
+  export OT_URL=https://ot.example.com/artifactory
+  export OT_TOKEN=xxxxxxxx
+
+USAGE
+-----
+  ./ot_repo_mapping.sh                       # print CSV to stdout
+  ./ot_repo_mapping.sh -o mapping.csv        # write CSV to file
+  ./ot_repo_mapping.sh --corp-host corp.example.com   # only remotes on that host
+  ./ot_repo_mapping.sh -h                    # show help
+
+OPTIONS
+-------
+  -o, --out <file>       Write output to file instead of stdout
+  --corp-host <host>     Filter to remotes whose URL host matches (e.g. corp.example.com)
+  -h, --help             Show usage and exit
+
+OUTPUT
+------
+CSV columns:
+
+  ot_repo       Repo key on OT (pass this to ot_artifact_check.sh as --repo)
+  package_type  Package type of the remote repo (e.g. Docker, Maven, Generic)
+  remote_url    Full URL the OT remote points at
+  smart_remote  "yes" if the URL path contains /artifactory/ (points at another
+                Artifactory instance); "no" for external mirrors etc.
+  corp_repo     Repo key on Corp the remote points at (use as --repo-prefix in
+                ot_artifact_check.sh)
+
+Example output:
+
+  ot_repo,package_type,remote_url,smart_remote,corp_repo
+  ot-corp-libs,Maven,https://corp.example.com/artifactory/corp-libs-local,yes,corp-libs-local
+  external-mirror,Generic,https://mirror.example.com/repo,no,repo
+
+TYPICAL WORKFLOW
+----------------
+  1. Run ot_repo_mapping.sh to produce mapping.csv
+  2. Pick the ot_repo / corp_repo pair for the Corp repo you want to check
+  3. Run ot_artifact_check.sh with -r <ot_repo> and -p <corp_repo>
+
+NOTES
+-----
+  - Only REMOTE repositories are listed (type=remote via Artifactory API).
+  - corp_repo is derived as the last path segment of the remote URL; verify
+    unusual URL layouts manually.
+  - When -o is used, a confirmation message is printed to stderr:
+    "Wrote mapping to <file>"
+
+================================================================================

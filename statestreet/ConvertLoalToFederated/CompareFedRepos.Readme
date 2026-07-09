@@ -1,0 +1,18 @@
+#CompareFedRepos.sh 
+
+The script compares the federated repositories between 2 JPDs and display the repo size and artifact counts from both the JPDs
+
+Pre-requisites:
+
+Bash Environment: A Linux or macOS environment with Bash shell.
+
+curl: For making REST API calls to the JFrog Platform.
+
+jq: A lightweight and flexible command-line JSON processor.
+
+Username/Password Or JFrog Access Token:
+
+
+Execution:
+sh CompareFedRepos.sh "https://jpd1.jfrog.io"  "https://jpd2.jfrog.io" "username" "password"
+

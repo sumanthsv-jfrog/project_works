@@ -1,0 +1,4 @@
+CacheToLocal Scripts:
+1. Make sure template.json file available in local directory(Copy from the shared folder)
+2. create_cached_locals_for_all_remotes.sh
+3. copy_to_cached_locals_for_all_remotes.sh

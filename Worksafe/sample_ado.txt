@@ -1,0 +1,121 @@
+trigger:
+  - none
+
+jobs:
+- job: SyncMavenFromADOToJFrog
+  displayName: 'Job 1 - Download Maven from ADO Artifacts, Push to JFrog'
+  pool:
+    name: Default  # sumanthsv-mac agent
+
+  variables:
+    JFROG_MAVEN_REPO: 'worksfae-maven-azr-local'
+    ADO_ORG: 'sumanthsv'
+    ADO_PROJECT: 'sum-maven'
+    ADO_FEED: 'maven-feed'
+    DOWNLOAD_DIR: '$(Pipeline.Workspace)/maven-cache'
+
+  steps:
+  - checkout: self
+
+  # Step 1 — JFrog CLI Pre-checks
+  - task: JFrogCliV2@1
+    displayName: 'JFrog CLI Pre-checks'
+    inputs:
+      jfrogPlatformConnection: 'jfrog-psblr'
+      command: |
+        jf c show
+        jf rt ping
+
+
+
+  # Step 2 — Dynamically fetch & download all packages
+  - task: CmdLine@2
+    displayName: 'Download all Maven packages from ADO Artifacts'
+    env:
+      ADO_PAT: $(ADO_PAT)
+    inputs:
+      script: |
+        set -euo pipefail
+        mkdir -p $(DOWNLOAD_DIR)
+
+        BASE64_PAT=$(echo -n ":${ADO_PAT}" | base64)
+        AUTH="Authorization: Basic ${BASE64_PAT}"
+        MAVEN_BASE="https://pkgs.dev.azure.com/sumanthsv/sum-maven/_packaging/maven-feed/maven/v1"
+        API_BASE="https://feeds.dev.azure.com/sumanthsv/sum-maven/_apis/packaging/feeds/maven-feed"
+
+        echo "Fetching package list..."
+        PACKAGES=$(curl -sf -H "$AUTH" \
+          "${API_BASE}/packages?protocolType=maven&api-version=7.0-preview.1")
+
+        TOTAL=$(echo "$PACKAGES" | jq '.count')
+        echo "Found $TOTAL packages"
+
+        echo "$PACKAGES" | jq -c '.value[]' | while read pkg; do
+          FULL_NAME=$(echo $pkg | jq -r '.name')
+          VERSION=$(echo $pkg   | jq -r '.versions[0].version')
+          GROUP=$(echo $FULL_NAME | cut -d':' -f1 | tr '.' '/')
+          ARTIFACT=$(echo $FULL_NAME | cut -d':' -f2)
+
+          echo "══════════════════════════════════════"
+          echo "Package  : $FULL_NAME"
+          echo "Version  : $VERSION"
+
+          # Fetch metadata to resolve real snapshot timestamp
+          META_URL="${MAVEN_BASE}/${GROUP}/${ARTIFACT}/${VERSION}/maven-metadata.xml"
+          METADATA=$(curl -sf -H "$AUTH" "$META_URL" || echo "")
+
+          SNAP_VERSION=$(echo "$METADATA" \
+            | grep -o '<value>[^<]*</value>' \
+            | head -1 \
+            | sed 's/<value>//;s/<\/value>//')
+
+          if [ -z "$SNAP_VERSION" ]; then
+            echo "No snapshot timestamp, using: $VERSION"
+            SNAP_VERSION=$VERSION
+          fi
+
+          echo "Resolved : $SNAP_VERSION"
+
+          # ── Save to Maven directory structure ──────────────────────
+          DEST_DIR="$(DOWNLOAD_DIR)/${GROUP}/${ARTIFACT}/${VERSION}"
+          mkdir -p "$DEST_DIR"
+          echo "Saving to: $DEST_DIR"
+
+          for EXT in pom jar war; do
+            FILE="${ARTIFACT}-${SNAP_VERSION}.${EXT}"
+            URL="${MAVEN_BASE}/${GROUP}/${ARTIFACT}/${VERSION}/${FILE}"
+            OUT="${DEST_DIR}/${FILE}"
+
+            HTTP=$(curl -s -H "$AUTH" \
+              -w "%{http_code}" \
+              -o "$OUT" \
+              "$URL")
+
+            if [ "$HTTP" = "200" ]; then
+              SIZE=$(ls -lh "$OUT" | awk '{print $5}')
+              echo "$EXT → ✅ $HTTP ($SIZE)"
+            else
+              echo "$EXT → ⏭  $HTTP (skipping)"
+              rm -f "$OUT"
+            fi
+          done
+        done
+
+        echo "══════════════════════════════════════"
+        echo "Final directory structure:"
+        find $(DOWNLOAD_DIR) -type f | sort
+
+
+  - task: JFrogCliV2@1
+    displayName: 'Push all packages to JFrog'
+    inputs:
+      jfrogPlatformConnection: 'jfrog-psblr'
+      command: |
+        jf rt u "$(DOWNLOAD_DIR)/org/(*)" "$(JFROG_MAVEN_REPO)/org/{1}" --flat=false --regexp=false
+
+ # - task: JFrogCliV2@1
+ #   displayName: 'Verify packages in JFrog'
+ #   inputs:
+ #     jfrogPlatformConnection: 'jfrog-psblr'
+ #     command: |
+ #       jf rt search "$(JFROG_MAVEN_REPO)/org/jfrog/test/*"

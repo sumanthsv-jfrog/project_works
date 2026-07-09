@@ -1,0 +1,12 @@
+mutation {
+  customCatalogLabel {
+    removeCustomCatalogLabelFromPublicPackageVersions(
+      publicPackageVersionsLabel: {
+        labelName: "jfrog-waiver-policy-9"
+        publicPackageVersions: [
+          {publicPackage: {name: "library/nginx", type: "docker"}, version: "sha256:f4344ddc8c35561cff54381bcbdec9d5de67d10fe7ca32d0eb79d0de4249331e"}
+        ]
+      }
+    )
+  }
+}

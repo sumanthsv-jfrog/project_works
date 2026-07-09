@@ -1,0 +1,1494 @@
+# TYPE jfrt_http_connections_available_total gauge
+# HELP jfrt_http_connections_available_total Available Connections
+jfrt_http_connections_available_total{max="50",pool="mirror-https-//psblrdr.jfrog.io/artifactory"} 1 1782288620213
+jfrt_http_connections_available_total{max="50",pool="mirror-https-//psazuse.jfrog.io/artifactory"} 1 1782288620213
+# TYPE jfrt_http_connections_leased_total gauge
+# HELP jfrt_http_connections_leased_total Leased Connections
+jfrt_http_connections_leased_total{max="50",pool="mirror-https-//psblrdr.jfrog.io/artifactory"} 0 1782288620213
+jfrt_http_connections_leased_total{max="50",pool="mirror-https-//psazuse.jfrog.io/artifactory"} 0 1782288620213
+# TYPE jfrt_http_connections_max_total gauge
+# HELP jfrt_http_connections_max_total Max Connections
+jfrt_http_connections_max_total{max="50",pool="mirror-https-//psblrdr.jfrog.io/artifactory"} 50 1782288620213
+jfrt_http_connections_max_total{max="50",pool="mirror-https-//psazuse.jfrog.io/artifactory"} 50 1782288620213
+# TYPE jfrt_http_connections_pending_total gauge
+# HELP jfrt_http_connections_pending_total Pending Connections
+jfrt_http_connections_pending_total{max="50",pool="mirror-https-//psblrdr.jfrog.io/artifactory"} 0 1782288620213
+jfrt_http_connections_pending_total{max="50",pool="mirror-https-//psazuse.jfrog.io/artifactory"} 0 1782288620213
+# TYPE jfbh_rbv2_artifact_copied_seconds gauge
+# HELP jfbh_rbv2_artifact_copied_seconds RB V2 artifact copy time: percentile 50%
+jfbh_rbv2_artifact_copied_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_artifact_copied_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_artifact_copied_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_artifact_copied_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_artifact_copied_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_artifacts_total gauge
+# HELP jfbh_rbv2_artifacts_total RB V2 artifacts: percentile 50%
+jfbh_rbv2_artifacts_total{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_artifacts_total{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_artifacts_total{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_artifacts_total{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_artifacts_total{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_blocked_expired_keys_total counter
+# HELP jfbh_rbv2_blocked_expired_keys_total RB V2 blocked by expired key counts
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_distributions"} 0 1782288620213
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_creations"} 0 1782288620213
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_promotions"} 0 1782288620213
+# TYPE jfbh_rbv2_bundle_operations_total counter
+# HELP jfbh_rbv2_bundle_operations_total RB V2 bundle operations
+jfbh_rbv2_bundle_operations_total{operation="create_bundle"} 0 1782288620213
+jfbh_rbv2_bundle_operations_total{operation="delete_received_bundle"} 0 1782288620213
+jfbh_rbv2_bundle_operations_total{operation="create_draft_bundle"} 0 1782288620213
+jfbh_rbv2_bundle_operations_total{operation="update_bundle"} 0 1782288620213
+jfbh_rbv2_bundle_operations_total{operation="delete_bundle"} 0 1782288620213
+jfbh_rbv2_bundle_operations_total{operation="creation_dry_run_bundle"} 0 1782288620213
+# TYPE jfbh_rbv2_creation_agents_total counter
+# HELP jfbh_rbv2_creation_agents_total RB V2 creation agents
+jfbh_rbv2_creation_agents_total{source_agent="application"} 0 1782288620213
+jfbh_rbv2_creation_agents_total{source_agent="browser"} 0 1782288620213
+jfbh_rbv2_creation_agents_total{source_agent="api"} 0 1782288620213
+jfbh_rbv2_creation_agents_total{source_agent="cli"} 0 1782288620213
+jfbh_rbv2_creation_agents_total{source_agent="system"} 0 1782288620213
+# TYPE jfbh_rbv2_creation_methods_total counter
+# HELP jfbh_rbv2_creation_methods_total RB V2 creation methods
+jfbh_rbv2_creation_methods_total{source_method="artifacts"} 0 1782288620213
+jfbh_rbv2_creation_methods_total{source_method="aql"} 0 1782288620213
+jfbh_rbv2_creation_methods_total{source_method="builds"} 0 1782288620213
+jfbh_rbv2_creation_methods_total{source_method="packages"} 0 1782288620213
+jfbh_rbv2_creation_methods_total{source_method="release_bundles"} 0 1782288620213
+# TYPE jfbh_rbv2_deletion_agents_total counter
+# HELP jfbh_rbv2_deletion_agents_total RB V2 deletion agents
+jfbh_rbv2_deletion_agents_total{source_agent="application"} 0 1782288620213
+jfbh_rbv2_deletion_agents_total{source_agent="browser"} 0 1782288620213
+jfbh_rbv2_deletion_agents_total{source_agent="api"} 0 1782288620213
+jfbh_rbv2_deletion_agents_total{source_agent="cli"} 0 1782288620213
+jfbh_rbv2_deletion_agents_total{source_agent="system"} 0 1782288620213
+# TYPE jfbh_rbv2_promotion_created_seconds gauge
+# HELP jfbh_rbv2_promotion_created_seconds RB V2 promotion creation time: percentile 50%
+jfbh_rbv2_promotion_created_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_promotion_created_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_promotion_created_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_promotion_created_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_promotion_created_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_promotion_creation_agents_total counter
+# HELP jfbh_rbv2_promotion_creation_agents_total RB V2 promotion creation agents
+jfbh_rbv2_promotion_creation_agents_total{source_agent="application"} 0 1782288620213
+jfbh_rbv2_promotion_creation_agents_total{source_agent="browser"} 0 1782288620213
+jfbh_rbv2_promotion_creation_agents_total{source_agent="api"} 0 1782288620213
+jfbh_rbv2_promotion_creation_agents_total{source_agent="cli"} 0 1782288620213
+jfbh_rbv2_promotion_creation_agents_total{source_agent="system"} 0 1782288620213
+# TYPE jfbh_rbv2_promotion_deleted_seconds gauge
+# HELP jfbh_rbv2_promotion_deleted_seconds RB V2 promotion deletion time: percentile 50%
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{type="std"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_promotion_deleted_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_promotion_deletion_agents_total counter
+# HELP jfbh_rbv2_promotion_deletion_agents_total RB V2 promotion deletion agents
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="application"} 0 1782288620213
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="browser"} 0 1782288620213
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="api"} 0 1782288620213
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="cli"} 0 1782288620213
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="system"} 0 1782288620213
+# TYPE jfbh_rbv2_promotion_operations_total counter
+# HELP jfbh_rbv2_promotion_operations_total RB V2 promotion operations
+jfbh_rbv2_promotion_operations_total{operation="overwrite_artifact_promotion"} 0 1782288620213
+jfbh_rbv2_promotion_operations_total{operation="delete_targets_promotion"} 0 1782288620213
+jfbh_rbv2_promotion_operations_total{operation="delete_promotion"} 0 1782288620213
+jfbh_rbv2_promotion_operations_total{operation="create_promotion"} 0 1782288620213
+jfbh_rbv2_promotion_operations_total{operation="create_targets_promotion"} 0 1782288620213
+# TYPE jfbh_rbv2_promotion_xray_status_total counter
+# HELP jfbh_rbv2_promotion_xray_status_total RB V2 promotion xray status
+jfbh_rbv2_promotion_xray_status_total{status="promotion_approved"} 0 1782288620213
+jfbh_rbv2_promotion_xray_status_total{status="promotion_rejected"} 0 1782288620213
+# TYPE jfbh_rbv2_promotions_total gauge
+# HELP jfbh_rbv2_promotions_total RB V2 promotions
+jfbh_rbv2_promotions_total 634 1782288620213
+# TYPE jfbh_rbv2_promotions_completed_total gauge
+# HELP jfbh_rbv2_promotions_completed_total RB V2 promotions completed
+jfbh_rbv2_promotions_completed_total 624 1782288620213
+# TYPE jfbh_rbv2_promotions_failed_total gauge
+# HELP jfbh_rbv2_promotions_failed_total RB V2 promotions failed
+jfbh_rbv2_promotions_failed_total 10 1782288620213
+# TYPE jfbh_rbv2_properties_total gauge
+# HELP jfbh_rbv2_properties_total RB V2 properties: percentile 50%
+jfbh_rbv2_properties_total{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_properties_total{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_properties_total{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_properties_total{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_properties_total{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_release_bundles_total gauge
+# HELP jfbh_rbv2_release_bundles_total RB V2 release bundles
+jfbh_rbv2_release_bundles_total 129 1782288620213
+# TYPE jfbh_rbv2_release_bundles_completed_total gauge
+# HELP jfbh_rbv2_release_bundles_completed_total RB V2 release bundles completed
+jfbh_rbv2_release_bundles_completed_total 109 1782288620213
+# TYPE jfbh_rbv2_release_bundles_failed_total gauge
+# HELP jfbh_rbv2_release_bundles_failed_total RB V2 release bundles failed
+jfbh_rbv2_release_bundles_failed_total 19 1782288620213
+# TYPE jfbh_rbv2_release_bundles_groups_seconds gauge
+# HELP jfbh_rbv2_release_bundles_groups_seconds RB V2 bundle groups retrieve time: percentile 50%
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.5"} 0.024 1782288620213
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.75"} 0.024 1782288620213
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.95"} 0.024 1782288620213
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.99"} 0.024 1782288620213
+jfbh_rbv2_release_bundles_groups_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_targets_promotion_created_seconds gauge
+# HELP jfbh_rbv2_targets_promotion_created_seconds RB V2 promotion targets creation time: percentile 50%
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_targets_promotion_created_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_version_created_seconds gauge
+# HELP jfbh_rbv2_version_created_seconds RB V2 version creation time: percentile 50%
+jfbh_rbv2_version_created_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_version_created_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_version_created_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_version_created_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_version_created_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_version_deleted_seconds gauge
+# HELP jfbh_rbv2_version_deleted_seconds RB V2 version deletion time: percentile 50%
+jfbh_rbv2_version_deleted_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_version_deleted_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_version_deleted_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_version_deleted_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_version_deleted_seconds{type="std"} 0.0 1782288620213
+# TYPE jfbh_rbv2_version_updated_seconds gauge
+# HELP jfbh_rbv2_version_updated_seconds RB V2 version update time: percentile 50%
+jfbh_rbv2_version_updated_seconds{quantile="0.5"} 0.0 1782288620213
+jfbh_rbv2_version_updated_seconds{quantile="0.75"} 0.0 1782288620213
+jfbh_rbv2_version_updated_seconds{quantile="0.95"} 0.0 1782288620213
+jfbh_rbv2_version_updated_seconds{quantile="0.99"} 0.0 1782288620213
+jfbh_rbv2_version_updated_seconds{type="std"} 0.0 1782288620213
+# TYPE jfrt_events_gc_binaries_deleted_total counter
+# HELP jfrt_events_gc_binaries_deleted_total Total number of binaries removed by Garbage Collection
+jfrt_events_gc_binaries_deleted_total{type="EVENTS_GC"} 146 1782288620213
+# TYPE jfrt_events_gc_deduped_events_total counter
+# HELP jfrt_events_gc_deduped_events_total Total number of deduped events
+jfrt_events_gc_deduped_events_total{type="EVENTS_GC"} 6 1782288620213
+# TYPE jfrt_events_gc_events_total counter
+# HELP jfrt_events_gc_events_total Total number of event
+jfrt_events_gc_events_total{type="EVENTS_GC"} 156 1782288620213
+# TYPE jfrt_events_gc_failures_total counter
+# HELP jfrt_events_gc_failures_total Total number of binaries that Garbage Collection failed to remove
+jfrt_events_gc_failures_total{type="EVENTS_GC"} 0 1782288620213
+# TYPE jfrt_events_gc_retry_exhausted_total counter
+# HELP jfrt_events_gc_retry_exhausted_total Total number of binaries that Garbage Collection gave up to remove
+jfrt_events_gc_retry_exhausted_total{type="EVENTS_GC"} 0 1782288620213
+# TYPE jfrt_events_gc_size_cleaned_bytes gauge
+# HELP jfrt_events_gc_size_cleaned_bytes Total Bytes recovered by Garbage Collection
+jfrt_events_gc_size_cleaned_bytes{type="EVENTS_GC"} 415020 1782288620213
+# TYPE jfrt_events_gc_squashed_events_total counter
+# HELP jfrt_events_gc_squashed_events_total Total number of events skipped due to squashing
+jfrt_events_gc_squashed_events_total{type="EVENTS_GC"} 242 1782288620213
+# TYPE jfrt_events_gc_waiting_total gauge
+# HELP jfrt_events_gc_waiting_total Total number of waiting event
+jfrt_events_gc_waiting_total{type="EVENTS_GC"} 0 1782288620213
+# TYPE jfrt_repo_avg_members_total gauge
+# HELP jfrt_repo_avg_members_total The average number of members in virtual/federated repositories
+jfrt_repo_avg_members_total{package="Maven",type="Virtual"} 2.0588235294117645 1782288620213
+jfrt_repo_avg_members_total{package="Composer",type="Virtual"} 2.0 1782288620213
+jfrt_repo_avg_members_total{package="ReleaseBundles",type="Federated"} 1.5 1782288620213
+jfrt_repo_avg_members_total{package="Pypi",type="Federated"} 1.0 1782288620213
+jfrt_repo_avg_members_total{package="OCI",type="Federated"} 1.8666666666666667 1782288620213
+jfrt_repo_avg_members_total{package="Maven",type="Federated"} 1.75 1782288620213
+jfrt_repo_avg_members_total{package="Go",type="Virtual"} 1.3333333333333333 1782288620213
+jfrt_repo_avg_members_total{package="Generic",type="Virtual"} 1.5 1782288620213
+jfrt_repo_avg_members_total{package="Pypi",type="Virtual"} 1.7272727272727273 1782288620213
+jfrt_repo_avg_members_total{package="Gradle",type="Virtual"} 2.0 1782288620213
+jfrt_repo_avg_members_total{package="Npm",type="Federated"} 1.6666666666666667 1782288620213
+jfrt_repo_avg_members_total{package="NuGet",type="Virtual"} 2.1333333333333333 1782288620213
+jfrt_repo_avg_members_total{package="Docker",type="Federated"} 1.5714285714285714 1782288620213
+jfrt_repo_avg_members_total{package="Generic",type="Federated"} 1.7894736842105263 1782288620213
+jfrt_repo_avg_members_total{package="Npm",type="Virtual"} 1.975 1782288620213
+jfrt_repo_avg_members_total{package="Debian",type="Virtual"} 1.5 1782288620213
+jfrt_repo_avg_members_total{package="BuildInfo",type="Federated"} 1.0 1782288620213
+jfrt_repo_avg_members_total{package="HuggingFaceML",type="Virtual"} 2.0 1782288620213
+jfrt_repo_avg_members_total{package="Docker",type="Virtual"} 2.075 1782288620213
+jfrt_repo_avg_members_total{package="OCI",type="Virtual"} 0.8333333333333334 1782288620213
+jfrt_repo_avg_members_total{package="NuGet",type="Federated"} 1.0 1782288620213
+jfrt_repo_avg_members_total{package="Conan",type="Virtual"} 1.0 1782288620213
+jfrt_repo_avg_members_total{package="HelmOCI",type="Virtual"} 1.3333333333333333 1782288620213
+# TYPE jfrt_repo_by_type_total gauge
+# HELP jfrt_repo_by_type_total The number of repositories by type and package type
+jfrt_repo_by_type_total{package="OCI",type="Remote"} 5 1782288620213
+jfrt_repo_by_type_total{package="NuGet",type="Remote"} 24 1782288620213
+jfrt_repo_by_type_total{package="Generic",type="Virtual"} 2 1782288620213
+jfrt_repo_by_type_total{package="Pypi",type="Virtual"} 22 1782288620213
+jfrt_repo_by_type_total{package="Gradle",type="Virtual"} 3 1782288620213
+jfrt_repo_by_type_total{package="Npm",type="Federated"} 3 1782288620213
+jfrt_repo_by_type_total{package="Docker",type="Federated"} 7 1782288620213
+jfrt_repo_by_type_total{package="Docker",type="Local"} 137 1782288620213
+jfrt_repo_by_type_total{package="Npm",type="Local"} 71 1782288620213
+jfrt_repo_by_type_total{package="Conan",type="Virtual"} 1 1782288620213
+jfrt_repo_by_type_total{package="MachineLearning",type="Local"} 1 1782288620213
+jfrt_repo_by_type_total{package="Generic",type="Local"} 89 1782288620213
+jfrt_repo_by_type_total{package="HuggingFaceML",type="Local"} 1 1782288620213
+jfrt_repo_by_type_total{package="Gradle",type="Remote"} 4 1782288620213
+jfrt_repo_by_type_total{package="Debian",type="Local"} 18 1782288620213
+jfrt_repo_by_type_total{package="Go",type="Remote"} 4 1782288620213
+jfrt_repo_by_type_total{package="Generic",type="Remote"} 11 1782288620213
+jfrt_repo_by_type_total{package="Generic",type="Federated"} 19 1782288620213
+jfrt_repo_by_type_total{package="Debian",type="Virtual"} 10 1782288620213
+jfrt_repo_by_type_total{package="HelmOCI",type="Remote"} 4 1782288620213
+jfrt_repo_by_type_total{package="HuggingFaceML",type="Virtual"} 1 1782288620213
+jfrt_repo_by_type_total{package="Docker",type="Remote"} 72 1782288620213
+jfrt_repo_by_type_total{package="Debian",type="Remote"} 17 1782288620213
+jfrt_repo_by_type_total{package="Docker",type="Virtual"} 40 1782288620213
+jfrt_repo_by_type_total{package="HuggingFaceML",type="Remote"} 2 1782288620213
+jfrt_repo_by_type_total{package="HelmOCI",type="Virtual"} 3 1782288620213
+jfrt_repo_by_type_total{package="Maven",type="Virtual"} 34 1782288620213
+jfrt_repo_by_type_total{package="YUM",type="Remote"} 3 1782288620213
+jfrt_repo_by_type_total{package="Go",type="Virtual"} 3 1782288620213
+jfrt_repo_by_type_total{package="Pypi",type="Remote"} 22 1782288620213
+jfrt_repo_by_type_total{package="NuGet",type="Virtual"} 15 1782288620213
+jfrt_repo_by_type_total{package="ReleaseBundles",type="Local"} 6 1782288620213
+jfrt_repo_by_type_total{package="HelmOCI",type="Local"} 1 1782288620213
+jfrt_repo_by_type_total{package="Pypi",type="Local"} 44 1782288620213
+jfrt_repo_by_type_total{package="BuildInfo",type="Local"} 39 1782288620213
+jfrt_repo_by_type_total{package="Conan",type="Remote"} 1 1782288620213
+jfrt_repo_by_type_total{package="BuildInfo",type="Federated"} 3 1782288620213
+jfrt_repo_by_type_total{package="OCI",type="Virtual"} 6 1782288620213
+jfrt_repo_by_type_total{package="Composer",type="Virtual"} 1 1782288620213
+jfrt_repo_by_type_total{package="ReleaseBundles",type="Federated"} 2 1782288620213
+jfrt_repo_by_type_total{package="Pypi",type="Federated"} 1 1782288620213
+jfrt_repo_by_type_total{package="Maven",type="Local"} 65 1782288620213
+jfrt_repo_by_type_total{package="Go",type="Local"} 2 1782288620213
+jfrt_repo_by_type_total{package="OCI",type="Federated"} 15 1782288620213
+jfrt_repo_by_type_total{package="Maven",type="Federated"} 8 1782288620213
+jfrt_repo_by_type_total{package="Npm",type="Remote"} 53 1782288620213
+jfrt_repo_by_type_total{package="Gradle",type="Local"} 5 1782288620213
+jfrt_repo_by_type_total{package="VCS",type="Remote"} 4 1782288620213
+jfrt_repo_by_type_total{package="Helm",type="Local"} 2 1782288620213
+jfrt_repo_by_type_total{package="ReleaseBundles",type="Release Bundle"} 2 1782288620213
+jfrt_repo_by_type_total{package="P2",type="Remote"} 1 1782288620213
+jfrt_repo_by_type_total{package="Maven",type="Remote"} 37 1782288620213
+jfrt_repo_by_type_total{package="OCI",type="Local"} 17 1782288620213
+jfrt_repo_by_type_total{package="Npm",type="Virtual"} 40 1782288620213
+jfrt_repo_by_type_total{package="Composer",type="Remote"} 2 1782288620213
+jfrt_repo_by_type_total{package="NuGet",type="Local"} 20 1782288620213
+jfrt_repo_by_type_total{package="TerraformBackend",type="Local"} 5 1782288620213
+jfrt_repo_by_type_total{package="Conan",type="Local"} 2 1782288620213
+jfrt_repo_by_type_total{package="NuGet",type="Federated"} 2 1782288620213
+# TYPE jfrt_repo_max_members_total gauge
+# HELP jfrt_repo_max_members_total The maximal number of members in virtual/federated repositories
+jfrt_repo_max_members_total{package="Maven",type="Virtual"} 6 1782288620213
+jfrt_repo_max_members_total{package="Composer",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="ReleaseBundles",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="Pypi",type="Federated"} 1 1782288620213
+jfrt_repo_max_members_total{package="OCI",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="Maven",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="Go",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="Generic",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="Pypi",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="Gradle",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="Npm",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="NuGet",type="Virtual"} 5 1782288620213
+jfrt_repo_max_members_total{package="Docker",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="Generic",type="Federated"} 2 1782288620213
+jfrt_repo_max_members_total{package="Npm",type="Virtual"} 4 1782288620213
+jfrt_repo_max_members_total{package="Debian",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="BuildInfo",type="Federated"} 1 1782288620213
+jfrt_repo_max_members_total{package="HuggingFaceML",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="Docker",type="Virtual"} 4 1782288620213
+jfrt_repo_max_members_total{package="OCI",type="Virtual"} 2 1782288620213
+jfrt_repo_max_members_total{package="NuGet",type="Federated"} 1 1782288620213
+jfrt_repo_max_members_total{package="Conan",type="Virtual"} 1 1782288620213
+jfrt_repo_max_members_total{package="HelmOCI",type="Virtual"} 2 1782288620213
+# TYPE jfrt_qrl_permits_total gauge
+# HELP jfrt_qrl_permits_total Permits
+jfrt_qrl_permits_total{qrl_type="low_priority"} 499992 1782288620213
+jfrt_qrl_permits_total{qrl_type="default"} 999996 1782288620213
+# TYPE jfrt_qrl_queries_total gauge
+# HELP jfrt_qrl_queries_total Queries
+jfrt_qrl_queries_total{qrl_type="low_priority"} 0 1782288620213
+jfrt_qrl_queries_total{qrl_type="default"} 136 1782288620213
+# TYPE jfrt_qrl_slowed_down_ratio gauge
+# HELP jfrt_qrl_slowed_down_ratio Slowed Down
+jfrt_qrl_slowed_down_ratio{qrl_type="low_priority"} 0 1782288620213
+jfrt_qrl_slowed_down_ratio{qrl_type="default"} 0 1782288620213
+# TYPE jfrt_qrl_slowed_down_by_time_quota_ratio gauge
+# HELP jfrt_qrl_slowed_down_by_time_quota_ratio Time Slowed Down By Time Quota
+jfrt_qrl_slowed_down_by_time_quota_ratio{qrl_type="low_priority"} 0 1782288620213
+jfrt_qrl_slowed_down_by_time_quota_ratio{qrl_type="default"} 0 1782288620213
+# TYPE jfrt_rrl_drop_count_total counter
+# HELP jfrt_rrl_drop_count_total Drop Count
+jfrt_rrl_drop_count_total{domainSuffix="dhi.io",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix="huggingface.co",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix=".docker.io",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix="registry.npmjs.com",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix="repository.apache.org",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix="proxy.golang.org",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_drop_count_total{domainSuffix="downloads.apache.org",isBlockingEnabled="true"} 0 1782288620213
+# TYPE jfrt_rrl_total_count_total counter
+# HELP jfrt_rrl_total_count_total Total Count
+jfrt_rrl_total_count_total{domainSuffix="dhi.io",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix="huggingface.co",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix=".docker.io",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix="registry.npmjs.com",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix="repository.apache.org",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix="proxy.golang.org",isBlockingEnabled="true"} 0 1782288620213
+jfrt_rrl_total_count_total{domainSuffix="downloads.apache.org",isBlockingEnabled="true"} 0 1782288620213
+# TYPE jfrt_projects_active_total counter
+# HELP jfrt_projects_active_total Projects Amount
+jfrt_projects_active_total 36 1782288620213
+# TYPE jfrt_storage_current_total_size_bytes gauge
+# HELP jfrt_storage_current_total_size_bytes Used Storage
+jfrt_storage_current_total_size_bytes 188359670534 1782288620213
+# TYPE jfrt_artifacts_gc_next_run_seconds gauge
+# HELP jfrt_artifacts_gc_next_run_seconds Next GC Run
+jfrt_artifacts_gc_next_run_seconds 14398 1782288620213
+# TYPE jfrt_artifacts_gc_binaries_total gauge
+# HELP jfrt_artifacts_gc_binaries_total Total number of binaries removed by Garbage Collection
+jfrt_artifacts_gc_binaries_total{end="1782150780178",start="1782150780023",status="COMPLETED",type="TRASH_AND_BINARIES"} 0 1782288620213
+# TYPE jfrt_artifacts_gc_duration_seconds gauge
+# HELP jfrt_artifacts_gc_duration_seconds Time taken for garbage collection
+jfrt_artifacts_gc_duration_seconds{end="1782150780178",start="1782150780023",status="COMPLETED",type="TRASH_AND_BINARIES"} 0.155 1782288620213
+# TYPE jfrt_artifacts_gc_size_cleaned_bytes gauge
+# HELP jfrt_artifacts_gc_size_cleaned_bytes Total Bytes recovered by Garbage Collection
+jfrt_artifacts_gc_size_cleaned_bytes{end="1782150780178",start="1782150780023",status="COMPLETED",type="TRASH_AND_BINARIES"} 0 1782288620213
+# TYPE jfrt_stg_summary_checkpoint_binaries_total gauge
+# HELP jfrt_stg_summary_checkpoint_binaries_total The number of all binaries at last checkpoint
+jfrt_stg_summary_checkpoint_binaries_total 44199 1782288620213
+# TYPE jfrt_stg_summary_checkpoint_binaries_size_bytes gauge
+# HELP jfrt_stg_summary_checkpoint_binaries_size_bytes The size of all binaries at last checkpoint
+jfrt_stg_summary_checkpoint_binaries_size_bytes 188359000683 1782288620213
+# TYPE jfrt_stg_summary_checkpoint_time_total gauge
+# HELP jfrt_stg_summary_checkpoint_time_total The UNIX timestamp of the last storage summary checkpoint
+jfrt_stg_summary_checkpoint_time_total 1782280380125 1782288620213
+# TYPE jfrt_stg_summary_files_total gauge
+# HELP jfrt_stg_summary_files_total The total number of files stored in all repositories
+jfrt_stg_summary_files_total 68595 1782288620213
+# TYPE jfrt_stg_summary_folders_total gauge
+# HELP jfrt_stg_summary_folders_total The total number of folders stored in all repositories
+jfrt_stg_summary_folders_total 52224 1782288620213
+# TYPE jfrt_stg_summary_project_count_total gauge
+# HELP jfrt_stg_summary_project_count_total The total number of projects
+jfrt_stg_summary_project_count_total 35 1782288620213
+# TYPE jfrt_stg_summary_project_files_total gauge
+# HELP jfrt_stg_summary_project_files_total The total number of files in all projects
+jfrt_stg_summary_project_files_total 68595 1782288620213
+# TYPE jfrt_stg_summary_project_max_files_total gauge
+# HELP jfrt_stg_summary_project_max_files_total The maximal number of files in a single project
+jfrt_stg_summary_project_max_files_total 1959.857142857143 1782288620213
+# TYPE jfrt_stg_summary_project_max_size_bytes gauge
+# HELP jfrt_stg_summary_project_max_size_bytes The maximal size of a project (in bytes)
+jfrt_stg_summary_project_max_size_bytes 131355552780 1782288620213
+# TYPE jfrt_stg_summary_project_size_bytes gauge
+# HELP jfrt_stg_summary_project_size_bytes The total size of files in all projects
+jfrt_stg_summary_project_size_bytes 267682798252 1782288620213
+# TYPE jfrt_stg_summary_repo_count_total gauge
+# HELP jfrt_stg_summary_repo_count_total The number of repositories (from storage stats)
+jfrt_stg_summary_repo_count_total{package="Conan",type="CACHE"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="NuGet",type="FEDERATED"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Debian",type="LOCAL"} 18 1782288620213
+jfrt_stg_summary_repo_count_total{package="npm",type="FEDERATED"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="HelmOCI",type="LOCAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="Maven",type="VIRTUAL"} 34 1782288620213
+jfrt_stg_summary_repo_count_total{package="Debian",type="VIRTUAL"} 10 1782288620213
+jfrt_stg_summary_repo_count_total{package="HuggingFaceML",type="VIRTUAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="TerraformBackend",type="LOCAL"} 5 1782288620213
+jfrt_stg_summary_repo_count_total{package="Maven",type="LOCAL"} 65 1782288620213
+jfrt_stg_summary_repo_count_total{package="Composer",type="VIRTUAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="HuggingFaceML",type="LOCAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="OCI",type="FEDERATED"} 15 1782288620213
+jfrt_stg_summary_repo_count_total{package="OCI",type="LOCAL"} 17 1782288620213
+jfrt_stg_summary_repo_count_total{package="RPM",type="CACHE"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="BuildInfo",type="LOCAL"} 39 1782288620213
+jfrt_stg_summary_repo_count_total{package="Docker",type="LOCAL"} 137 1782288620213
+jfrt_stg_summary_repo_count_total{package="Conan",type="LOCAL"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="npm",type="LOCAL"} 71 1782288620213
+jfrt_stg_summary_repo_count_total{package="Generic",type="FEDERATED"} 19 1782288620213
+jfrt_stg_summary_repo_count_total{package="VCS",type="CACHE"} 4 1782288620213
+jfrt_stg_summary_repo_count_total{package="NuGet",type="LOCAL"} 20 1782288620213
+jfrt_stg_summary_repo_count_total{package="Go",type="LOCAL"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Composer",type="CACHE"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Helm",type="LOCAL"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Pypi",type="LOCAL"} 44 1782288620213
+jfrt_stg_summary_repo_count_total{package="Gradle",type="LOCAL"} 5 1782288620213
+jfrt_stg_summary_repo_count_total{package="Maven",type="CACHE"} 37 1782288620213
+jfrt_stg_summary_repo_count_total{package="Docker",type="FEDERATED"} 7 1782288620213
+jfrt_stg_summary_repo_count_total{package="Gradle",type="VIRTUAL"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="npm",type="CACHE"} 53 1782288620213
+jfrt_stg_summary_repo_count_total{package="BuildInfo",type="FEDERATED"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="Docker",type="CACHE"} 72 1782288620213
+jfrt_stg_summary_repo_count_total{package="NuGet",type="CACHE"} 24 1782288620213
+jfrt_stg_summary_repo_count_total{package="P2",type="CACHE"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="Pypi",type="FEDERATED"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="Generic",type="LOCAL"} 89 1782288620213
+jfrt_stg_summary_repo_count_total{package="OCI",type="CACHE"} 5 1782288620213
+jfrt_stg_summary_repo_count_total{package="Generic",type="VIRTUAL"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Conan",type="VIRTUAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="Docker",type="VIRTUAL"} 40 1782288620213
+jfrt_stg_summary_repo_count_total{package="Gradle",type="CACHE"} 4 1782288620213
+jfrt_stg_summary_repo_count_total{package="NA",type="NA"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="npm",type="VIRTUAL"} 40 1782288620213
+jfrt_stg_summary_repo_count_total{package="ReleaseBundles",type="LOCAL"} 6 1782288620213
+jfrt_stg_summary_repo_count_total{package="NuGet",type="VIRTUAL"} 15 1782288620213
+jfrt_stg_summary_repo_count_total{package="MachineLearning",type="LOCAL"} 1 1782288620213
+jfrt_stg_summary_repo_count_total{package="OCI",type="VIRTUAL"} 6 1782288620213
+jfrt_stg_summary_repo_count_total{package="Generic",type="CACHE"} 11 1782288620213
+jfrt_stg_summary_repo_count_total{package="Go",type="CACHE"} 4 1782288620213
+jfrt_stg_summary_repo_count_total{package="Pypi",type="CACHE"} 22 1782288620213
+jfrt_stg_summary_repo_count_total{package="Pypi",type="VIRTUAL"} 22 1782288620213
+jfrt_stg_summary_repo_count_total{package="HelmOCI",type="CACHE"} 4 1782288620213
+jfrt_stg_summary_repo_count_total{package="HelmOCI",type="VIRTUAL"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="ReleaseBundles",type="FEDERATED"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Debian",type="CACHE"} 17 1782288620213
+jfrt_stg_summary_repo_count_total{package="Go",type="VIRTUAL"} 3 1782288620213
+jfrt_stg_summary_repo_count_total{package="HuggingFaceML",type="CACHE"} 2 1782288620213
+jfrt_stg_summary_repo_count_total{package="Maven",type="FEDERATED"} 8 1782288620213
+# TYPE jfrt_stg_summary_repo_files_total gauge
+# HELP jfrt_stg_summary_repo_files_total The total number of files per repository type
+jfrt_stg_summary_repo_files_total{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Debian",type="LOCAL"} 1950 1782288620213
+jfrt_stg_summary_repo_files_total{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="HelmOCI",type="LOCAL"} 1 1782288620213
+jfrt_stg_summary_repo_files_total{package="Maven",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="TerraformBackend",type="LOCAL"} 14 1782288620213
+jfrt_stg_summary_repo_files_total{package="Maven",type="LOCAL"} 1440 1782288620213
+jfrt_stg_summary_repo_files_total{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="OCI",type="FEDERATED"} 253 1782288620213
+jfrt_stg_summary_repo_files_total{package="OCI",type="LOCAL"} 154 1782288620213
+jfrt_stg_summary_repo_files_total{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="BuildInfo",type="LOCAL"} 399 1782288620213
+jfrt_stg_summary_repo_files_total{package="Docker",type="LOCAL"} 2471 1782288620213
+jfrt_stg_summary_repo_files_total{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="npm",type="LOCAL"} 575 1782288620213
+jfrt_stg_summary_repo_files_total{package="Generic",type="FEDERATED"} 32 1782288620213
+jfrt_stg_summary_repo_files_total{package="VCS",type="CACHE"} 11 1782288620213
+jfrt_stg_summary_repo_files_total{package="NuGet",type="LOCAL"} 582 1782288620213
+jfrt_stg_summary_repo_files_total{package="Go",type="LOCAL"} 5 1782288620213
+jfrt_stg_summary_repo_files_total{package="Composer",type="CACHE"} 182 1782288620213
+jfrt_stg_summary_repo_files_total{package="Helm",type="LOCAL"} 3 1782288620213
+jfrt_stg_summary_repo_files_total{package="Pypi",type="LOCAL"} 1766 1782288620213
+jfrt_stg_summary_repo_files_total{package="Gradle",type="LOCAL"} 4 1782288620213
+jfrt_stg_summary_repo_files_total{package="Maven",type="CACHE"} 6061 1782288620213
+jfrt_stg_summary_repo_files_total{package="Docker",type="FEDERATED"} 124 1782288620213
+jfrt_stg_summary_repo_files_total{package="Gradle",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="npm",type="CACHE"} 21367 1782288620213
+jfrt_stg_summary_repo_files_total{package="BuildInfo",type="FEDERATED"} 7 1782288620213
+jfrt_stg_summary_repo_files_total{package="Docker",type="CACHE"} 677 1782288620213
+jfrt_stg_summary_repo_files_total{package="NuGet",type="CACHE"} 4722 1782288620213
+jfrt_stg_summary_repo_files_total{package="P2",type="CACHE"} 3 1782288620213
+jfrt_stg_summary_repo_files_total{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Generic",type="LOCAL"} 20517 1782288620213
+jfrt_stg_summary_repo_files_total{package="OCI",type="CACHE"} 8 1782288620213
+jfrt_stg_summary_repo_files_total{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Gradle",type="CACHE"} 730 1782288620213
+jfrt_stg_summary_repo_files_total{package="NA",type="NA"} 292 1782288620213
+jfrt_stg_summary_repo_files_total{package="npm",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="ReleaseBundles",type="LOCAL"} 582 1782288620213
+jfrt_stg_summary_repo_files_total{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="Generic",type="CACHE"} 23 1782288620213
+jfrt_stg_summary_repo_files_total{package="Go",type="CACHE"} 26 1782288620213
+jfrt_stg_summary_repo_files_total{package="Pypi",type="CACHE"} 651 1782288620213
+jfrt_stg_summary_repo_files_total{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="HelmOCI",type="CACHE"} 2 1782288620213
+jfrt_stg_summary_repo_files_total{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="ReleaseBundles",type="FEDERATED"} 2288 1782288620213
+jfrt_stg_summary_repo_files_total{package="Debian",type="CACHE"} 624 1782288620213
+jfrt_stg_summary_repo_files_total{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_files_total{package="HuggingFaceML",type="CACHE"} 30 1782288620213
+jfrt_stg_summary_repo_files_total{package="Maven",type="FEDERATED"} 18 1782288620213
+# TYPE jfrt_stg_summary_repo_folders_total gauge
+# HELP jfrt_stg_summary_repo_folders_total The total number of folders per repository type
+jfrt_stg_summary_repo_folders_total{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Debian",type="LOCAL"} 1005 1782288620213
+jfrt_stg_summary_repo_folders_total{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HelmOCI",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Maven",type="VIRTUAL"} 502 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="TerraformBackend",type="LOCAL"} 12 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Maven",type="LOCAL"} 1053 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="OCI",type="FEDERATED"} 87 1782288620213
+jfrt_stg_summary_repo_folders_total{package="OCI",type="LOCAL"} 54 1782288620213
+jfrt_stg_summary_repo_folders_total{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="BuildInfo",type="LOCAL"} 123 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Docker",type="LOCAL"} 940 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="npm",type="LOCAL"} 618 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Generic",type="FEDERATED"} 12 1782288620213
+jfrt_stg_summary_repo_folders_total{package="VCS",type="CACHE"} 26 1782288620213
+jfrt_stg_summary_repo_folders_total{package="NuGet",type="LOCAL"} 308 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Go",type="LOCAL"} 4 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Composer",type="CACHE"} 52 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Helm",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Pypi",type="LOCAL"} 390 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Gradle",type="LOCAL"} 7 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Maven",type="CACHE"} 7996 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Docker",type="FEDERATED"} 89 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Gradle",type="VIRTUAL"} 26 1782288620213
+jfrt_stg_summary_repo_folders_total{package="npm",type="CACHE"} 23980 1782288620213
+jfrt_stg_summary_repo_folders_total{package="BuildInfo",type="FEDERATED"} 3 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Docker",type="CACHE"} 301 1782288620213
+jfrt_stg_summary_repo_folders_total{package="NuGet",type="CACHE"} 2761 1782288620213
+jfrt_stg_summary_repo_folders_total{package="P2",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Generic",type="LOCAL"} 4552 1782288620213
+jfrt_stg_summary_repo_folders_total{package="OCI",type="CACHE"} 7 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Gradle",type="CACHE"} 960 1782288620213
+jfrt_stg_summary_repo_folders_total{package="NA",type="NA"} 3155 1782288620213
+jfrt_stg_summary_repo_folders_total{package="npm",type="VIRTUAL"} 24 1782288620213
+jfrt_stg_summary_repo_folders_total{package="ReleaseBundles",type="LOCAL"} 287 1782288620213
+jfrt_stg_summary_repo_folders_total{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Generic",type="CACHE"} 68 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Go",type="CACHE"} 43 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Pypi",type="CACHE"} 1029 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HelmOCI",type="CACHE"} 6 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="ReleaseBundles",type="FEDERATED"} 849 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Debian",type="CACHE"} 815 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_folders_total{package="HuggingFaceML",type="CACHE"} 36 1782288620213
+jfrt_stg_summary_repo_folders_total{package="Maven",type="FEDERATED"} 45 1782288620213
+# TYPE jfrt_stg_summary_repo_max_files_total gauge
+# HELP jfrt_stg_summary_repo_max_files_total The maximum number of files per repository type
+jfrt_stg_summary_repo_max_files_total{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Debian",type="LOCAL"} 582 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HelmOCI",type="LOCAL"} 1 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="TerraformBackend",type="LOCAL"} 6 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="LOCAL"} 363 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="OCI",type="FEDERATED"} 88 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="OCI",type="LOCAL"} 67 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="BuildInfo",type="LOCAL"} 327 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="LOCAL"} 296 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="npm",type="LOCAL"} 226 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Generic",type="FEDERATED"} 9 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="VCS",type="CACHE"} 5 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="NuGet",type="LOCAL"} 353 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Go",type="LOCAL"} 3 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Composer",type="CACHE"} 152 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Helm",type="LOCAL"} 2 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Pypi",type="LOCAL"} 1549 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Gradle",type="LOCAL"} 3 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="CACHE"} 1245 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="FEDERATED"} 70 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Gradle",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="npm",type="CACHE"} 3687 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="BuildInfo",type="FEDERATED"} 5 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="CACHE"} 97 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="NuGet",type="CACHE"} 828 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="P2",type="CACHE"} 3 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Generic",type="LOCAL"} 14942 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="OCI",type="CACHE"} 7 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Gradle",type="CACHE"} 614 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="NA",type="NA"} 244 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="npm",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="ReleaseBundles",type="LOCAL"} 319 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Generic",type="CACHE"} 8 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Go",type="CACHE"} 20 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Pypi",type="CACHE"} 144 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HelmOCI",type="CACHE"} 2 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="ReleaseBundles",type="FEDERATED"} 2229 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Debian",type="CACHE"} 248 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="HuggingFaceML",type="CACHE"} 19 1782288620213
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="FEDERATED"} 16 1782288620213
+# TYPE jfrt_stg_summary_repo_max_folders_total gauge
+# HELP jfrt_stg_summary_repo_max_folders_total The maximum number of folders per repository type
+jfrt_stg_summary_repo_max_folders_total{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Debian",type="LOCAL"} 249 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HelmOCI",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="VIRTUAL"} 114 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="TerraformBackend",type="LOCAL"} 5 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="LOCAL"} 347 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="OCI",type="FEDERATED"} 48 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="OCI",type="LOCAL"} 23 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="BuildInfo",type="LOCAL"} 96 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="LOCAL"} 69 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="LOCAL"} 225 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Generic",type="FEDERATED"} 12 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="VCS",type="CACHE"} 13 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="NuGet",type="LOCAL"} 195 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Go",type="LOCAL"} 4 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Composer",type="CACHE"} 49 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Helm",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Pypi",type="LOCAL"} 171 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Gradle",type="LOCAL"} 5 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="CACHE"} 1573 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="FEDERATED"} 23 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Gradle",type="VIRTUAL"} 26 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="CACHE"} 5091 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="BuildInfo",type="FEDERATED"} 1 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="CACHE"} 29 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="NuGet",type="CACHE"} 483 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="P2",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Generic",type="LOCAL"} 2670 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="OCI",type="CACHE"} 4 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Gradle",type="CACHE"} 810 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="NA",type="NA"} 3116 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="VIRTUAL"} 2 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="ReleaseBundles",type="LOCAL"} 127 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Generic",type="CACHE"} 19 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Go",type="CACHE"} 34 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Pypi",type="CACHE"} 225 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HelmOCI",type="CACHE"} 6 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="ReleaseBundles",type="FEDERATED"} 813 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Debian",type="CACHE"} 226 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="HuggingFaceML",type="CACHE"} 24 1782288620213
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="FEDERATED"} 15 1782288620213
+# TYPE jfrt_stg_summary_repo_max_size_bytes gauge
+# HELP jfrt_stg_summary_repo_max_size_bytes The maximum storage size (in bytes) per repository type
+jfrt_stg_summary_repo_max_size_bytes{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Debian",type="LOCAL"} 1931237728 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HelmOCI",type="LOCAL"} 2032 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="TerraformBackend",type="LOCAL"} 32140 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="LOCAL"} 208014160 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="OCI",type="FEDERATED"} 1219078222 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="OCI",type="LOCAL"} 1147609586 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="BuildInfo",type="LOCAL"} 6916993 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="LOCAL"} 57590404317 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="LOCAL"} 2743084 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Generic",type="FEDERATED"} 5368709120 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="VCS",type="CACHE"} 23605971 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="NuGet",type="LOCAL"} 97311582 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Go",type="LOCAL"} 3073075 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Composer",type="CACHE"} 10865781 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Helm",type="LOCAL"} 78 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Pypi",type="LOCAL"} 401068323 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Gradle",type="LOCAL"} 495547 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="CACHE"} 263715342 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="FEDERATED"} 1272303864 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Gradle",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="CACHE"} 1087603720 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="BuildInfo",type="FEDERATED"} 8156 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="CACHE"} 2479289221 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="NuGet",type="CACHE"} 242269630 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="P2",type="CACHE"} 1073 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Generic",type="LOCAL"} 57516870885 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="OCI",type="CACHE"} 7639468 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Gradle",type="CACHE"} 135883923 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="NA",type="NA"} 27530918 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="ReleaseBundles",type="LOCAL"} 56034845 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Generic",type="CACHE"} 1335588698 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Go",type="CACHE"} 4841038 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Pypi",type="CACHE"} 199070191 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HelmOCI",type="CACHE"} 2810910 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="ReleaseBundles",type="FEDERATED"} 2190315140 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Debian",type="CACHE"} 156086505 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="HuggingFaceML",type="CACHE"} 2983609202 1782288620213
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="FEDERATED"} 28857 1782288620213
+# TYPE jfrt_stg_summary_repo_size_bytes gauge
+# HELP jfrt_stg_summary_repo_size_bytes The total storage size (in bytes), per repository type
+jfrt_stg_summary_repo_size_bytes{package="Conan",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="NuGet",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Debian",type="LOCAL"} 4958680881 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="npm",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HelmOCI",type="LOCAL"} 2032 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Debian",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HuggingFaceML",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="TerraformBackend",type="LOCAL"} 79459 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="LOCAL"} 463656600 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Composer",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HuggingFaceML",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="OCI",type="FEDERATED"} 2782754155 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="OCI",type="LOCAL"} 1185838313 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="RPM",type="CACHE"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="BuildInfo",type="LOCAL"} 8909392 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="LOCAL"} 135569641452 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Conan",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="npm",type="LOCAL"} 5947433 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Generic",type="FEDERATED"} 5546588349 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="VCS",type="CACHE"} 72775526 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="NuGet",type="LOCAL"} 234742423 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Go",type="LOCAL"} 4638961 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Composer",type="CACHE"} 11691535 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Helm",type="LOCAL"} 147 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Pypi",type="LOCAL"} 592232021 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Gradle",type="LOCAL"} 499264 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="CACHE"} 642592213 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="FEDERATED"} 1416067628 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Gradle",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="npm",type="CACHE"} 3231627941 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="BuildInfo",type="FEDERATED"} 16123 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="CACHE"} 8055732876 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="NuGet",type="CACHE"} 1519179358 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="P2",type="CACHE"} 1073 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Pypi",type="FEDERATED"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Generic",type="LOCAL"} 91267893977 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="OCI",type="CACHE"} 7648686 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Generic",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Conan",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Gradle",type="CACHE"} 156573103 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="NA",type="NA"} 50922852 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="npm",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="ReleaseBundles",type="LOCAL"} 133415530 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="NuGet",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="MachineLearning",type="LOCAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="OCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Generic",type="CACHE"} 3052208655 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Go",type="CACHE"} 4878349 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Pypi",type="CACHE"} 931340331 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Pypi",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HelmOCI",type="CACHE"} 2810910 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HelmOCI",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="ReleaseBundles",type="FEDERATED"} 2203928084 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Debian",type="CACHE"} 578898361 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Go",type="VIRTUAL"} 0 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="HuggingFaceML",type="CACHE"} 2988351150 1782288620213
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="FEDERATED"} 33089 1782288620213
+# TYPE jfrt_stg_summary_size_bytes gauge
+# HELP jfrt_stg_summary_size_bytes The total size of all artifacts stored in all repositories
+jfrt_stg_summary_size_bytes 267682798252 1782288620213
+# TYPE fed_events_batch_handle_duration_seconds_max gauge
+# HELP fed_events_batch_handle_duration_seconds_max Measures the total duration of events handling by the target
+fed_events_batch_handle_duration_seconds_max{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE fed_events_batch_handle_duration_seconds summary
+# HELP fed_events_batch_handle_duration_seconds Measures the total duration of events handling by the target
+fed_events_batch_handle_duration_seconds_count{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+fed_events_batch_handle_duration_seconds_sum{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE http_time_write_seconds_max gauge
+# HELP http_time_write_seconds_max The time taken to write the response body to HTTP.
+http_time_write_seconds_max{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="",status="201"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_write_seconds summary
+# HELP http_time_write_seconds The time taken to write the response body to HTTP.
+http_time_write_seconds_count{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 40.0
+http_time_write_seconds_sum{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.032
+http_time_write_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 592.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.249
+http_time_write_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 279.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.013
+http_time_write_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 126.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.043
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="204"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="search",method="GET",package="",status="200"} 13.0
+http_time_write_seconds_sum{application="Artifactory",group="search",method="GET",package="",status="200"} 0.004
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 537.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.474
+http_time_write_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="401"} 12.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.002
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 309.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.111
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="",status="201"} 976.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="",status="201"} 0.15
+http_time_write_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 117.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.016
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 89.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.048
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 5520.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 67015.831
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 3.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 6.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 4.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 37.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.009
+http_time_write_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 19864.0
+http_time_write_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 3.824
+http_time_write_seconds_count{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 51875.0
+http_time_write_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 6.191
+http_time_write_seconds_count{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="",status="401"} 10.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="",status="401"} 0.005
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 15193.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 7.402
+http_time_write_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 7731.0
+http_time_write_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.832
+http_time_write_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="404"} 798.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.282
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="302"} 10.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 64.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.034
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="",status="409"} 2.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="",status="409"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 7025.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 1.543
+http_time_write_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 4353.0
+http_time_write_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 2.773
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="generic",status="302"} 7.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.014
+http_time_write_seconds_count{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 13.0
+http_time_write_seconds_sum{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.036
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 51.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="",method="PUT",package="",status="200"} 2.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="PUT",package="",status="200"} 0.003
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="307"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 350.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.07
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="409"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="409"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 176.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.045
+# TYPE jfrt_rpc_response_from_rtfs counter
+# HELP jfrt_rpc_response_from_rtfs Collects the total responses per status code for each method upon reaching RTFS
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.binariesTasks.BinariesTasks/getBinaryTasks",statusCode="200"} 1.0
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.system.SystemService/Handshake",statusCode="200"} 2.0
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.system.SystemService/UpdateQueueStatus",statusCode="200"} 1.0
+# TYPE http_time_resolve_seconds_max gauge
+# HELP http_time_resolve_seconds_max The time taken to resolve the requested resource.
+http_time_resolve_seconds_max{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="",status="201"} 0.016
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.048
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.012
+http_time_resolve_seconds_max{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.02
+http_time_resolve_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.001
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.01
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.035
+http_time_resolve_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.034
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_resolve_seconds summary
+# HELP http_time_resolve_seconds The time taken to resolve the requested resource.
+http_time_resolve_seconds_count{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 40.0
+http_time_resolve_seconds_sum{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.455
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 592.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 14.529
+http_time_resolve_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 279.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 14.986
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 126.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 6.168
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="204"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="204"} 6.758
+http_time_resolve_seconds_count{application="Artifactory",group="search",method="GET",package="",status="200"} 13.0
+http_time_resolve_seconds_sum{application="Artifactory",group="search",method="GET",package="",status="200"} 0.114
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 537.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 14.352
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="401"} 12.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="401"} 241.077
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 309.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 62.621
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="",status="201"} 976.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="",status="201"} 6.546
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 117.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.889
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 89.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 212.292
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 5520.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 72.155
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.003
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 3.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.044
+http_time_resolve_seconds_count{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 6.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 14.501
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 4.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.03
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 37.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.317
+http_time_resolve_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 19864.0
+http_time_resolve_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 75.464
+http_time_resolve_seconds_count{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.037
+http_time_resolve_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 51875.0
+http_time_resolve_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 55.519
+http_time_resolve_seconds_count{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 31.702
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="",status="401"} 10.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="",status="401"} 0.005
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 15193.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 112.143
+http_time_resolve_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 7731.0
+http_time_resolve_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.552
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="404"} 798.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="404"} 6.006
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="302"} 10.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="302"} 0.016
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 64.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.066
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="",status="409"} 2.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="",status="409"} 0.196
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 7025.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 75.448
+http_time_resolve_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 4353.0
+http_time_resolve_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 66.792
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="generic",status="302"} 7.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.705
+http_time_resolve_seconds_count{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 13.0
+http_time_resolve_seconds_sum{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.221
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 51.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 1.802
+http_time_resolve_seconds_count{application="Artifactory",group="",method="PUT",package="",status="200"} 2.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="PUT",package="",status="200"} 12.492
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="307"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="307"} 0.004
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 6.616
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 350.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 1.612
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="409"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="409"} 0.015
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 176.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.708
+# TYPE http_time_resolve_external_wait_seconds_max gauge
+# HELP http_time_resolve_external_wait_seconds_max Per-request total wait time spent on external services (Xray, remote upstream).
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="",status="201"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_resolve_external_wait_seconds summary
+# HELP http_time_resolve_external_wait_seconds Per-request total wait time spent on external services (Xray, remote upstream).
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 40.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 592.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 279.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 126.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="204"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="search",method="GET",package="",status="200"} 13.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 537.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="401"} 12.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 309.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="",status="201"} 976.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="",status="201"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 117.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 89.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 5520.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 3.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 6.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 4.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 37.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 19864.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 51875.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="",status="401"} 10.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 15193.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 7731.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="404"} 798.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="302"} 10.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 64.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="",status="409"} 2.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 7025.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 4353.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="generic",status="302"} 7.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 13.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 51.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="PUT",package="",status="200"} 2.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="307"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 350.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="409"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 176.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_total_seconds_max gauge
+# HELP http_time_total_seconds_max The total time taken to process incoming HTTP requests
+http_time_total_seconds_max{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="",status="201"} 0.016
+http_time_total_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.048
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.013
+http_time_total_seconds_max{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.02
+http_time_total_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.001
+http_time_total_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.011
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.035
+http_time_total_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.035
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_total_seconds summary
+# HELP http_time_total_seconds The total time taken to process incoming HTTP requests
+http_time_total_seconds_count{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 40.0
+http_time_total_seconds_sum{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.487
+http_time_total_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 592.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 14.778
+http_time_total_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 279.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 14.999
+http_time_total_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 126.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 6.211
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="204"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="204"} 6.758
+http_time_total_seconds_count{application="Artifactory",group="search",method="GET",package="",status="200"} 13.0
+http_time_total_seconds_sum{application="Artifactory",group="search",method="GET",package="",status="200"} 0.118
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 537.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 14.826
+http_time_total_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="401"} 12.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="401"} 241.079
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 309.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 62.732
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="",status="201"} 976.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="",status="201"} 6.696
+http_time_total_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 117.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.905
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 89.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 212.34
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 5520.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 67087.986
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.003
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 3.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.045
+http_time_total_seconds_count{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 6.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 14.502
+http_time_total_seconds_count{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 4.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.031
+http_time_total_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 37.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.326
+http_time_total_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 19864.0
+http_time_total_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 79.288
+http_time_total_seconds_count{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.037
+http_time_total_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 51875.0
+http_time_total_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 61.71
+http_time_total_seconds_count{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 31.702
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="",status="401"} 10.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="",status="401"} 0.01
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 15193.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 119.545
+http_time_total_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 7731.0
+http_time_total_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 1.384
+http_time_total_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="404"} 798.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="404"} 6.288
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="302"} 10.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="302"} 0.016
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 64.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.1
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="",status="409"} 2.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="",status="409"} 0.197
+http_time_total_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 7025.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 76.991
+http_time_total_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 4353.0
+http_time_total_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 69.565
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="generic",status="302"} 7.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.719
+http_time_total_seconds_count{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 13.0
+http_time_total_seconds_sum{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.257
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 51.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 1.802
+http_time_total_seconds_count{application="Artifactory",group="",method="PUT",package="",status="200"} 2.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="PUT",package="",status="200"} 12.495
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="307"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="307"} 0.004
+http_time_total_seconds_count{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 6.617
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 350.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 1.682
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="409"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="409"} 0.016
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 176.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.753
+# TYPE http_time_to_start_seconds_max gauge
+# HELP http_time_to_start_seconds_max The time taken to start processing incoming HTTP requests
+http_time_to_start_seconds_max{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="",status="201"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.001
+http_time_to_start_seconds_max{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="",status="401"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.001
+http_time_to_start_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="302"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.001
+http_time_to_start_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="307"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.0
+# TYPE http_time_to_start_seconds summary
+# HELP http_time_to_start_seconds The time taken to start processing incoming HTTP requests
+http_time_to_start_seconds_count{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 40.0
+http_time_to_start_seconds_sum{application="Artifactory",group="upload",method="PUT",package="docker",status="404"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 592.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.019
+http_time_to_start_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 279.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.014
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 126.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.006
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="204"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="204"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="search",method="GET",package="",status="200"} 13.0
+http_time_to_start_seconds_sum{application="Artifactory",group="search",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 537.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.041
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="401"} 12.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="401"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 309.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.023
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="",status="201"} 976.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="",status="201"} 0.063
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 117.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.006
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 89.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 5520.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 0.348
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="maven",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 3.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 6.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="DELETE",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 4.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="HEAD",package="generic",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 37.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.008
+http_time_to_start_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 19864.0
+http_time_to_start_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 1.052
+http_time_to_start_seconds_count{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="browse",method="POST",package="generic",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 51875.0
+http_time_to_start_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 2.625
+http_time_to_start_seconds_count{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="upload",method="PUT",package="generic",status="201"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="",status="401"} 10.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="",status="401"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 15193.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 0.71
+http_time_to_start_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 7731.0
+http_time_to_start_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.337
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="404"} 798.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="404"} 0.043
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="302"} 10.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="302"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 64.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="",status="409"} 2.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="",status="409"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 7025.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.302
+http_time_to_start_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 4353.0
+http_time_to_start_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.231
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="generic",status="302"} 7.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="generic",status="302"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 13.0
+http_time_to_start_seconds_sum{application="Artifactory",group="browse/repo",method="POST",package="",status="200"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 51.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="200"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="PUT",package="",status="200"} 2.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="PUT",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="307"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="307"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="PATCH",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 350.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.015
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="409"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="409"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 176.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="generic",status="404"} 0.007
+# TYPE search_aql_result_set_size summary
+# HELP search_aql_result_set_size Size of a result set for a search aql statement
+search_aql_result_set_size_count{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 19848.0
+search_aql_result_set_size_sum{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 25.0
+search_aql_result_set_size_count{application="Artifactory",origin="search/aql",query_domain="build",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 4.0
+search_aql_result_set_size_sum{application="Artifactory",origin="search/aql",query_domain="build",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 666.0
+search_aql_result_set_size_count{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 12.0
+search_aql_result_set_size_sum{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 73.0
+# TYPE search_aql_result_set_size_max gauge
+# HELP search_aql_result_set_size_max Size of a result set for a search aql statement
+search_aql_result_set_size_max{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 0.0
+search_aql_result_set_size_max{application="Artifactory",origin="search/aql",query_domain="build",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 0.0
+search_aql_result_set_size_max{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 0.0
+# TYPE fed_event_handle_duration_seconds_max gauge
+# HELP fed_event_handle_duration_seconds_max Measures the duration of event handling by the target
+fed_event_handle_duration_seconds_max{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE fed_event_handle_duration_seconds summary
+# HELP fed_event_handle_duration_seconds Measures the duration of event handling by the target
+fed_event_handle_duration_seconds_count{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+fed_event_handle_duration_seconds_sum{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# EOF
+# TYPE jfrt_federation_max_lag_ms_total gauge
+# HELP jfrt_federation_max_lag_ms_total Maximum lag of all federated repositories in milliseconds
+jfrt_federation_max_lag_ms_total 0 1782288620220
+jfrt_federation_max_lag_ms_total 0 1782288620220
+# TYPE jfrt_federation_num_members_disabled_total gauge
+# HELP jfrt_federation_num_members_disabled_total Total number of disabled federation members
+jfrt_federation_num_members_disabled_total 66 1782288620220
+jfrt_federation_num_members_disabled_total 66 1782288620220
+# TYPE jfrt_federation_num_mirrors_exceeding_lag_threshold_total gauge
+# HELP jfrt_federation_num_mirrors_exceeding_lag_threshold_total Number of mirrors that have lags that exceed the threshold
+jfrt_federation_num_mirrors_exceeding_lag_threshold_total 0 1782288620220
+jfrt_federation_num_mirrors_exceeding_lag_threshold_total 0 1782288620220
+# TYPE jfrt_federation_num_repos_exceeding_lag_threshold_total gauge
+# HELP jfrt_federation_num_repos_exceeding_lag_threshold_total Number of distinct local repos that have lags that exceed the threshold
+jfrt_federation_num_repos_exceeding_lag_threshold_total 0 1782288620220
+jfrt_federation_num_repos_exceeding_lag_threshold_total 0 1782288620220
+# TYPE jfrt_federation_num_repos_status_total gauge
+# HELP jfrt_federation_num_repos_status_total Number of federation repos by status
+jfrt_federation_num_repos_status_total{status="exhausted"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="disabled"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="pending_fs"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="fs_running"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="stopped"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="disabled_by_system"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="out_of_sync"} 0 1782288620220
+jfrt_federation_num_repos_status_total{status="healthy"} 0 1782288620220

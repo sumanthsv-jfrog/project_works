@@ -1,0 +1,134 @@
+================================================================================
+  ot_artifact_check.sh - README
+================================================================================
+
+PURPOSE
+-------
+Given a CSV of artifacts from ONE Corp repo (e.g. a Cleanup dry-run report),
+check which of those artifacts are currently CACHED in the matching OT
+smart-remote repository.
+
+How it works: the script dumps the OT "<repo>-cache" inventory ONCE via AQL,
+builds a lookup set of repo-relative paths, then marks each CSV row as present
+or absent. A smart remote only caches what OT has actually pulled, so "absent"
+means OT never downloaded it — not necessarily that OT will never need it.
+
+DEPENDENCIES
+------------
+  - bash (3.2+)   -- do NOT run with sh
+  - curl          -- for API calls
+  - jq            -- for JSON parsing
+  - awk           -- for CSV parsing and matching
+
+CONFIGURATION
+-------------
+Same environment variables as ot_repo_mapping.sh:
+
+  OT_URL        Base URL incl. context, e.g. https://ot.example.com/artifactory   [required]
+  OT_TOKEN      Access token (Bearer)                                             [preferred]
+  OT_USER       ) basic-auth alternative to OT_TOKEN
+  OT_PASSWORD   )
+  OT_INSECURE   set to 1 to skip TLS verification (self-signed certs)
+
+Example:
+
+  export OT_URL=https://ot.example.com/artifactory
+  export OT_TOKEN=xxxxxxxx
+
+USAGE
+-----
+  ./ot_artifact_check.sh -r ot-corp-libs -f corp-libs-local.csv \
+        -c "Package Path" -p corp-libs-local -o result.csv
+
+  ./ot_artifact_check.sh -r ot-docker -f docker-images.csv \
+        -c 1 -p corp-docker-local --docker
+
+  ./ot_artifact_check.sh -h    # show help
+
+OPTIONS
+-------
+  -r, --repo <key>           OT smart-remote repo key (cache queried is <repo>-cache)   [required]
+  -f, --csv <file>           Input CSV file                                            [required]
+  -o, --out <file>           Output CSV (default: <csv>.ot_check.csv)
+  -c, --path-column <col>    Path column name (e.g. "Package Path") or 1-based index
+  -p, --repo-prefix <prefix> Path prefix to strip (usually the Corp repo key from mapping.csv)
+  --header                   Force: first CSV line is a header (skip it)
+  --no-header                Force: no header, every line is data
+  --docker                   Docker mode: group by image/tag dir and report the full
+                             footprint (manifest.json + every sha256__ blob) per entry
+  -h, --help                 Show usage and exit
+
+PATH COLUMN DETECTION
+---------------------
+If -c is omitted, the script auto-detects the path column:
+
+  - If the first line looks like a header and a column name contains "path"
+    (case-insensitive), that column is used and the header is skipped.
+  - Otherwise column 1 is treated as the path and no header is assumed.
+
+Use --header or --no-header to override auto-detection.
+
+OUTPUT
+------
+Default mode CSV columns:
+
+  original_path       Path as it appeared in the input CSV
+  repo_relative_path  Normalized path used for cache lookup
+  present_in_ot       YES or NO
+
+Docker mode (--docker) CSV columns:
+
+  original_path       Path as it appeared in the input CSV
+  image_dir           Directory grouping (image/tag folder)
+  cached_file         Each cached file under that directory (empty if absent)
+  present_in_ot       YES or NO
+
+A SUMMARY line is printed to stderr when complete, e.g.:
+
+  SUMMARY  present=42  absent=18
+
+  SUMMARY  images_present=10  images_absent=5  footprint_files=87   (docker mode)
+
+TERMINAL OUTPUT
+---------------
+During the run:
+
+  OT cache '<repo>-cache' holds N file(s).
+  Path column = 1 ; skip header = no ; strip prefix = 'corp-libs-local'.
+  Wrote results to result.csv
+
+TYPICAL WORKFLOW
+----------------
+  1. Run ot_repo_mapping.sh to get ot_repo and corp_repo for your target repo
+  2. Export a Corp artifact list as CSV (Cleanup dry-run, storage report, etc.)
+  3. Run this script:
+       ./ot_artifact_check.sh -r <ot_repo> -f <corp.csv> \
+             -c "Package Path" -p <corp_repo>
+  4. Review the output CSV: present_in_ot=NO rows are not cached on OT today
+
+EXAMPLES
+--------
+Standard Maven/Generic artifacts:
+
+  ./ot_artifact_check.sh -r ot-corp-libs -f cleanup-dryrun.csv \
+        -c "Package Path" -p corp-libs-local
+
+Docker images (reports full layer footprint per tag):
+
+  ./ot_artifact_check.sh -r ot-docker-remote -f docker-tags.csv \
+        -c "Package Path" -p corp-docker-local --docker -o docker.ot_check.csv
+
+CSV with no header, path in column 2:
+
+  ./ot_artifact_check.sh -r ot-generic -f paths-only.csv \
+        -c 2 --no-header -p corp-generic-local
+
+NOTES
+-----
+  - The cache repo queried is always "<--repo>-cache" (Artifactory smart-remote convention).
+  - Path normalization strips a leading slash, then --repo-prefix if the path starts
+    with "<prefix>/", then the OT repo key if the path starts with "<repo>/".
+  - For large caches, the initial AQL dump may take a minute; matching is local after that.
+  - "Absent" does not mean the artifact is unused on OT — only that it is not in cache yet.
+
+================================================================================

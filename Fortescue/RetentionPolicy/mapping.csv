@@ -1,0 +1,3 @@
+ot_repo,package_type,remote_url,smart_remote,corp_repo
+jayanths-docker-local,Docker,https://psemea.jfrog.io/artifactory/api/docker/jayanths-docker-local,yes,jayanths-docker-local
+swiss-onprem-docker-smartremote,Docker,https://psemea.jfrog.io/artifactory/api/docker/swisspost-docker-virtual/,yes,swisspost-docker-virtual

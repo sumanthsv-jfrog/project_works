@@ -1,0 +1,28 @@
+This is a Bash script designed to migrate specific local repository configurations from a Source JFrog Platform Deployment (JPD) to a Target JPD.
+
+This script automates the process of checking for the existence of specific local repositories on a Target JFrog Platform Deployment (JPD) and, if they do not exist, Creates the repository with same configuration as in Source JPD  to the Target JPD using the JFrog CLI.
+
+It ensures that only the repository configuration (.json file) is migrated, not the artifacts within.
+
+Prerequisites
+Before running this script, ensure the following tools and files are available:
+
+Bash Shell: The script must be executed in a Bash environment (Linux/macOS or WSL on Windows).
+
+JFrog CLI (jf): Must be installed and configured on your system.
+
+jq: The lightweight and flexible command-line JSON processor is required for parsing API responses.
+
+JFrog Platform Deployments (JPDs): Both Source and Target JPDs must be accessible.
+
+Configured Server IDs: You must have configured the connection details for your Source and Target JPDs using jf c add (e.g., jf c add source-jpd --url=<URL> --access-token=<Token>).
+
+cachelocals.txt file: This file must exist in the same directory as the script and contain a list of local repository keys (names), one per line, that you intend to migrate.
+
+Execution:
+
+Syntax:
+./migrate_repos.sh <SOURCE_SERVER_ID> <TARGET_SERVER_ID>
+
+Example:
+./migrate_repos.sh source-server target-server

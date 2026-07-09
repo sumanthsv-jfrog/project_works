@@ -2,9 +2,9 @@ mutation {
   customCatalogLabel {
     removeCustomCatalogLabelFromPublicPackageVersions(
       publicPackageVersionsLabel: {
-        labelName: "jfrog-waiver-policy-9"
+        labelName: "jfrog-waiver-policy-1116"
         publicPackageVersions: [
-          {publicPackage: {name: "library/node", type: "docker"}, version: "sha256:937d4c27845c87145a1fc1d2493df9ea490e06a3ceb248287c8ffcee94b1b70c"}
+          {publicPackage: {name: "brace-expansion", type: "npm"}, version: "1.1.15"}
         ]
       }
     )

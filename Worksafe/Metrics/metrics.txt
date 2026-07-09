@@ -1,0 +1,841 @@
+# TYPE jfbh_rbv2_artifact_copied_seconds gauge
+# HELP jfbh_rbv2_artifact_copied_seconds RB V2 artifact copy time: percentile 50%
+jfbh_rbv2_artifact_copied_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_artifact_copied_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_artifact_copied_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_artifact_copied_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_artifact_copied_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_artifacts_total gauge
+# HELP jfbh_rbv2_artifacts_total RB V2 artifacts: percentile 50%
+jfbh_rbv2_artifacts_total{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_artifacts_total{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_artifacts_total{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_artifacts_total{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_artifacts_total{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_blocked_expired_keys_total counter
+# HELP jfbh_rbv2_blocked_expired_keys_total RB V2 blocked by expired key counts
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_promotions"} 0 1782290572343
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_creations"} 0 1782290572343
+jfbh_rbv2_blocked_expired_keys_total{events="blocked_distributions"} 0 1782290572343
+# TYPE jfbh_rbv2_bundle_operations_total counter
+# HELP jfbh_rbv2_bundle_operations_total RB V2 bundle operations
+jfbh_rbv2_bundle_operations_total{operation="creation_dry_run_bundle"} 0 1782290572343
+jfbh_rbv2_bundle_operations_total{operation="delete_bundle"} 0 1782290572343
+jfbh_rbv2_bundle_operations_total{operation="update_bundle"} 0 1782290572343
+jfbh_rbv2_bundle_operations_total{operation="create_draft_bundle"} 0 1782290572343
+jfbh_rbv2_bundle_operations_total{operation="delete_received_bundle"} 0 1782290572343
+jfbh_rbv2_bundle_operations_total{operation="create_bundle"} 0 1782290572343
+# TYPE jfbh_rbv2_creation_agents_total counter
+# HELP jfbh_rbv2_creation_agents_total RB V2 creation agents
+jfbh_rbv2_creation_agents_total{source_agent="cli"} 0 1782290572343
+jfbh_rbv2_creation_agents_total{source_agent="api"} 0 1782290572343
+jfbh_rbv2_creation_agents_total{source_agent="browser"} 0 1782290572343
+jfbh_rbv2_creation_agents_total{source_agent="application"} 0 1782290572343
+jfbh_rbv2_creation_agents_total{source_agent="system"} 0 1782290572343
+# TYPE jfbh_rbv2_creation_methods_total counter
+# HELP jfbh_rbv2_creation_methods_total RB V2 creation methods
+jfbh_rbv2_creation_methods_total{source_method="packages"} 0 1782290572343
+jfbh_rbv2_creation_methods_total{source_method="builds"} 0 1782290572343
+jfbh_rbv2_creation_methods_total{source_method="aql"} 0 1782290572343
+jfbh_rbv2_creation_methods_total{source_method="artifacts"} 0 1782290572343
+jfbh_rbv2_creation_methods_total{source_method="release_bundles"} 0 1782290572343
+# TYPE jfbh_rbv2_deletion_agents_total counter
+# HELP jfbh_rbv2_deletion_agents_total RB V2 deletion agents
+jfbh_rbv2_deletion_agents_total{source_agent="cli"} 0 1782290572343
+jfbh_rbv2_deletion_agents_total{source_agent="api"} 0 1782290572343
+jfbh_rbv2_deletion_agents_total{source_agent="browser"} 0 1782290572343
+jfbh_rbv2_deletion_agents_total{source_agent="application"} 0 1782290572343
+jfbh_rbv2_deletion_agents_total{source_agent="system"} 0 1782290572343
+# TYPE jfbh_rbv2_promotion_created_seconds gauge
+# HELP jfbh_rbv2_promotion_created_seconds RB V2 promotion creation time: percentile 50%
+jfbh_rbv2_promotion_created_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_promotion_created_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_promotion_created_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_promotion_created_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_promotion_created_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_promotion_creation_agents_total counter
+# HELP jfbh_rbv2_promotion_creation_agents_total RB V2 promotion creation agents
+jfbh_rbv2_promotion_creation_agents_total{source_agent="cli"} 0 1782290572343
+jfbh_rbv2_promotion_creation_agents_total{source_agent="api"} 0 1782290572343
+jfbh_rbv2_promotion_creation_agents_total{source_agent="browser"} 0 1782290572343
+jfbh_rbv2_promotion_creation_agents_total{source_agent="application"} 0 1782290572343
+jfbh_rbv2_promotion_creation_agents_total{source_agent="system"} 0 1782290572343
+# TYPE jfbh_rbv2_promotion_deleted_seconds gauge
+# HELP jfbh_rbv2_promotion_deleted_seconds RB V2 promotion deletion time: percentile 50%
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{type="std"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_promotion_deleted_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_promotion_deletion_agents_total counter
+# HELP jfbh_rbv2_promotion_deletion_agents_total RB V2 promotion deletion agents
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="cli"} 0 1782290572343
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="api"} 0 1782290572343
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="browser"} 0 1782290572343
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="application"} 0 1782290572343
+jfbh_rbv2_promotion_deletion_agents_total{source_agent="system"} 0 1782290572343
+# TYPE jfbh_rbv2_promotion_operations_total counter
+# HELP jfbh_rbv2_promotion_operations_total RB V2 promotion operations
+jfbh_rbv2_promotion_operations_total{operation="create_promotion"} 0 1782290572343
+jfbh_rbv2_promotion_operations_total{operation="delete_promotion"} 0 1782290572343
+jfbh_rbv2_promotion_operations_total{operation="delete_targets_promotion"} 0 1782290572343
+jfbh_rbv2_promotion_operations_total{operation="overwrite_artifact_promotion"} 0 1782290572343
+jfbh_rbv2_promotion_operations_total{operation="create_targets_promotion"} 0 1782290572343
+# TYPE jfbh_rbv2_promotion_xray_status_total counter
+# HELP jfbh_rbv2_promotion_xray_status_total RB V2 promotion xray status
+jfbh_rbv2_promotion_xray_status_total{status="promotion_rejected"} 0 1782290572343
+jfbh_rbv2_promotion_xray_status_total{status="promotion_approved"} 0 1782290572343
+# TYPE jfbh_rbv2_promotions_total gauge
+# HELP jfbh_rbv2_promotions_total RB V2 promotions
+jfbh_rbv2_promotions_total 0 1782290572343
+# TYPE jfbh_rbv2_promotions_completed_total gauge
+# HELP jfbh_rbv2_promotions_completed_total RB V2 promotions completed
+jfbh_rbv2_promotions_completed_total 0 1782290572343
+# TYPE jfbh_rbv2_promotions_failed_total gauge
+# HELP jfbh_rbv2_promotions_failed_total RB V2 promotions failed
+jfbh_rbv2_promotions_failed_total 0 1782290572343
+# TYPE jfbh_rbv2_properties_total gauge
+# HELP jfbh_rbv2_properties_total RB V2 properties: percentile 50%
+jfbh_rbv2_properties_total{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_properties_total{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_properties_total{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_properties_total{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_properties_total{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_release_bundles_total gauge
+# HELP jfbh_rbv2_release_bundles_total RB V2 release bundles
+jfbh_rbv2_release_bundles_total 0 1782290572343
+# TYPE jfbh_rbv2_release_bundles_completed_total gauge
+# HELP jfbh_rbv2_release_bundles_completed_total RB V2 release bundles completed
+jfbh_rbv2_release_bundles_completed_total 0 1782290572343
+# TYPE jfbh_rbv2_release_bundles_failed_total gauge
+# HELP jfbh_rbv2_release_bundles_failed_total RB V2 release bundles failed
+jfbh_rbv2_release_bundles_failed_total 0 1782290572343
+# TYPE jfbh_rbv2_release_bundles_groups_seconds gauge
+# HELP jfbh_rbv2_release_bundles_groups_seconds RB V2 bundle groups retrieve time: percentile 50%
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_release_bundles_groups_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_release_bundles_groups_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_targets_promotion_created_seconds gauge
+# HELP jfbh_rbv2_targets_promotion_created_seconds RB V2 promotion targets creation time: percentile 50%
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_targets_promotion_created_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_targets_promotion_created_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_version_created_seconds gauge
+# HELP jfbh_rbv2_version_created_seconds RB V2 version creation time: percentile 50%
+jfbh_rbv2_version_created_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_version_created_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_version_created_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_version_created_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_version_created_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_version_deleted_seconds gauge
+# HELP jfbh_rbv2_version_deleted_seconds RB V2 version deletion time: percentile 50%
+jfbh_rbv2_version_deleted_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_version_deleted_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_version_deleted_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_version_deleted_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_version_deleted_seconds{type="std"} 0.0 1782290572343
+# TYPE jfbh_rbv2_version_updated_seconds gauge
+# HELP jfbh_rbv2_version_updated_seconds RB V2 version update time: percentile 50%
+jfbh_rbv2_version_updated_seconds{quantile="0.5"} 0.0 1782290572343
+jfbh_rbv2_version_updated_seconds{quantile="0.75"} 0.0 1782290572343
+jfbh_rbv2_version_updated_seconds{quantile="0.95"} 0.0 1782290572343
+jfbh_rbv2_version_updated_seconds{quantile="0.99"} 0.0 1782290572343
+jfbh_rbv2_version_updated_seconds{type="std"} 0.0 1782290572343
+# TYPE jfrt_events_gc_binaries_deleted_total counter
+# HELP jfrt_events_gc_binaries_deleted_total Total number of binaries removed by Garbage Collection
+jfrt_events_gc_binaries_deleted_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_deduped_events_total counter
+# HELP jfrt_events_gc_deduped_events_total Total number of deduped events
+jfrt_events_gc_deduped_events_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_events_total counter
+# HELP jfrt_events_gc_events_total Total number of event
+jfrt_events_gc_events_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_failures_total counter
+# HELP jfrt_events_gc_failures_total Total number of binaries that Garbage Collection failed to remove
+jfrt_events_gc_failures_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_retry_exhausted_total counter
+# HELP jfrt_events_gc_retry_exhausted_total Total number of binaries that Garbage Collection gave up to remove
+jfrt_events_gc_retry_exhausted_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_size_cleaned_bytes gauge
+# HELP jfrt_events_gc_size_cleaned_bytes Total Bytes recovered by Garbage Collection
+jfrt_events_gc_size_cleaned_bytes{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_squashed_events_total counter
+# HELP jfrt_events_gc_squashed_events_total Total number of events skipped due to squashing
+jfrt_events_gc_squashed_events_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_events_gc_waiting_total gauge
+# HELP jfrt_events_gc_waiting_total Total number of waiting event
+jfrt_events_gc_waiting_total{type="EVENTS_GC"} 0 1782290572343
+# TYPE jfrt_repo_avg_members_total gauge
+# HELP jfrt_repo_avg_members_total The average number of members in virtual/federated repositories
+jfrt_repo_avg_members_total{package="Npm",type="Virtual"} 2.0 1782290572343
+jfrt_repo_avg_members_total{package="Docker",type="Virtual"} 2.0 1782290572343
+# TYPE jfrt_repo_by_type_total gauge
+# HELP jfrt_repo_by_type_total The number of repositories by type and package type
+jfrt_repo_by_type_total{package="Generic",type="Local"} 1 1782290572343
+jfrt_repo_by_type_total{package="Maven",type="Remote"} 1 1782290572343
+jfrt_repo_by_type_total{package="Maven",type="Local"} 1 1782290572343
+jfrt_repo_by_type_total{package="Npm",type="Virtual"} 1 1782290572343
+jfrt_repo_by_type_total{package="BuildInfo",type="Local"} 5 1782290572343
+jfrt_repo_by_type_total{package="Npm",type="Remote"} 2 1782290572343
+jfrt_repo_by_type_total{package="Docker",type="Local"} 1 1782290572343
+jfrt_repo_by_type_total{package="Docker",type="Remote"} 1 1782290572343
+jfrt_repo_by_type_total{package="Npm",type="Local"} 1 1782290572343
+jfrt_repo_by_type_total{package="Docker",type="Virtual"} 1 1782290572343
+jfrt_repo_by_type_total{package="Generic",type="Remote"} 1 1782290572343
+# TYPE jfrt_repo_max_members_total gauge
+# HELP jfrt_repo_max_members_total The maximal number of members in virtual/federated repositories
+jfrt_repo_max_members_total{package="Npm",type="Virtual"} 2 1782290572343
+jfrt_repo_max_members_total{package="Docker",type="Virtual"} 2 1782290572343
+# TYPE jfrt_qrl_permits_total gauge
+# HELP jfrt_qrl_permits_total Permits
+jfrt_qrl_permits_total{qrl_type="low_priority"} 1500000 1782290572343
+jfrt_qrl_permits_total{qrl_type="default"} 3000000 1782290572343
+# TYPE jfrt_qrl_queries_total gauge
+# HELP jfrt_qrl_queries_total Queries
+jfrt_qrl_queries_total{qrl_type="low_priority"} 0 1782290572343
+jfrt_qrl_queries_total{qrl_type="default"} 50 1782290572343
+# TYPE jfrt_qrl_slowed_down_ratio gauge
+# HELP jfrt_qrl_slowed_down_ratio Slowed Down
+jfrt_qrl_slowed_down_ratio{qrl_type="low_priority"} 0 1782290572343
+jfrt_qrl_slowed_down_ratio{qrl_type="default"} 0 1782290572343
+# TYPE jfrt_qrl_slowed_down_by_time_quota_ratio gauge
+# HELP jfrt_qrl_slowed_down_by_time_quota_ratio Time Slowed Down By Time Quota
+jfrt_qrl_slowed_down_by_time_quota_ratio{qrl_type="low_priority"} 0 1782290572343
+jfrt_qrl_slowed_down_by_time_quota_ratio{qrl_type="default"} 0 1782290572343
+# TYPE jfrt_rrl_drop_count_total counter
+# HELP jfrt_rrl_drop_count_total Drop Count
+jfrt_rrl_drop_count_total{domainSuffix="dhi.io",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix="huggingface.co",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix=".docker.io",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix="registry.npmjs.com",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix="repository.apache.org",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix="proxy.golang.org",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_drop_count_total{domainSuffix="downloads.apache.org",isBlockingEnabled="true"} 0 1782290572343
+# TYPE jfrt_rrl_total_count_total counter
+# HELP jfrt_rrl_total_count_total Total Count
+jfrt_rrl_total_count_total{domainSuffix="dhi.io",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix="huggingface.co",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix=".docker.io",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix="registry.npmjs.com",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix="repository.apache.org",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix="proxy.golang.org",isBlockingEnabled="true"} 0 1782290572343
+jfrt_rrl_total_count_total{domainSuffix="downloads.apache.org",isBlockingEnabled="true"} 0 1782290572343
+# TYPE jfrt_projects_active_total counter
+# HELP jfrt_projects_active_total Projects Amount
+jfrt_projects_active_total 3 1782290572343
+# TYPE jfrt_storage_current_total_size_bytes gauge
+# HELP jfrt_storage_current_total_size_bytes Used Storage
+jfrt_storage_current_total_size_bytes 29952424633 1782290572343
+# TYPE jfrt_artifacts_gc_next_run_seconds gauge
+# HELP jfrt_artifacts_gc_next_run_seconds Next GC Run
+jfrt_artifacts_gc_next_run_seconds 14368 1782290572343
+# TYPE jfrt_stg_summary_checkpoint_binaries_total gauge
+# HELP jfrt_stg_summary_checkpoint_binaries_total The number of all binaries at last checkpoint
+jfrt_stg_summary_checkpoint_binaries_total 4408 1782290572343
+# TYPE jfrt_stg_summary_checkpoint_binaries_size_bytes gauge
+# HELP jfrt_stg_summary_checkpoint_binaries_size_bytes The size of all binaries at last checkpoint
+jfrt_stg_summary_checkpoint_binaries_size_bytes 29952419804 1782290572343
+# TYPE jfrt_stg_summary_checkpoint_time_total gauge
+# HELP jfrt_stg_summary_checkpoint_time_total The UNIX timestamp of the last storage summary checkpoint
+jfrt_stg_summary_checkpoint_time_total 1782283680052 1782290572343
+# TYPE jfrt_stg_summary_files_total gauge
+# HELP jfrt_stg_summary_files_total The total number of files stored in all repositories
+jfrt_stg_summary_files_total 5577 1782290572343
+# TYPE jfrt_stg_summary_folders_total gauge
+# HELP jfrt_stg_summary_folders_total The total number of folders stored in all repositories
+jfrt_stg_summary_folders_total 5237 1782290572343
+# TYPE jfrt_stg_summary_project_count_total gauge
+# HELP jfrt_stg_summary_project_count_total The total number of projects
+jfrt_stg_summary_project_count_total 4 1782290572343
+# TYPE jfrt_stg_summary_project_files_total gauge
+# HELP jfrt_stg_summary_project_files_total The total number of files in all projects
+jfrt_stg_summary_project_files_total 5577 1782290572343
+# TYPE jfrt_stg_summary_project_max_files_total gauge
+# HELP jfrt_stg_summary_project_max_files_total The maximal number of files in a single project
+jfrt_stg_summary_project_max_files_total 1394.25 1782290572343
+# TYPE jfrt_stg_summary_project_max_size_bytes gauge
+# HELP jfrt_stg_summary_project_max_size_bytes The maximal size of a project (in bytes)
+jfrt_stg_summary_project_max_size_bytes 28941941854 1782290572343
+# TYPE jfrt_stg_summary_project_size_bytes gauge
+# HELP jfrt_stg_summary_project_size_bytes The total size of files in all projects
+jfrt_stg_summary_project_size_bytes 41563046632 1782290572343
+# TYPE jfrt_stg_summary_repo_count_total gauge
+# HELP jfrt_stg_summary_repo_count_total The number of repositories (from storage stats)
+jfrt_stg_summary_repo_count_total{package="npm",type="CACHE"} 2 1782290572343
+jfrt_stg_summary_repo_count_total{package="Docker",type="VIRTUAL"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="NA",type="NA"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="npm",type="VIRTUAL"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="Docker",type="CACHE"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="Maven",type="LOCAL"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="BuildInfo",type="LOCAL"} 5 1782290572343
+jfrt_stg_summary_repo_count_total{package="Generic",type="LOCAL"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="Docker",type="LOCAL"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="Maven",type="CACHE"} 1 1782290572343
+jfrt_stg_summary_repo_count_total{package="npm",type="LOCAL"} 1 1782290572343
+# TYPE jfrt_stg_summary_repo_files_total gauge
+# HELP jfrt_stg_summary_repo_files_total The total number of files per repository type
+jfrt_stg_summary_repo_files_total{package="npm",type="CACHE"} 3231 1782290572343
+jfrt_stg_summary_repo_files_total{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_files_total{package="NA",type="NA"} 151 1782290572343
+jfrt_stg_summary_repo_files_total{package="npm",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_files_total{package="Docker",type="CACHE"} 315 1782290572343
+jfrt_stg_summary_repo_files_total{package="Maven",type="LOCAL"} 88 1782290572343
+jfrt_stg_summary_repo_files_total{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_files_total{package="Generic",type="LOCAL"} 463 1782290572343
+jfrt_stg_summary_repo_files_total{package="Docker",type="LOCAL"} 1329 1782290572343
+jfrt_stg_summary_repo_files_total{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_files_total{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_repo_folders_total gauge
+# HELP jfrt_stg_summary_repo_folders_total The total number of folders per repository type
+jfrt_stg_summary_repo_folders_total{package="npm",type="CACHE"} 4341 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_folders_total{package="NA",type="NA"} 161 1782290572343
+jfrt_stg_summary_repo_folders_total{package="npm",type="VIRTUAL"} 2 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Docker",type="CACHE"} 27 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Maven",type="LOCAL"} 45 1782290572343
+jfrt_stg_summary_repo_folders_total{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Generic",type="LOCAL"} 573 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Docker",type="LOCAL"} 88 1782290572343
+jfrt_stg_summary_repo_folders_total{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_folders_total{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_repo_max_files_total gauge
+# HELP jfrt_stg_summary_repo_max_files_total The maximum number of files per repository type
+jfrt_stg_summary_repo_max_files_total{package="npm",type="CACHE"} 1643 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="NA",type="NA"} 151 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="npm",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="CACHE"} 315 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="LOCAL"} 88 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Generic",type="LOCAL"} 463 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Docker",type="LOCAL"} 1329 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_max_files_total{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_repo_max_folders_total gauge
+# HELP jfrt_stg_summary_repo_max_folders_total The maximum number of folders per repository type
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="CACHE"} 2733 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="NA",type="NA"} 161 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="VIRTUAL"} 2 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="CACHE"} 27 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="LOCAL"} 45 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Generic",type="LOCAL"} 573 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Docker",type="LOCAL"} 88 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_max_folders_total{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_repo_max_size_bytes gauge
+# HELP jfrt_stg_summary_repo_max_size_bytes The maximum storage size (in bytes) per repository type
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="CACHE"} 587934707 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="NA",type="NA"} 4127231450 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="CACHE"} 2889345149 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="LOCAL"} 8163256862 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Generic",type="LOCAL"} 508111 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Docker",type="LOCAL"} 25464661998 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_max_size_bytes{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_repo_size_bytes gauge
+# HELP jfrt_stg_summary_repo_size_bytes The total storage size (in bytes), per repository type
+jfrt_stg_summary_repo_size_bytes{package="npm",type="CACHE"} 918043062 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="NA",type="NA"} 4127231450 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="npm",type="VIRTUAL"} 0 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="CACHE"} 2889345149 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="LOCAL"} 8163256862 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="BuildInfo",type="LOCAL"} 0 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Generic",type="LOCAL"} 508111 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Docker",type="LOCAL"} 25464661998 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="Maven",type="CACHE"} 0 1782290572343
+jfrt_stg_summary_repo_size_bytes{package="npm",type="LOCAL"} 0 1782290572343
+# TYPE jfrt_stg_summary_size_bytes gauge
+# HELP jfrt_stg_summary_size_bytes The total size of all artifacts stored in all repositories
+jfrt_stg_summary_size_bytes 41563046632 1782290572343
+# TYPE fed_event_handle_duration_seconds_max gauge
+# HELP fed_event_handle_duration_seconds_max Measures the duration of event handling by the target
+fed_event_handle_duration_seconds_max{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE fed_event_handle_duration_seconds summary
+# HELP fed_event_handle_duration_seconds Measures the duration of event handling by the target
+fed_event_handle_duration_seconds_count{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+fed_event_handle_duration_seconds_sum{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE fed_events_batch_handle_duration_seconds_max gauge
+# HELP fed_events_batch_handle_duration_seconds_max Measures the total duration of events handling by the target
+fed_events_batch_handle_duration_seconds_max{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE fed_events_batch_handle_duration_seconds summary
+# HELP fed_events_batch_handle_duration_seconds Measures the total duration of events handling by the target
+fed_events_batch_handle_duration_seconds_count{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+fed_events_batch_handle_duration_seconds_sum{application="Artifactory",queue_name="jfrog_federation_repo_mirror_callback"} 0.0
+# TYPE http_time_total_seconds_max gauge
+# HELP http_time_total_seconds_max The total time taken to process incoming HTTP requests
+http_time_total_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.167
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.014
+http_time_total_seconds_max{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.01
+http_time_total_seconds_max{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.211
+http_time_total_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.012
+http_time_total_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.067
+http_time_total_seconds_max{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.015
+http_time_total_seconds_max{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.0
+http_time_total_seconds_max{application="Artifactory",group="",method="GET",package="",status="403"} 0.013
+http_time_total_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# TYPE http_time_total_seconds summary
+# HELP http_time_total_seconds The total time taken to process incoming HTTP requests
+http_time_total_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 42.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.636
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="docker",status="200"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.03
+http_time_total_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 123.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 8.878
+http_time_total_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 3.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.197
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 256.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 7.579
+http_time_total_seconds_count{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 11.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.252
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 126.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 28.669
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="403"} 2.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="403"} 56.157
+http_time_total_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.014
+http_time_total_seconds_count{application="Artifactory",group="",method="HEAD",package="",status="401"} 28.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.036
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 43.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 31.231
+http_time_total_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 80.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 3.452
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 41.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.21
+http_time_total_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 11.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.218
+http_time_total_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 162.0
+http_time_total_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 1.978
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 4.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.343
+http_time_total_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 23233.0
+http_time_total_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 39.732
+http_time_total_seconds_count{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 6.0
+http_time_total_seconds_sum{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.21
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 506.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 2.501
+http_time_total_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 661.0
+http_time_total_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.173
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 29.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.054
+http_time_total_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 1930.0
+http_time_total_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 10.876
+http_time_total_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1552.0
+http_time_total_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 36.105
+http_time_total_seconds_count{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 12.0
+http_time_total_seconds_sum{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.151
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 3.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.065
+http_time_total_seconds_count{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 8.217
+http_time_total_seconds_count{application="Artifactory",group="",method="GET",package="",status="403"} 4.0
+http_time_total_seconds_sum{application="Artifactory",group="",method="GET",package="",status="403"} 0.039
+http_time_total_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="499"} 2.0
+http_time_total_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="499"} 85.079
+# TYPE http_time_write_seconds_max gauge
+# HELP http_time_write_seconds_max The time taken to write the response body to HTTP.
+http_time_write_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.001
+http_time_write_seconds_max{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="",method="GET",package="",status="403"} 0.0
+http_time_write_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# TYPE http_time_write_seconds summary
+# HELP http_time_write_seconds The time taken to write the response body to HTTP.
+http_time_write_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 42.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.03
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="docker",status="200"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 123.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.027
+http_time_write_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 3.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 256.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.231
+http_time_write_seconds_count{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 11.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.003
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 126.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.06
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="403"} 2.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.002
+http_time_write_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="",method="HEAD",package="",status="401"} 28.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.004
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 43.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.036
+http_time_write_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 80.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 0.049
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 41.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.013
+http_time_write_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 11.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.007
+http_time_write_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 162.0
+http_time_write_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.722
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 4.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.001
+http_time_write_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 23233.0
+http_time_write_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 3.699
+http_time_write_seconds_count{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 6.0
+http_time_write_seconds_sum{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.005
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 506.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 0.147
+http_time_write_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 661.0
+http_time_write_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.101
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 29.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.026
+http_time_write_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 1930.0
+http_time_write_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.704
+http_time_write_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1552.0
+http_time_write_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1.412
+http_time_write_seconds_count{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 12.0
+http_time_write_seconds_sum{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.005
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 3.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.002
+http_time_write_seconds_count{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.003
+http_time_write_seconds_count{application="Artifactory",group="",method="GET",package="",status="403"} 4.0
+http_time_write_seconds_sum{application="Artifactory",group="",method="GET",package="",status="403"} 0.0
+http_time_write_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="499"} 2.0
+http_time_write_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.011
+# TYPE jfrt_rpc_response_from_rtfs counter
+# HELP jfrt_rpc_response_from_rtfs Collects the total responses per status code for each method upon reaching RTFS
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.binariesTasks.BinariesTasks/getBinaryTasks",statusCode="200"} 1.0
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.system.SystemService/Handshake",statusCode="200"} 2.0
+jfrt_rpc_response_from_rtfs_total{application="Artifactory",method="com.jfrog.rtfs.v1.system.SystemService/UpdateQueueStatus",statusCode="200"} 1.0
+# TYPE http_time_resolve_external_wait_seconds_max gauge
+# HELP http_time_resolve_external_wait_seconds_max Per-request total wait time spent on external services (Xray, remote upstream).
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="",method="GET",package="",status="403"} 0.0
+http_time_resolve_external_wait_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# TYPE http_time_resolve_external_wait_seconds summary
+# HELP http_time_resolve_external_wait_seconds Per-request total wait time spent on external services (Xray, remote upstream).
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 42.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="docker",status="200"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 123.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 3.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 256.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 11.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.104
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 126.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="403"} 2.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="403"} 36.09
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="HEAD",package="",status="401"} 28.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 43.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 80.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 41.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 11.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 162.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 4.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.038
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 23233.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 6.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 506.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 661.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 29.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 1930.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1552.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 12.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 3.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.916
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="",method="GET",package="",status="403"} 4.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="",method="GET",package="",status="403"} 0.0
+http_time_resolve_external_wait_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="499"} 2.0
+http_time_resolve_external_wait_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="499"} 45.01
+# TYPE http_time_remote_seconds_max gauge
+# HELP http_time_remote_seconds_max The time it takes to download artifact from the remote repository
+http_time_remote_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+# TYPE http_time_remote_seconds summary
+# HELP http_time_remote_seconds The time it takes to download artifact from the remote repository
+http_time_remote_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 3.0
+http_time_remote_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 3.909
+# TYPE http_time_resolve_seconds_max gauge
+# HELP http_time_resolve_seconds_max The time taken to resolve the requested resource.
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.167
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.014
+http_time_resolve_seconds_max{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.01
+http_time_resolve_seconds_max{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.211
+http_time_resolve_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.012
+http_time_resolve_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.066
+http_time_resolve_seconds_max{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.014
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.0
+http_time_resolve_seconds_max{application="Artifactory",group="",method="GET",package="",status="403"} 0.013
+http_time_resolve_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# TYPE http_time_resolve_seconds summary
+# HELP http_time_resolve_seconds The time taken to resolve the requested resource.
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 42.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.606
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="docker",status="200"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.029
+http_time_resolve_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 123.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 8.851
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 3.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.196
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 256.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 7.348
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 11.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.249
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 126.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 28.609
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="403"} 2.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="403"} 56.155
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.014
+http_time_resolve_seconds_count{application="Artifactory",group="",method="HEAD",package="",status="401"} 28.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.032
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 43.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 31.195
+http_time_resolve_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 80.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 3.403
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 41.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.197
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 11.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.211
+http_time_resolve_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 162.0
+http_time_resolve_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 1.256
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 4.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.342
+http_time_resolve_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 23233.0
+http_time_resolve_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 36.033
+http_time_resolve_seconds_count{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 6.0
+http_time_resolve_seconds_sum{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.205
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 506.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 2.354
+http_time_resolve_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 661.0
+http_time_resolve_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.072
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 29.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.028
+http_time_resolve_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 1930.0
+http_time_resolve_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 10.172
+http_time_resolve_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1552.0
+http_time_resolve_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 34.693
+http_time_resolve_seconds_count{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 12.0
+http_time_resolve_seconds_sum{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.146
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 3.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.063
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 8.214
+http_time_resolve_seconds_count{application="Artifactory",group="",method="GET",package="",status="403"} 4.0
+http_time_resolve_seconds_sum{application="Artifactory",group="",method="GET",package="",status="403"} 0.039
+http_time_resolve_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="499"} 2.0
+http_time_resolve_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="499"} 85.068
+# TYPE search_aql_result_set_size summary
+# HELP search_aql_result_set_size Size of a result set for a search aql statement
+search_aql_result_set_size_count{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 160.0
+search_aql_result_set_size_sum{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 0.0
+search_aql_result_set_size_count{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 2.0
+search_aql_result_set_size_sum{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 256.0
+# TYPE search_aql_result_set_size_max gauge
+# HELP search_aql_result_set_size_max Size of a result set for a search aql statement
+search_aql_result_set_size_max{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="Xray/3.148.4"} 0.0
+search_aql_result_set_size_max{application="Artifactory",origin="search/aql",query_domain="item",query_repo_type="local",unlimited_agent="limited-user-agent"} 0.0
+# TYPE http_time_to_start_seconds_max gauge
+# HELP http_time_to_start_seconds_max The time taken to start processing incoming HTTP requests
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="probes",method="GET",package="",status="200"} 0.001
+http_time_to_start_seconds_max{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="401"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="",method="GET",package="",status="403"} 0.0
+http_time_to_start_seconds_max{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# TYPE http_time_to_start_seconds summary
+# HELP http_time_to_start_seconds The time taken to start processing incoming HTTP requests
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 42.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="GET",package="_federation",status="200"} 0.004
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="docker",status="200"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 123.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="PUT",package="_logs",status="200"} 0.016
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="GET",package="",status="200"} 3.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="GET",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 256.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="_logs",status="200"} 0.016
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 11.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="HEAD",package="npm",status="200"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="_logs",status="200"} 126.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="_logs",status="200"} 0.014
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="403"} 2.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="403"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="POST",package="",status="200"} 1.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="HEAD",package="",status="401"} 28.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="HEAD",package="",status="401"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="_logs",status="200"} 43.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="_logs",status="200"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="",method="POST",package="",status="200"} 80.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="POST",package="",status="200"} 0.003
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 41.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="docker",status="200"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="POST",package="",status="200"} 11.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="POST",package="",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 162.0
+http_time_to_start_seconds_sum{application="Artifactory",group="search/aql",method="POST",package="",status="200"} 0.014
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="200"} 4.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="probes",method="GET",package="",status="200"} 23233.0
+http_time_to_start_seconds_sum{application="Artifactory",group="probes",method="GET",package="",status="200"} 1.494
+http_time_to_start_seconds_count{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 6.0
+http_time_to_start_seconds_sum{application="Artifactory",group="auth",method="GET",package="docker",status="200"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="200"} 506.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="200"} 0.026
+http_time_to_start_seconds_count{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 661.0
+http_time_to_start_seconds_sum{application="Artifactory",group="probes",method="HEAD",package="",status="200"} 0.038
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="401"} 29.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="401"} 0.002
+http_time_to_start_seconds_count{application="Artifactory",group="manage",method="GET",package="",status="200"} 1930.0
+http_time_to_start_seconds_sum{application="Artifactory",group="manage",method="GET",package="",status="200"} 0.082
+http_time_to_start_seconds_count{application="Artifactory",group="system/info",method="GET",package="",status="200"} 1552.0
+http_time_to_start_seconds_sum{application="Artifactory",group="system/info",method="GET",package="",status="200"} 0.106
+http_time_to_start_seconds_count{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 12.0
+http_time_to_start_seconds_sum{application="Artifactory",group="artifact",method="GET",package="npm",status="200"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="404"} 3.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="404"} 0.0
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 4.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="HEAD",package="docker",status="200"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="",method="GET",package="",status="403"} 4.0
+http_time_to_start_seconds_sum{application="Artifactory",group="",method="GET",package="",status="403"} 0.001
+http_time_to_start_seconds_count{application="Artifactory",group="download",method="GET",package="docker",status="499"} 2.0
+http_time_to_start_seconds_sum{application="Artifactory",group="download",method="GET",package="docker",status="499"} 0.0
+# EOF

@@ -1,0 +1,2 @@
+worksfae-maven-azr-local
+worksafeproj2-newgen-test2

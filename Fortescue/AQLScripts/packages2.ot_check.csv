@@ -1,0 +1,5 @@
+original_path,repo_relative_path,present_in_ot
+"jayanths-docker-local/rancher-desktop/rdx-proxy/latest/manifest.json","rancher-desktop/rdx-proxy/latest/manifest.json",YES
+"jayanths-docker-local/library/groovy/jre16/list.manifest.json","library/groovy/jre16/list.manifest.json",NO
+"jayanths-docker-local/library/groovy/jre16/list.manifest.json","library/groovy/jre16/list.manifest.json",NO
+"jayanths-docker-local/ubuntu-release/release/manifest.json","ubuntu-release/release/manifest.json",NO

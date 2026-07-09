@@ -1,0 +1,264 @@
+# Special values for jfrog-platform chart.
+# nameOverride:
+# fullnameOverride:
+# If this is an upgrade over an existing platform chart(>= 10.0.0), explicitly pass 'gaUpgradeReady=true' to upgrade
+gaUpgradeReady: true
+# If you are upgrading from a chart version(< 10.18.x) that has postgresql.image.tag of 13.x, make sure to set the current postgresql.image.tag to the same tag and databaseUpgradeReady=true.
+# If you are upgrading from a chart version (>= 10.18.x), just set databaseUpgradeReady=true.
+databaseUpgradeReady: false
+preUpgradeHook:
+  enabled: true
+global:
+  jfrogUrl: "https://<your.domain.com>"
+  joinKeySecretName: artifactory-join-key
+  masterKeySecretName: artifactory-master-key
+  database:
+    initDBCreation: false
+  xray:
+    enabled: false
+  customCertificates:
+    enabled: false
+    #certificateSecretName: <>
+
+postgresql:
+  enabled: false
+
+rabbitmq:
+  enabled: false
+
+artifactory:
+  enabled: true
+  database:
+    type: postgresql
+    driver: org.postgresql.Driver
+    user: "<db_user>"
+    url: "jdbc:postgresql://<DB_HOST>:5432/<DB_NAME>?sslmode=require"
+    password: "<db_password>"
+   # secrets:
+     # user:
+     #   name: "artifactory-db-secret"
+     #   key: "db-user"
+    #  password:
+     #   name: "artifactory-db-secret"
+      #  key: "db-password"
+     # url:
+     #   name: "artifactory-db-secret"
+     #   key: "db-url"
+
+  mc:
+    enabled: false
+
+  ## Azure Workload Identity: annotate the Artifactory ServiceAccount with your UAMI client ID.
+  serviceAccount:
+    create: false
+    name: "jfrog-edge-topaz-SA"
+    automountServiceAccountToken: true
+    annotations:
+      azure.workload.identity/client-id: <client-id>
+  ingress:
+    enabled: true
+    defaultBackend:
+      enabled: true
+    routerPath: /
+    artifactoryPath: /artifactory/
+    className: azure-application-gateway
+    annotations:
+      appgw.ingress.kubernetes.io/ssl-redirect: "true"
+      appgw.ingress.kubernetes.io/request-timeout: "3600"
+    hosts:
+      - <your.domain.com>
+    tls:
+      - secretName: <tls_secret_name>
+        hosts:
+          - <your.domain.com>
+
+  artifactory:
+    labels:
+      azure.workload.identity/use: "true"
+    tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "artifactory"
+      effect: "NoSchedule"
+    replicaCount: 3
+    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: artifactory
+                release: jfrog-platform
+            topologyKey: kubernetes.io/hostname
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: node-pool
+              operator: In
+              values: ["artifactory"]
+
+
+    persistence:
+      enabled: true
+      size: 200Gi
+      ## Azure Blob Storage V2 direct (replaces AWS S3 s3-storage-v3-direct)
+      ## Ref: https://docs.jfrog.com/installation/docs/azure-blob-storage-v2-binary-provider
+      type: azure-blob-storage-v2-direct
+      maxCacheSize: 200000000000
+      azureBlob:
+        ## useInstanceCredentials: true = no accountKey, uses UAMI via Workload Identity
+        ## UAMI needs Storage Blob Data Contributor on the storage account. Artifactory 7.125.4+
+        ## Ref: https://docs.jfrog.com/installation/docs/azure-workload-identity
+        useInstanceCredentials: true
+        endpoint: "https://sumanthartifactory.blob.core.windows.net/"
+        containerName: artifactory-binstore
+        testConnection: false
+        multiPartLimit: 256000000
+        multipartElementSize: 100000000
+
+    resources:
+      requests:
+        cpu: "2"
+        memory: 10Gi
+      limits:
+        # cpu: "14"
+        memory: 12Gi
+
+    javaOpts:
+      other: >
+        -XX:InitialRAMPercentage=40
+        -XX:MaxRAMPercentage=65
+        -Dartifactory.async.corePoolSize=80
+        -Dartifactory.async.poolMaxQueueSize=20000
+        -Dartifactory.http.client.max.total.connections=100
+        -Dartifactory.http.client.max.connections.per.route=100
+        -Dartifactory.access.client.max.connections=125
+        -Dartifactory.metadata.event.operator.threads=4
+        -XX:MaxMetaspaceSize=512m
+        -Djdk.nio.maxCachedBufferSize=524288
+        -XX:MaxDirectMemorySize=512m
+    tomcat:
+      connector:
+        maxThreads: 500
+        extraConfig: 'acceptCount="800" acceptorThreadCount="2" compression="off" connectionLinger="-1" connectionTimeout="120000" enableLookups="false"'
+
+    database:
+      maxOpenConnections: 100
+
+    extraEnvironmentVariables:
+      - name: MALLOC_ARENA_MAX
+        value: "8"
+    
+  access:
+    tomcat:
+      connector:
+        maxThreads: 125
+    javaOpts:
+      other: >
+        -XX:InitialRAMPercentage=20
+        -XX:MaxRAMPercentage=60
+    database:
+      maxOpenConnections: 100
+    resources:
+      requests:
+        cpu: 1
+        memory: 1.5Gi
+      limits:
+        # cpu: 1
+        memory: 2Gi
+    extraEnvironmentVariables:
+      - name: MALLOC_ARENA_MAX
+        value: "8"
+
+  router:
+    resources:
+      requests:
+        cpu: 400m
+        memory: 800Mi
+      limits:
+        # cpu: "8"
+        memory: 2Gi
+
+  frontend:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 800Mi
+      limits:
+        # cpu: "2"
+        memory: 2Gi
+
+  metadata:
+    database:
+      maxOpenConnections: 100
+    resources:
+      requests:
+        cpu: 200m
+        memory: 200Mi
+      limits:
+        # cpu: "4"
+        memory: 1Gi
+
+  onemodel:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 160Mi
+      limits:
+        # cpu: "1"
+        memory: 250Mi
+        
+  event:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 50Mi
+      limits:
+        # cpu: 500m
+        memory: 250Mi
+
+  observability:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 50Mi
+      limits:
+        # cpu: 500m
+        memory: 250Mi
+
+  jfconnect:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+      limits:
+        # cpu: 500m
+        memory: 250Mi
+
+  jfconfig:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1000Mi
+      limits:
+        # cpu: 500m
+        memory: 1500Mi
+    extraEnvironmentVariables:
+      - name: MALLOC_ARENA_MAX
+        value: "8"      
+
+  topology:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 1000Mi
+      limits:
+        memory: 1500Mi
+    extraEnvironmentVariables:
+      - name: MALLOC_ARENA_MAX
+        value: "8"
+
+  nginx:
+    enabled: false 
+xray:
+  enabled: false

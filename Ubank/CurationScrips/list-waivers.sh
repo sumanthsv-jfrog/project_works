@@ -9,7 +9,7 @@
 #   ./list-waivers.sh <JFROG_URL> <JFROG_TOKEN> [options]
 #
 # Options:
-#   --status <approved|rejected|pending>   Filter by status (default: pending)
+#   --status <approved|rejected|pending|all>   Filter by status (default: pending)
 #   --pkg-type <type>                      Filter by package type (npm, pypi, ...)
 #   --pkg-name <name>                      Filter by package name
 #   --pkg-version <version>                Filter by package version
@@ -35,7 +35,7 @@ ARGUMENTS:
   JFROG_TOKEN    Access token (Bearer)
 
 OPTIONS:
-  --status <approved|rejected|pending>   Filter by status (default: pending)
+  --status <approved|rejected|pending|all>   Filter by status (default: pending; use all for every status)
   --pkg-type <type>                      Filter by package type (npm, pypi, ...)
   --pkg-name <name>                      Filter by package name
   --pkg-version <version>                Filter by package version
@@ -53,8 +53,14 @@ OUTPUT (CSV, default):
   label scripts directly:   ... --status approved | tail -n +2 | cut -d, -f1-3
 
 EXAMPLES:
-  # Approved waivers as CSV (default)
+  # Pending waivers (default)
+  ./list-waivers.sh https://myorg.jfrog.io "$TOKEN"
+
+  # Approved waivers as CSV
   ./list-waivers.sh https://myorg.jfrog.io "$TOKEN" --status approved
+
+  # Every status (pending + approved + rejected)
+  ./list-waivers.sh https://myorg.jfrog.io "$TOKEN" --status all
 
   # Feed approved waivers into the label scripts (name,version,type only)
   ./list-waivers.sh https://myorg.jfrog.io "$TOKEN" --status approved \
@@ -109,24 +115,30 @@ for cmd in curl jq; do
   command -v "$cmd" >/dev/null 2>&1 || { echo "Error: '$cmd' is required." >&2; exit 1; }
 done
 
+case "$STATUS" in
+  pending|approved|rejected|all) ;;
+  *) echo "Error: invalid --status '$STATUS' (use pending, approved, rejected, or all)" >&2; exit 1 ;;
+esac
+
 ENDPOINT="$JFROG_URL/xray/api/v1/curation/waiver_requests"
 
 # ── Fetch a single page ───────────────────────────────────────────────────────
-# Uses zero-indexed offsets instead of page numbers to ensure correct API consumption.
+# Uses 1-based page_num (per API meta) rather than offset; offset was unreliable
+# on some instances and could repeat page 1, truncating results.
 
 fetch_page() {
-  local page="$1"
-  local offset=$(( (page - 1) * ROWS ))
+  local page_num="$1"
+  local status="$2"
 
   set -- -s -G "$ENDPOINT" \
     -H "Authorization: Bearer $JFROG_TOKEN" \
-    --data-urlencode "status=$STATUS" \
-    --data-urlencode "can_approve=$CAN_APPROVE" \
+    --data-urlencode "status=$status" \
     --data-urlencode "num_of_rows=$ROWS" \
-    --data-urlencode "offset=$offset" \
+    --data-urlencode "page_num=$page_num" \
     --data-urlencode "order_by=updated_at" \
     --data-urlencode "direction=desc"
 
+  [ "$CAN_APPROVE" = "true" ] && set -- "$@" --data-urlencode "can_approve=true"
   [ -n "$PKG_TYPE" ]    && set -- "$@" --data-urlencode "pkg_type=$PKG_TYPE"
   [ -n "$PKG_NAME" ]    && set -- "$@" --data-urlencode "pkg_name=$PKG_NAME"
   [ -n "$PKG_VERSION" ] && set -- "$@" --data-urlencode "pkg_version=$PKG_VERSION"
@@ -145,41 +157,10 @@ extract_rows() {
          else [] end'
 }
 
-# ── Main: paginate ────────────────────────────────────────────────────────────
+# ── Emit rows from one API response ───────────────────────────────────────────
 
-if [ "$OUTPUT" = "csv" ]; then
-  echo "name,version,type,status,id,repo_key,created_at,closed_at,waiver_expiry,waiver_expiry_status,requesters"
-fi
-
-page=1
-total=0
-prev_first_id=""        # Detect an API that repeats page 1 data due to offset anomalies
-MAX_PAGES=1000          # Safety cap to avoid an infinite loop
-
-while [ "$page" -le "$MAX_PAGES" ]; do
-  response="$(fetch_page "$page")"
-
-  # Surface HTTP/permission errors that come back as JSON
-  if echo "$response" | jq -e '.errors // .error // empty' >/dev/null 2>&1; then
-    echo "API error on page $page:" >&2
-    echo "$response" | jq '.' >&2
-    exit 1
-  fi
-
-  rows="$(echo "$response" | extract_rows)"
-  count="$(echo "$rows" | jq 'length')"
-
-  # Empty page => we've gone past the last page; done.
-  [ "$count" -eq 0 ] && break
-
-  # Guard: If data isn't changing, stop loop to prevent hitting API endlessly
-  first_id="$(echo "$rows" | jq -r '.[0].id // .[0] | tostring')"
-  if [ "$page" -gt 1 ] && [ "$first_id" = "$prev_first_id" ]; then
-    echo "Warning: page $page repeated page $((page-1)) data; stopping pagination." >&2
-    break
-  fi
-  prev_first_id="$first_id"
-
+emit_rows() {
+  local rows="$1"
   if [ "$OUTPUT" = "csv" ]; then
     # name,version,type first (so `cut -d, -f1-3` feeds the label scripts).
     # Multiple requesters are reduced to unique users joined by ';'.
@@ -199,9 +180,74 @@ while [ "$page" -le "$MAX_PAGES" ]; do
   else
     echo "$rows" | jq '.'
   fi
+}
 
-  total=$((total + count))
-  page=$((page + 1))
+# ── Paginate one status value ─────────────────────────────────────────────────
+
+list_status() {
+  local status="$1"
+  local page_num=1
+  local fetched=0
+  local api_total=""
+  local MAX_PAGES=1000
+
+  while [ "$page_num" -le "$MAX_PAGES" ]; do
+    local response
+    response="$(fetch_page "$page_num" "$status")"
+
+    # Surface HTTP/permission errors that come back as JSON
+    if echo "$response" | jq -e '.errors // .error // empty' >/dev/null 2>&1; then
+      echo "API error for status=$status page $page_num:" >&2
+      echo "$response" | jq '.' >&2
+      exit 1
+    fi
+
+    local rows count page_total
+    rows="$(echo "$response" | extract_rows)"
+    count="$(echo "$rows" | jq 'length')"
+
+    # Empty page => we've gone past the last page; done.
+    [ "$count" -eq 0 ] && break
+
+    page_total="$(echo "$response" | jq -r '.meta.total_count // empty')"
+    [ -n "$page_total" ] && api_total="$page_total"
+
+    emit_rows "$rows"
+    fetched=$((fetched + count))
+
+    # Full page and more remain according to meta.total_count
+    if [ -n "$api_total" ] && [ "$fetched" -ge "$api_total" ]; then
+      break
+    fi
+
+    # Short page => last page when meta.total_count is absent
+    [ "$count" -lt "$ROWS" ] && break
+
+    page_num=$((page_num + 1))
+  done
+
+  if [ -n "$api_total" ] && [ "$fetched" -lt "$api_total" ]; then
+    echo "Warning: status=$status returned $fetched of $api_total waiver request(s)." >&2
+  fi
+
+  TOTAL=$((TOTAL + fetched))
+}
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+if [ "$OUTPUT" = "csv" ]; then
+  echo "name,version,type,status,id,repo_key,created_at,closed_at,waiver_expiry,waiver_expiry_status,requesters"
+fi
+
+TOTAL=0
+if [ "$STATUS" = "all" ]; then
+  STATUSES=(pending approved rejected)
+else
+  STATUSES=("$STATUS")
+fi
+
+for status in "${STATUSES[@]}"; do
+  list_status "$status"
 done
 
-[ "$OUTPUT" != "csv" ] && echo "Total waiver requests (status=$STATUS): $total" >&2
+echo "Listed $TOTAL waiver request(s) (status=$STATUS)." >&2

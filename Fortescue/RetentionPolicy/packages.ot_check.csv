@@ -1,0 +1,4 @@
+original_path,image_dir,cached_file,present_in_ot
+"testremote-cache/library/node/22.6/list.manifest.json","testremote-cache/library/node/22.6","",NO
+"testremote-cache/library/mongo/8.0.10-rc0-noble/list.manifest.json","testremote-cache/library/mongo/8.0.10-rc0-noble","",NO
+"testremote-cache/library/node/latest/list.manifest.json","testremote-cache/library/node/latest","",NO
