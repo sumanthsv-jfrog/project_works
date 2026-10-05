@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JPD Comparison Master Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 30px; background-color: #f0f2f5; }
+        h1 { text-align: center; color: #2d3748; margin-bottom: 10px; }
+        
+        /* Version Info Styling */
+        .version-bar { 
+            display: flex; justify-content: center; gap: 20px; 
+            margin-bottom: 30px; font-size: 0.95em; color: #4a5568; 
+        }
+        .version-badge { 
+            background: #edf2f7; padding: 5px 15px; border-radius: 20px; 
+            border: 1px solid #cbd5e0; font-weight: 600; 
+        }
+        .version-label { color: #718096; margin-right: 5px; font-weight: normal; }
+
+        .section-header { 
+            background: #2d3748; color: white; padding: 15px 20px; 
+            margin-top: 40px; border-radius: 6px 6px 0 0; font-weight: bold; 
+        }
+        .container { background: white; padding: 20px; border-radius: 0 0 6px 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .status-no { background-color: #fff5f5 !important; color: #c53030; }
+        .status-diff { background-color: #fffaf0 !important; color: #c05621; }
+        table.dataTable thead th { background-color: #edf2f7; color: #4a5568; }
+
+        .section-header.security { background: #234e52; }
+        .unavailable-note {
+            padding: 14px 18px; background: #fffaf0; border: 1px solid #fbd38d;
+            color: #7b341e; border-radius: 4px; font-size: 0.95em;
+        }
+
+        /* Tabs */
+        .tab-bar {
+            display: flex; justify-content: center; gap: 10px; margin-bottom: 25px;
+        }
+        .tab-btn {
+            background: white; border: 1px solid #cbd5e0; color: #4a5568;
+            padding: 10px 24px; border-radius: 6px; font-weight: 600; font-size: 0.95em;
+            cursor: pointer; transition: all 0.15s ease;
+        }
+        .tab-btn:hover { background: #edf2f7; }
+        .tab-btn.active { background: #2d3748; color: white; border-color: #2d3748; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Overview cards */
+        .overview-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px; margin-bottom: 10px;
+        }
+        .overview-card {
+            background: white; border-radius: 8px; padding: 18px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #2d3748;
+        }
+        .overview-card.security-card { border-top-color: #234e52; }
+        .overview-card h3 {
+            margin: 0 0 14px 0; font-size: 1em; color: #2d3748; display: flex;
+            align-items: center; justify-content: space-between;
+        }
+        .overview-stats { display: flex; flex-wrap: wrap; gap: 14px; }
+        .overview-stat { min-width: 85px; }
+        .overview-stat .num { font-size: 1.6em; font-weight: 700; color: #2d3748; line-height: 1.1; }
+        .overview-stat .lbl { font-size: 0.78em; color: #718096; margin-top: 2px; }
+        .overview-stat.warn .num { color: #c53030; }
+        .overview-stat.diff .num { color: #c05621; }
+        .overview-stat.ok .num { color: #2f855a; }
+        .overview-card .unavailable-note { margin-top: 4px; font-size: 0.88em; padding: 10px 14px; }
+    </style>
+</head>
+<body>
+
+    <h1>JPDs Repository Comparison Dashboard</h1>
+
+    <div class="version-bar" id="versionBar">
+        <div class="version-badge"><span class="version-label">Source Version:</span> <span id="sourceVer">...</span></div>
+        <div class="version-badge"><span class="version-label">Target Version:</span> <span id="targetVer">...</span></div>
+    </div>
+
+    <div class="tab-bar">
+        <button class="tab-btn active" id="overviewTabBtn" onclick="switchTab('overview')">Overview</button>
+        <button class="tab-btn" id="detailsTabBtn" onclick="switchTab('details')">Detailed Comparison</button>
+    </div>
+
+    <div class="tab-content active" id="overviewTab">
+        <div class="overview-grid">
+            <div class="overview-card" id="overviewLocal"><h3>Local Repositories</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card" id="overviewRemote"><h3>Remote Repositories</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card" id="overviewVirtual"><h3>Virtual Repositories</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card" id="overviewRemoteConfig"><h3>Remote Repo Configuration</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card" id="overviewVirtualConfig"><h3>Virtual Repo Configuration</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card security-card" id="overviewUsers"><h3>Users</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card security-card" id="overviewGroups"><h3>Groups</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card security-card" id="overviewPermissions"><h3>Permissions</h3><div class="overview-stats">Loading...</div></div>
+            <div class="overview-card security-card" id="overviewTokens"><h3>Access Tokens</h3><div class="overview-stats">Loading...</div></div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="detailsTab">
+
+    <div class="section-header">Local Repository Comparison</div>
+    <div class="container">
+        <table id="localTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>LocalRepoName</th>
+                    <th>ExistsInTarget</th>
+                    <th>SourceFilesCount</th>
+                    <th>SourceUsedSpace</th>
+                    <th>TargetFilesCount</th>
+                    <th>TargetUsedSpace</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header">Remote Repository Comparison</div>
+    <div class="container">
+        <table id="remoteStorageTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>RemoteRepoName</th>
+                    <th>ExistsInTarget</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header">Virtual Repository Comparison</div>
+    <div class="container">
+        <table id="virtualStorageTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>VirtualRepoName</th>
+                    <th>ExistsInTarget</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header">Remote Repository Configuration Comparision Details</div>
+    <div class="container">
+        <table id="remoteConfigTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>SourceRepoName</th>
+                    <th>SourceURL</th>
+                    <th>SourcePasswordExists</th>
+                    <th>TargetRepoName</th>
+                    <th>TargetURL</th>
+                    <th>TargetPasswordExists</th>
+                    <th>ExistsInTarget</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header">Virtual Repository Configuration Comparision Details</div>
+    <div class="container">
+        <table id="virtualConfigTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>SourceRepoName</th>
+                    <th>SourceRepositories</th>
+                    <th>SourceDefaultDeploy</th>
+                    <th>TargetRepoName</th>
+                    <th>TargetRepositories</th>
+                    <th>TargetDefaultDeploy</th>
+                    <th>ExistsInTarget</th>
+                    <th>DifferenceInRepos</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header security">Users Comparison</div>
+    <div class="container" id="usersContainer">
+        <table id="usersTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>ExistsInTarget</th>
+                    <th>SourceStatus</th>
+                    <th>SourceRealm</th>
+                    <th>TargetStatus</th>
+                    <th>TargetRealm</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header security">Groups Comparison</div>
+    <div class="container" id="groupsContainer">
+        <table id="groupsTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>GroupName</th>
+                    <th>ExistsInTarget</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header security">Permissions Comparison</div>
+    <div class="container" id="permissionsContainer">
+        <table id="permissionsTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>PermissionName</th>
+                    <th>ExistsInTarget</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="section-header security">Access Tokens Summary</div>
+    <div class="container" id="tokensContainer">
+        <table id="tokensTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Source</th>
+                    <th>Target</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    </div><!-- /#detailsTab -->
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <script>
+        const csvFiles = {
+            local: "local_repos_comparison.csv",
+            remoteStorage: "remote_repos_comparison.csv",
+            virtualStorage: "virtual_repos_comparison.csv",
+            remoteConfig: "remote_repos_config_comparison.csv",
+            virtualConfig: "virtual_repos_config_comparison.csv",
+            version: "JPDVersion.csv", // New CSV reference
+            users: "users_comparison.csv",
+            groups: "groups_comparison.csv",
+            permissions: "permissions_comparison.csv",
+            tokens: "tokens_comparison.csv",
+            // "only in target" files - already written by the script, used here purely to
+            // compute accurate two-sided totals (SourceTotal / TargetTotal) on the Overview tab
+            localTargetOnly: "only_in_target_local.csv",
+            remoteStorageTargetOnly: "only_in_target_remote.csv",
+            virtualStorageTargetOnly: "only_in_target_virtual.csv",
+            usersTargetOnly: "only_in_target_users.csv",
+            groupsTargetOnly: "only_in_target_groups.csv",
+            permissionsTargetOnly: "only_in_target_permissions.csv"
+        };
+
+        // --- New Functionality: Load System Versions ---
+        Papa.parse(csvFiles.version, {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(res) {
+                if(res.data && res.data.length > 0) {
+                    document.getElementById('sourceVer').innerText = res.data[0].SourceJPDVersion;
+                    document.getElementById('targetVer').innerText = res.data[0].TargetJPDVersion;
+                }
+            }
+        });
+
+        function showUnavailable(containerId, label) {
+            const el = document.getElementById(containerId);
+            if (!el) return;
+            el.innerHTML = `<div class="unavailable-note">${label} comparison wasn't generated for this run &mdash; the source JPD may be on legacy 6.x, or the Access token wasn't admin-scoped for the Access API. See the script's validation output for details.</div>`;
+        }
+
+        // containerId: pass the wrapping <div class="container" id="..."> so a missing/broken
+        // CSV shows a friendly note instead of leaving a dead table or a console error.
+        // rowClassifier: optional custom highlighter; defaults to flagging ExistsInTarget === "No".
+        function load(id, file, cols, containerId, rowClassifier) {
+            Papa.parse(file, {
+                download: true, 
+                header: true, 
+                skipEmptyLines: true,
+                beforeFirstChunk: function(chunk) {
+                    return chunk.replace(/^\uFEFF/, '');
+                },
+                error: function() {
+                    if (containerId) showUnavailable(containerId, id);
+                    else console.error(`Failed to load ${file}`);
+                },
+                complete: function(res) {
+                    if ((!res.data || res.data.length === 0) && res.errors && res.errors.length > 0) {
+                        if (containerId) showUnavailable(containerId, id);
+                        return;
+                    }
+                    $(`#${id}`).DataTable({
+                        data: res.data,
+                        columns: cols,
+                        createdRow: function(row, data) {
+                            if (rowClassifier) {
+                                rowClassifier(row, data);
+                            } else if (data.ExistsInTarget === "No") {
+                                $(row).addClass('status-no');
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        // 1. Local Table
+        load("localTable", csvFiles.local, [
+            {data:"LocalRepoName"}, {data:"ExistsInTarget"}, {data:"SourceFilesCount"}, 
+            {data:"SourceUsedSpace"}, {data:"TargetFilesCount"}, {data:"TargetUsedSpace"}
+        ]);
+
+        // 2. Remote Storage
+        load("remoteStorageTable", csvFiles.remoteStorage, [
+            {data:"RemoteRepoName"}, {data:"ExistsInTarget"}
+        ]);
+
+        // 3. Virtual Storage
+        load("virtualStorageTable", csvFiles.virtualStorage, [
+            {data:"VirtualRepoName"}, {data:"ExistsInTarget"}
+        ]);
+
+        // 4. Remote Config
+        load("remoteConfigTable", csvFiles.remoteConfig, [
+            {data:"SourceRepoName"}, {data:"SourceURL"}, {data:"SourcePasswordExists"}, {data:"TargetRepoName"}, 
+            {data:"TargetURL"}, {data:"TargetPasswordExists"}, {data:"ExistsInTarget"}
+        ]);
+
+        // 5. Virtual Config
+        load("virtualConfigTable", csvFiles.virtualConfig, [
+            {data:"SourceRepoName"}, {data:"SourceRepositories"}, {data:"SourceDefaultDeploy"}, 
+            {data:"TargetRepoName"}, {data:"TargetRepositories"}, {data:"TargetDefaultDeploy"}, 
+            {data:"ExistsInTarget"}, {data:"DifferenceInRepos"}
+        ]);
+
+        // 6. Users
+        load("usersTable", csvFiles.users, [
+            {data:"Username"}, {data:"ExistsInTarget"}, {data:"SourceStatus"},
+            {data:"SourceRealm"}, {data:"TargetStatus"}, {data:"TargetRealm"}
+        ], "usersContainer");
+
+        // 7. Groups
+        load("groupsTable", csvFiles.groups, [
+            {data:"GroupName"}, {data:"ExistsInTarget"}
+        ], "groupsContainer");
+
+        // 8. Permissions - existence/count only, same shape as Groups
+        load("permissionsTable", csvFiles.permissions, [
+            {data:"PermissionName"}, {data:"ExistsInTarget"}
+        ], "permissionsContainer");
+
+        // 9. Tokens - just the count, no per-row highlighting
+        load("tokensTable", csvFiles.tokens, [
+            {data:"Metric"}, {data:"Source"}, {data:"Target"}
+        ], "tokensContainer", function() { /* no row highlighting needed for this table */ });
+
+        // ===================== Tabs =====================
+        function switchTab(tab) {
+            document.getElementById('overviewTab').classList.toggle('active', tab === 'overview');
+            document.getElementById('detailsTab').classList.toggle('active', tab === 'details');
+            document.getElementById('overviewTabBtn').classList.toggle('active', tab === 'overview');
+            document.getElementById('detailsTabBtn').classList.toggle('active', tab === 'details');
+        }
+
+        // ===================== Overview =====================
+        // Promise-wrapped Papa.parse so we can gather several CSVs with Promise.all
+        // before computing summary numbers. ok:false covers both a 404 and an empty/unparseable file.
+        function parseCSV(file) {
+            return new Promise((resolve) => {
+                Papa.parse(file, {
+                    download: true, header: true, skipEmptyLines: true,
+                    beforeFirstChunk: function(chunk) { return chunk.replace(/^\uFEFF/, ''); },
+                    error: function() { resolve({ data: [], ok: false }); },
+                    complete: function(res) {
+                        if ((!res.data || res.data.length === 0) && res.errors && res.errors.length > 0) {
+                            resolve({ data: [], ok: false });
+                        } else {
+                            resolve({ data: res.data || [], ok: true });
+                        }
+                    }
+                });
+            });
+        }
+
+        function statHtml(num, label, variant) {
+            return `<div class="overview-stat ${variant || ''}"><div class="num">${num}</div><div class="lbl">${label}</div></div>`;
+        }
+
+        function renderCardUnavailable(cardId, label) {
+            const el = document.getElementById(cardId);
+            el.querySelector('.overview-stats').outerHTML =
+                `<div class="unavailable-note">${label} comparison wasn't generated for this run.</div>`;
+        }
+
+        // Generic "existence" comparison card: used for Local/Remote/Virtual repos and
+        // Users/Groups, all of which share the same ExistsInTarget column shape.
+        function renderExistenceCard(cardId, main, targetOnly) {
+            if (!main.ok) { renderCardUnavailable(cardId, document.querySelector(`#${cardId} h3`).textContent); return; }
+            const sourceTotal = main.data.length;
+            const missingInTarget = main.data.filter(r => r.ExistsInTarget === "No").length;
+            const matched = sourceTotal - missingInTarget;
+            const onlyInTarget = targetOnly.ok ? targetOnly.data.length : 0;
+            const targetTotal = matched + onlyInTarget;
+
+            document.getElementById(cardId).querySelector('.overview-stats').innerHTML =
+                statHtml(sourceTotal, 'In Source') +
+                statHtml(targetTotal, 'In Target') +
+                statHtml(missingInTarget, 'Missing in Target', missingInTarget > 0 ? 'warn' : 'ok') +
+                statHtml(onlyInTarget, 'Only in Target', onlyInTarget > 0 ? 'warn' : 'ok');
+        }
+
+        // Config-diff card: used for Remote/Virtual repo CONFIGURATION, where what matters
+        // is not just existence but whether the matched config actually differs.
+        function renderConfigDiffCard(cardId, main, diffPredicate) {
+            if (!main.ok) { renderCardUnavailable(cardId, document.querySelector(`#${cardId} h3`).textContent); return; }
+            const total = main.data.length;
+            const missing = main.data.filter(r => r.ExistsInTarget === "No").length;
+            const diffs = main.data.filter(r => r.ExistsInTarget === "Yes" && diffPredicate(r)).length;
+
+            document.getElementById(cardId).querySelector('.overview-stats').innerHTML =
+                statHtml(total, 'Compared') +
+                statHtml(missing, 'Missing in Target', missing > 0 ? 'warn' : 'ok') +
+                statHtml(diffs, 'Config Differs', diffs > 0 ? 'diff' : 'ok');
+        }
+
+        // Tokens card: just the TotalTokens row's Source/Target counts, no breakdown.
+        function renderTokensCard(cardId, main) {
+            if (!main.ok) { renderCardUnavailable(cardId, document.querySelector(`#${cardId} h3`).textContent); return; }
+            const row = main.data.find(r => r.Metric === "TotalTokens");
+            if (!row) { renderCardUnavailable(cardId, 'Access Tokens'); return; }
+            document.getElementById(cardId).querySelector('.overview-stats').innerHTML =
+                statHtml(row.Source, 'In Source') +
+                statHtml(row.Target, 'In Target');
+        }
+
+        async function buildOverview() {
+            const [
+                local, localTO,
+                remote, remoteTO,
+                virtual, virtualTO,
+                remoteConfig,
+                virtualConfig,
+                users, usersTO,
+                groups, groupsTO,
+                permissions, permissionsTO,
+                tokens
+            ] = await Promise.all([
+                parseCSV(csvFiles.local), parseCSV(csvFiles.localTargetOnly),
+                parseCSV(csvFiles.remoteStorage), parseCSV(csvFiles.remoteStorageTargetOnly),
+                parseCSV(csvFiles.virtualStorage), parseCSV(csvFiles.virtualStorageTargetOnly),
+                parseCSV(csvFiles.remoteConfig),
+                parseCSV(csvFiles.virtualConfig),
+                parseCSV(csvFiles.users), parseCSV(csvFiles.usersTargetOnly),
+                parseCSV(csvFiles.groups), parseCSV(csvFiles.groupsTargetOnly),
+                parseCSV(csvFiles.permissions), parseCSV(csvFiles.permissionsTargetOnly),
+                parseCSV(csvFiles.tokens)
+            ]);
+
+            renderExistenceCard('overviewLocal', local, localTO);
+            renderExistenceCard('overviewRemote', remote, remoteTO);
+            renderExistenceCard('overviewVirtual', virtual, virtualTO);
+            renderConfigDiffCard('overviewRemoteConfig', remoteConfig,
+                r => r.SourceURL !== r.TargetURL || r.SourcePasswordExists !== r.TargetPasswordExists);
+            renderConfigDiffCard('overviewVirtualConfig', virtualConfig,
+                r => r.DifferenceInRepos === "Yes");
+            renderExistenceCard('overviewUsers', users, usersTO);
+            renderExistenceCard('overviewGroups', groups, groupsTO);
+            renderExistenceCard('overviewPermissions', permissions, permissionsTO);
+            renderTokensCard('overviewTokens', tokens);
+        }
+
+        buildOverview();
+    </script>
+</body>
+</html>
