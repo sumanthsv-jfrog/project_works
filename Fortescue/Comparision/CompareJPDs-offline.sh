@@ -1,14 +1,11 @@
 #!/bin/bash
 
 ###Declaring variables
-#JPD_A_URL="${1%/}"
-#JPD_B_URL="${2%/}"
-#SOURCE_AUTH_TOKEN="$3"
-#TARGET_AUTH_TOKEN="$4"
-WEB_OUTPUT="${1:-no}"
-
-VERSION_A_FILE="jpd_a_version.json"
-VERSION_B_FILE="jpd_b_version.json"
+JPD_A_URL="${1%/}"
+JPD_B_URL="${2%/}"
+SOURCE_AUTH_TOKEN="$3"
+TARGET_AUTH_TOKEN="$4"
+WEB_OUTPUT="${5:-no}"
 
 STORAGE_A_FILE="jpd_a_storageinfo.json"
 STORAGE_B_FILE="jpd_b_storageinfo.json"
@@ -24,11 +21,13 @@ OUTPUT_REMOTE_CSV="remote_repos_comparison.csv"
 ONLY_IN_SOURCE_REMOTE="only_in_source_remote.csv"
 ONLY_IN_TARGET_REMOTE="only_in_target_remote.csv"
 OUTPUT_REMOTE_CONFIG_CSV="remote_repos_config_comparison.csv"
+ONLY_IN_TARGET_REMOTE_CONFIG="only_in_target_remote_config.csv"
 
 OUTPUT_VIRTUAL_CSV="virtual_repos_comparison.csv"
 ONLY_IN_SOURCE_VIRTUAL="only_in_source_virtual.csv"
 ONLY_IN_TARGET_VIRTUAL="only_in_target_virtual.csv"
 OUTPUT_VIRTUAL_CONFIG_CSV="virtual_repos_config_comparison.csv"
+ONLY_IN_TARGET_VIRTUAL_CONFIG="only_in_target_virtual_config.csv"
 
 USERS_A_FILE="jpd_a_users.json"
 USERS_B_FILE="jpd_b_users.json"
@@ -54,21 +53,13 @@ OUTPUT_TOKENS_CSV="tokens_comparison.csv"
 
 #####Functions
 usage() {
-    echo "Usage: $0 [weboutput]"
-    echo ""
-    echo "OFFLINE MODE: this script makes NO API calls. It expects every source/target"
-    echo "JSON file below to already exist in the current directory - the raw response"
-    echo "body of each corresponding API call, gathered manually ahead of time (e.g. from"
-    echo "an environment with direct JPD network access):"
-    echo "  $VERSION_A_FILE, $VERSION_B_FILE   <- GET /artifactory/api/system/version"
-    echo "  $STORAGE_A_FILE, $STORAGE_B_FILE   <- GET /artifactory/api/storageinfo"
-    echo "  $REPOCONFIG_A_FILE, $REPOCONFIG_B_FILE   <- GET /artifactory/api/repositories/configurations (7.x)"
-    echo "  $USERS_A_FILE, $USERS_B_FILE   <- GET /access/api/v2/users"
-    echo "  $GROUPS_A_FILE, $GROUPS_B_FILE   <- GET /access/api/v2/groups"
-    echo "  $PERMISSIONS_A_FILE, $PERMISSIONS_B_FILE   <- GET /access/api/v2/permissions"
-    echo "  $TOKENS_A_FILE, $TOKENS_B_FILE   <- GET /access/api/v1/tokens"
+    echo "Usage: $0 <JPD_A_URL> <JPD_B_URL> <SOURCE_TOKEN> <TARGET_TOKEN> [weboutput]"
     echo ""
     echo "Arguments:"
+    echo "  JPD_A_URL      URL of the Source Artifactory (e.g., https://source.jfrog.io)"
+    echo "  JPD_B_URL      URL of the Target Artifactory (e.g., https://target.jfrog.io)"
+    echo "  SOURCE_TOKEN   Admin-scoped Access Token for Source JPD (sent as Bearer auth)"
+    echo "  TARGET_TOKEN   Admin-scoped Access Token for Target JPD (sent as Bearer auth)"
     echo "  weboutput      (Optional) Set to 'yes' to launch the HTML dashboard (default: no)"
     echo ""
     echo "Requirements:"
@@ -76,17 +67,20 @@ usage() {
     echo "  - python3:  Mandatory if using 'weboutput=yes' (to serve the dashboard)."
     echo ""
     echo "Example:"
-    echo "  $0 yes"
+    echo "  $0 \"https://src.io\" \"https://tgt.io\" \"cmVmdG...\" \"YWJj...\" \"yes\""
     exit 1
 }
+
+# Check if at least 4 arguments are provided
+if [ "$#" -lt 4 ]; then
+    usage
+fi
 
 ## The Access API's users/groups/permissions LIST endpoints are paginated: the response
 ## includes a "cursor" value (the resume point - observed in practice to be the last item's
 ## name) which must be echoed back as a ?cursor= query param to fetch the next page. A single
 ## unpaginated fetch will silently truncate any instance with more entries than fit on one
 ## page, so every call to these three endpoints goes through this loop instead of a plain curl.
-## OFFLINE MODE: not called anywhere in this script - the API calls inside it are commented
-## out and left here only so the pagination logic is documented/available if ever needed.
 FetchPaginated()
 {
 # $1=url (may already include query params, e.g. "...?limit=120000")  $2=token
@@ -105,11 +99,9 @@ rm -f "$pagesfile" "$pagefile"
 
 while true; do
     if [ -z "$cursor" ]; then
-        #curl -s -H "Authorization: Bearer ${token}" "$url" -o "$pagefile"
-        :
+        curl -s -H "Authorization: Bearer ${token}" "$url" -o "$pagefile"
     else
-        #curl -s -G --data-urlencode "cursor=${cursor}" -H "Authorization: Bearer ${token}" "$url" -o "$pagefile"
-        :
+        curl -s -G --data-urlencode "cursor=${cursor}" -H "Authorization: Bearer ${token}" "$url" -o "$pagefile"
     fi
 
     cat "$pagefile" >> "$pagesfile"
@@ -141,8 +133,6 @@ rm -f "$pagesfile" "$pagefile"
 ## different key than expected. Rather than hardcode one field name and silently print "null"
 ## when it's wrong, these functions try several known candidates and fall back to a visibly
 ## obvious "UNKNOWN_FIELD" marker (instead of null/blank) so a mismatch is impossible to miss.
-## Still useful in offline mode - the manually gathered JSON can have the same field-name
-## inconsistency, so these still run against whatever is already on disk.
 NormalizeUsersFile()
 {
 local file="$1"
@@ -178,9 +168,6 @@ jq 'if (.permissions|type)=="array" then
     else {permissions: []} end' "$file" > "$tmp" 2>/dev/null && mv "$tmp" "$file"
 }
 
-## OFFLINE MODE: not called anywhere in this script (there's no URL/token to validate
-## against), kept only so the function definitions aren't lost if this script is ever
-## merged back with the online version.
 ValidateJPD()
 {
 # $1=label ("Source"/"Target")  $2=url  $3=token
@@ -191,7 +178,7 @@ local timeout_args="--connect-timeout 10 --max-time 20"
 
 # 1. Is the URL even reachable? (unauthenticated ping - works even with a bad/missing token)
 local ping_code
-#ping_code=$(curl -s -o /dev/null -w "%{http_code}" $timeout_args "${url}/artifactory/api/system/ping")
+ping_code=$(curl -s -o /dev/null -w "%{http_code}" $timeout_args "${url}/artifactory/api/system/ping")
 local curl_exit=$?
 if [ $curl_exit -ne 0 ]; then
     echo "  [FAIL] $label: could not reach '$url' (curl exit code $curl_exit - check the URL/DNS/network/SSL)."
@@ -204,7 +191,7 @@ fi
 
 # 2. Is the token valid against the Artifactory API? (this endpoint requires auth)
 local version_code
-#version_code=$(curl -s -o /dev/null -w "%{http_code}" $timeout_args -H "Authorization: Bearer ${token}" "${url}/artifactory/api/system/version")
+version_code=$(curl -s -o /dev/null -w "%{http_code}" $timeout_args -H "Authorization: Bearer ${token}" "${url}/artifactory/api/system/version")
 if [ "$version_code" == "401" ] || [ "$version_code" == "403" ]; then
     echo "  [FAIL] $label: token rejected by Artifactory API (HTTP $version_code). Check the token is correct, not expired, and not revoked."
     return 1
@@ -217,7 +204,6 @@ echo "  [OK]   $label: '$url' reachable, token valid for Artifactory API."
 return 0
 }
 
-## OFFLINE MODE: not called - see note above ValidateJPD.
 ValidateInputs()
 {
 echo "Validating connectivity and tokens for both JPDs..."
@@ -238,35 +224,10 @@ echo ""
 
 GetSourceVersion()
 {
-#JPDMainVersion=`curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/system/version"  | jq -r '.version'`
-#JPDTargetVersion=`curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/system/version"  | jq -r '.version'`
-
-# OFFLINE MODE: no live version check. $VERSION_A_FILE/$VERSION_B_FILE must already exist -
-# the raw JSON response of GET /artifactory/api/system/version, manually captured for each
-# side (e.g. `curl ... /artifactory/api/system/version > jpd_a_version.json`). Its shape is
-# {"version": "...", "revision": "...", ...} - same field the online script already pulls
-# via `jq -r '.version'`, just read from a file here instead of piped from curl.
-if [ ! -f "$VERSION_A_FILE" ] || [ ! -f "$VERSION_B_FILE" ]; then
-    echo "ERROR: $VERSION_A_FILE and/or $VERSION_B_FILE not found. Offline mode expects the"
-    echo "       raw JSON response of /artifactory/api/system/version for both sides,"
-    echo "       manually captured ahead of time, e.g.:"
-    echo "         curl -s -H \"Authorization: Bearer <token>\" \"<jpd-url>/artifactory/api/system/version\" > $VERSION_A_FILE"
-    exit 1
-fi
-JPDMainVersion=$(jq -r '.version' "$VERSION_A_FILE")
-JPDTargetVersion=$(jq -r '.version' "$VERSION_B_FILE")
-
-if [ -z "$JPDMainVersion" ] || [ "$JPDMainVersion" == "null" ]; then
-    echo "ERROR: could not read .version from $VERSION_A_FILE - check it contains the raw"
-    echo "       JSON body of GET /artifactory/api/system/version, not just the version string."
-    exit 1
-fi
-
-# Still write JPDVersion.csv as an OUTPUT (the dashboard reads it for the version badges),
-# just no longer as a required INPUT.
+JPDMainVersion=`curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/system/version"  | jq -r '.version'`
+JPDTargetVersion=`curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/system/version"  | jq -r '.version'`
 echo "SourceJPDVersion,TargetJPDVersion" > JPDVersion.csv
 echo "$JPDMainVersion,$JPDTargetVersion" >> JPDVersion.csv
-
 JPDMainMajorVersion=`echo $JPDMainVersion  | cut -d "." -f1`
 [ $JPDMainMajorVersion -eq 6 ] && jpd7=no
 [ $JPDMainMajorVersion -eq 7 ] && jpd7=yes
@@ -331,13 +292,30 @@ echo "RemoteRepoName" > "$ONLY_IN_SOURCE_REMOTE"
 echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE"
 
 echo "Processing Remote Repos Details"
-jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STORAGE_A_FILE" | while read -r repo; do
 
+# Sourced from the repository CONFIGURATION list (.REMOTE[]), not storageinfo's CACHE
+# entries - storageinfo only reports a remote repo once something has actually been
+# cached through it, so a configured-but-never-used remote repo was silently absent from
+# the old storageinfo-based count. The configuration list reflects every remote repo
+# that's actually defined, which also makes this card's numbers consistent with the
+# Remote Repo Configuration card below (same underlying source). Target always reads
+# from REPOCONFIG_B_FILE's .REMOTE[] regardless of version, same as the config functions.
+if [ "$jpd7" == "yes" ]; then
+    sourceRemoteKeys=$(jq -r '.REMOTE[].key' "$REPOCONFIG_A_FILE")
+else
+    # 6.x source: REPOCONFIG_A_FILE holds the raw XML from /system/configuration - convert
+    # the same way RemoteRepoConfigDetails2 does, so both read the identical derived file.
+    REMOTE_REPOCONFIG_A_FILE="jpd_a_remote_repoconfig.json"
+    awk '/<remoteRepositories>/,/<\/remoteRepositories>/' "$REPOCONFIG_A_FILE" | yq -p=xml -o=json '.' > "$REMOTE_REPOCONFIG_A_FILE"
+    sourceRemoteKeys=$(jq -r '.remoteRepositories.remoteRepository[].key' "$REMOTE_REPOCONFIG_A_FILE")
+fi
 
-    # Target Check
-    targetData=$(jq -r --arg repo "$repo" '.repositoriesSummaryList[] | select(.repoKey==$repo)' "$STORAGE_B_FILE")
+echo "$sourceRemoteKeys" | while read -r repo; do
+    [ -z "$repo" ] && continue
 
-    if [ -n "$targetData" ]; then
+    targetCheck=$(jq -r --arg repo "$repo" '.REMOTE[] | select(.key==$repo) | .key' "$REPOCONFIG_B_FILE")
+
+    if [ -n "$targetCheck" ]; then
         exists="Yes"
     else
         exists="No"
@@ -348,10 +326,14 @@ jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STO
     echo "${repo},${exists}" >> "$OUTPUT_REMOTE_CSV"
 done
 
-jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STORAGE_B_FILE" | while read -r repo; do
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repo; do
 
-    # Check if this repo key is MISSING from Source JSON
-    sourceCheck=$(jq -r --arg repo "$repo" '.repositoriesSummaryList[] | select(.repoKey==$repo) | .repoKey' "$STORAGE_A_FILE")
+    # Check if this repo key is MISSING from Source
+    if [ "$jpd7" == "yes" ]; then
+        sourceCheck=$(jq -r --arg repo "$repo" '.REMOTE[] | select(.key==$repo) | .key' "$REPOCONFIG_A_FILE")
+    else
+        sourceCheck=$(jq -r --arg repo "$repo" '.remoteRepositories.remoteRepository[] | select(.key==$repo) | .key' "$REMOTE_REPOCONFIG_A_FILE")
+    fi
 
     if [ -z "$sourceCheck" ]; then
         echo "${repo}" >> "$ONLY_IN_TARGET_REMOTE"
@@ -414,9 +396,14 @@ echo "Username,Status,Realm" > "$ONLY_IN_SOURCE_USERS"
 echo "Username,Status,Realm" > "$ONLY_IN_TARGET_USERS"
 
 echo "Processing Users Details..."
+# Matching is case/whitespace-tolerant (trim + lowercase both sides before comparing), so a
+# username that's otherwise identical but differs only by case or a stray trailing space
+# (e.g. "JSmith " vs "jsmith") is correctly recognized as the same account rather than
+# showing up as both "missing in target" and "only in target". The displayed name is still
+# whatever the API returned, unmodified - only the match predicate is normalized.
 jq -r '.users[] | "\(.username)|\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_A_FILE" | while IFS="|" read -r user statusA realmA; do
 
-    targetData=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | "\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_B_FILE")
+    targetData=$(jq -r --arg u "$user" '.users[] | select((.username|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($u|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | "\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_B_FILE")
 
     if [ -n "$targetData" ]; then
         exists="Yes"
@@ -433,7 +420,7 @@ jq -r '.users[] | "\(.username)|\(.status // "N/A")|\(.realm // "N/A")"' "$USERS
 done
 
 jq -r '.users[].username' "$USERS_B_FILE" | while read -r user; do
-    sourceCheck=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .username' "$USERS_A_FILE")
+    sourceCheck=$(jq -r --arg u "$user" '.users[] | select((.username|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($u|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .username' "$USERS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         statusB=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .status // "N/A"' "$USERS_B_FILE")
         realmB=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .realm // "N/A"' "$USERS_B_FILE")
@@ -455,9 +442,10 @@ echo "GroupName" > "$ONLY_IN_SOURCE_GROUPS"
 echo "GroupName" > "$ONLY_IN_TARGET_GROUPS"
 
 echo "Processing Groups Details..."
+# Case/whitespace-tolerant match - see the comment in UsersDetails for why.
 jq -r '.groups[].name' "$GROUPS_A_FILE" | while read -r grp; do
 
-    targetCheck=$(jq -r --arg g "$grp" '.groups[] | select(.name==$g) | .name' "$GROUPS_B_FILE")
+    targetCheck=$(jq -r --arg g "$grp" '.groups[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($g|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$GROUPS_B_FILE")
 
     if [ -n "$targetCheck" ]; then
         exists="Yes"
@@ -470,7 +458,7 @@ jq -r '.groups[].name' "$GROUPS_A_FILE" | while read -r grp; do
 done
 
 jq -r '.groups[].name' "$GROUPS_B_FILE" | while read -r grp; do
-    sourceCheck=$(jq -r --arg g "$grp" '.groups[] | select(.name==$g) | .name' "$GROUPS_A_FILE")
+    sourceCheck=$(jq -r --arg g "$grp" '.groups[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($g|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$GROUPS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         echo "${grp}" >> "$ONLY_IN_TARGET_GROUPS"
     fi
@@ -485,15 +473,18 @@ echo "3. Groups Missing in Source: $ONLY_IN_TARGET_GROUPS"
 
 PermissionsDetails()
 {
-# Existence/count comparison only - same shape as GroupsDetails.
+# Existence/count comparison only - same shape as GroupsDetails. No per-permission detail
+# calls are made, so this stays at a flat 2 API calls (the list fetch, one per side) no
+# matter how many permission targets exist.
 echo "PermissionName,ExistsInTarget" > "$OUTPUT_PERMISSIONS_CSV"
 echo "PermissionName" > "$ONLY_IN_SOURCE_PERMISSIONS"
 echo "PermissionName" > "$ONLY_IN_TARGET_PERMISSIONS"
 
 echo "Processing Permissions Details..."
+# Case/whitespace-tolerant match - see the comment in UsersDetails for why.
 jq -r '.permissions[].name' "$PERMISSIONS_A_FILE" | while read -r perm; do
 
-    targetCheck=$(jq -r --arg p "$perm" '.permissions[] | select(.name==$p) | .name' "$PERMISSIONS_B_FILE")
+    targetCheck=$(jq -r --arg p "$perm" '.permissions[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($p|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$PERMISSIONS_B_FILE")
 
     if [ -n "$targetCheck" ]; then
         exists="Yes"
@@ -506,7 +497,7 @@ jq -r '.permissions[].name' "$PERMISSIONS_A_FILE" | while read -r perm; do
 done
 
 jq -r '.permissions[].name' "$PERMISSIONS_B_FILE" | while read -r perm; do
-    sourceCheck=$(jq -r --arg p "$perm" '.permissions[] | select(.name==$p) | .name' "$PERMISSIONS_A_FILE")
+    sourceCheck=$(jq -r --arg p "$perm" '.permissions[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($p|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$PERMISSIONS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         echo "${perm}" >> "$ONLY_IN_TARGET_PERMISSIONS"
     fi
@@ -540,7 +531,8 @@ echo "1. Token Count Summary: $OUTPUT_TOKENS_CSV"
 RemoteRepoConfigDetails2() {
     
 
-echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget,DifferenceInConfig" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE_CONFIG"
 echo "Processing Remote Repo config comparision between JPDs"
 REMOTE_REPOCONFIG_A_FILE="jpd_a_remote_repoconfig.json"
 
@@ -574,16 +566,36 @@ jq -r '.remoteRepositories.remoteRepository[] | "\(.key)|\(.url // "N/A")|\(.pas
         TgtPasswordExists="N/A"
     fi
 
-    # Now you have: $SrcPasswordExists and $TgtPasswordExists
-    # Update your echo command to include these new columns
-    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists" >> "$OUTPUT_REMOTE_CONFIG_CSV"
+    # DifferenceInConfig flags a URL or password-presence mismatch on a repo that exists on
+    # both sides - N/A when it doesn't exist in target at all (nothing to diff against).
+    if [ "$exists" == "Yes" ]; then
+        if [ "$urlA" != "$urlB" ] || [ "$SrcPasswordExists" != "$TgtPasswordExists" ]; then
+            isDiff="Yes"
+        else
+            isDiff="No"
+        fi
+    else
+        isDiff="N/A"
+    fi
+
+    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists,$isDiff" >> "$OUTPUT_REMOTE_CONFIG_CSV"
 done
+
+# Reverse direction: remote repo configs that exist in target but not in source
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.remoteRepositories.remoteRepository[] | select(.key == $repo) | .key' "$REMOTE_REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_REMOTE_CONFIG"
+    fi
+done
+
 echo "Remote Repos Config comparison complete! Saved to: $OUTPUT_REMOTE_CONFIG_CSV"
 }
 
 RemoteRepoConfigDetails()
 {       
-echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget,DifferenceInConfig" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE_CONFIG"
 echo "Processing Remote Repo config comparision between JPDs"
 jq -r '.REMOTE[] | "\(.key)|\(.url // "N/A")|\(.password // "")"' "$REPOCONFIG_A_FILE" | while IFS="|" read -r repoA urlA passA; do
 
@@ -614,10 +626,29 @@ jq -r '.REMOTE[] | "\(.key)|\(.url // "N/A")|\(.password // "")"' "$REPOCONFIG_A
         TgtPasswordExists="N/A"
     fi
 
-    # Now you have: $SrcPasswordExists and $TgtPasswordExists
-    # Update your echo command to include these new columns
-    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists" >> "$OUTPUT_REMOTE_CONFIG_CSV"
+    # DifferenceInConfig flags a URL or password-presence mismatch on a repo that exists on
+    # both sides - N/A when it doesn't exist in target at all (nothing to diff against).
+    if [ "$exists" == "Yes" ]; then
+        if [ "$urlA" != "$urlB" ] || [ "$SrcPasswordExists" != "$TgtPasswordExists" ]; then
+            isDiff="Yes"
+        else
+            isDiff="No"
+        fi
+    else
+        isDiff="N/A"
+    fi
+
+    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists,$isDiff" >> "$OUTPUT_REMOTE_CONFIG_CSV"
 done
+
+# Reverse direction: remote repo configs that exist in target but not in source
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.REMOTE[] | select(.key == $repo) | .key' "$REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_REMOTE_CONFIG"
+    fi
+done
+
 echo "Remote Repos Config comparison complete! Saved to: $OUTPUT_REMOTE_CONFIG_CSV"
 }
 
@@ -629,6 +660,7 @@ VirtualRepoConfigDetails()
 # Column 8 (isDiff) will flag if the underlying repository lists don't match
 HEADER="SourceRepoName,SourceRepositories,SourceDefaultDeploy,TargetRepoName,TargetRepositories,TargetDefaultDeploy,ExistsInTarget,DifferenceInRepos"
 echo "$HEADER" > "$OUTPUT_VIRTUAL_CONFIG_CSV"
+echo "VirtualRepoName" > "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
 
 echo "Processing Virtual Repos config comparision between JPDs"
 
@@ -663,6 +695,14 @@ jq -r '.VIRTUAL[] | "\(.key)|\(.repositories | sort | join(";"))|\(.defaultDeplo
     echo "${repoA},\"${childrenA}\",${deployA},${repoB},\"${childrenB}\",${deployB},${exists},${isDiff}" >> "$OUTPUT_VIRTUAL_CONFIG_CSV"
 done
 
+# Reverse direction: virtual repo configs that exist in target but not in source
+jq -r '.VIRTUAL[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.VIRTUAL[] | select(.key == $repo) | .key' "$REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
+    fi
+done
+
 echo "------------------------------------------------"
 echo "Virtual Repos Config comparison complete! Saved to: $OUTPUT_VIRTUAL_CONFIG_CSV"
 }
@@ -673,6 +713,7 @@ VirtualRepoConfigDetails2() {
 # Column 8 (isDiff) will flag if the underlying repository lists don't match
 HEADER="SourceRepoName,SourceRepositories,SourceDefaultDeploy,TargetRepoName,TargetRepositories,TargetDefaultDeploy,ExistsInTarget,DifferenceInRepos"
 echo "$HEADER" > "$OUTPUT_VIRTUAL_CONFIG_CSV"
+echo "VirtualRepoName" > "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
 
 echo "Processing Virtual Repos config comparision between JPDs"
 
@@ -708,6 +749,14 @@ jq -r '.virtualRepositories.virtualRepository[] |"\(.key)|\(if (.repositories.re
 
     # Append to CSV
     echo "${repoA},\"${childrenA}\",${deployA},${repoB},\"${childrenB}\",${deployB},${exists},${isDiff}" >> "$OUTPUT_VIRTUAL_CONFIG_CSV"
+done
+
+# Reverse direction: virtual repo configs that exist in target but not in source
+jq -r '.VIRTUAL[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.virtualRepositories.virtualRepository[] | select(.key == $repo) | .key' "$VIRTUAL_REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
+    fi
 done
 
 echo "------------------------------------------------"
@@ -765,50 +814,52 @@ echo "--------------------Virtual repository config comparision Details---------
 cat $OUTPUT_VIRTUAL_CONFIG_CSV >> $FinalComparisionConfigCSV
 }
 
-echo "Getting ready to Prepare comparision between the JPDs (OFFLINE MODE - no API calls)"
-#ValidateInputs
+echo "Getting ready to Prepare comparision between the JPDs"
+ValidateInputs
 GetSourceVersion
-
 ###Fetching storage info from both JPDs
-#curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/storageinfo" -o "$STORAGE_A_FILE"
-#curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/storageinfo" -o "$STORAGE_B_FILE"
+curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/storageinfo" -o "$STORAGE_A_FILE"
+curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/storageinfo" -o "$STORAGE_B_FILE"
 
 ##--Fetch repo config json
 
 if [ $jpd7 == "yes" ];then
-	#curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_A_FILE"
-	#curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_B_FILE"
-	:
+	curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_A_FILE"
+	curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_B_FILE"
 else
-	#curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/system/configuration" -o "$REPOCONFIG_A_FILE"
-	#curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_B_FILE"
-	:
+	curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/artifactory/api/system/configuration" -o "$REPOCONFIG_A_FILE"
+	curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/artifactory/api/repositories/configurations" -o "$REPOCONFIG_B_FILE"
 fi
 
 ##--Fetch users/groups/permissions/tokens via the Access API (JPD 7.x only - these
-##--endpoints don't exist on legacy 6.x installs). OFFLINE MODE: every fetch below is
-##--commented out - $USERS_A_FILE/$GROUPS_A_FILE/$PERMISSIONS_A_FILE/$TOKENS_A_FILE (and
-##--their _B_ counterparts) must already exist in the current directory. The Normalize*File
-##--calls are still run, since the manually-gathered JSON can have the same group_name-style
-##--field-name inconsistency the online version guards against.
+##--endpoints don't exist on legacy 6.x installs). If the token isn't admin-scoped for the
+##--Access API, these calls will come back 401/403 with an empty body - the Normalize*File
+##--functions degrade that to an empty {"users":[]}/{"groups":[]}/etc rather than erroring,
+##--so the rest of the script still completes, just with empty users/groups/permissions
+##--sections. (Tokens has no separate normalize step, but TokensDetails itself guards
+##--against a missing/invalid response and reports 0 rather than erroring.)
 if [ "$jpd7" == "yes" ];then
-	#FetchPaginated "${JPD_A_URL}/access/api/v2/users?limit=120000" "$SOURCE_AUTH_TOKEN" "$USERS_A_FILE" "users"
-	#FetchPaginated "${JPD_B_URL}/access/api/v2/users?limit=120000" "$TARGET_AUTH_TOKEN" "$USERS_B_FILE" "users"
+	FetchPaginated "${JPD_A_URL}/access/api/v2/users?limit=120000" "$SOURCE_AUTH_TOKEN" "$USERS_A_FILE" "users"
+	FetchPaginated "${JPD_B_URL}/access/api/v2/users?limit=120000" "$TARGET_AUTH_TOKEN" "$USERS_B_FILE" "users"
 	NormalizeUsersFile "$USERS_A_FILE"
 	NormalizeUsersFile "$USERS_B_FILE"
 
-	#FetchPaginated "${JPD_A_URL}/access/api/v2/groups?limit=100000" "$SOURCE_AUTH_TOKEN" "$GROUPS_A_FILE" "groups"
-	#FetchPaginated "${JPD_B_URL}/access/api/v2/groups?limit=100000" "$TARGET_AUTH_TOKEN" "$GROUPS_B_FILE" "groups"
+	# limit is set generously high so the common case is a single page; the pagination loop
+	# in FetchPaginated still kicks in as a fallback if a given JPD clamps it lower anyway.
+	FetchPaginated "${JPD_A_URL}/access/api/v2/groups?limit=100000" "$SOURCE_AUTH_TOKEN" "$GROUPS_A_FILE" "groups"
+	FetchPaginated "${JPD_B_URL}/access/api/v2/groups?limit=100000" "$TARGET_AUTH_TOKEN" "$GROUPS_B_FILE" "groups"
 	NormalizeGroupsFile "$GROUPS_A_FILE"
 	NormalizeGroupsFile "$GROUPS_B_FILE"
 
-	#FetchPaginated "${JPD_A_URL}/access/api/v2/permissions?limit=99998" "$SOURCE_AUTH_TOKEN" "$PERMISSIONS_A_FILE" "permissions"
-	#FetchPaginated "${JPD_B_URL}/access/api/v2/permissions?limit=99998" "$TARGET_AUTH_TOKEN" "$PERMISSIONS_B_FILE" "permissions"
+	# Permissions API docs state limit must be between 1 and 99,999 (non-inclusive), so 99998
+	# is the highest valid value - anything beyond that gets clamped or rejected depending on version.
+	FetchPaginated "${JPD_A_URL}/access/api/v2/permissions?limit=99998" "$SOURCE_AUTH_TOKEN" "$PERMISSIONS_A_FILE" "permissions"
+	FetchPaginated "${JPD_B_URL}/access/api/v2/permissions?limit=99998" "$TARGET_AUTH_TOKEN" "$PERMISSIONS_B_FILE" "permissions"
 	NormalizePermissionsFile "$PERMISSIONS_A_FILE"
 	NormalizePermissionsFile "$PERMISSIONS_B_FILE"
 
-	#curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/access/api/v1/tokens" -o "$TOKENS_A_FILE"
-	#curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/access/api/v1/tokens" -o "$TOKENS_B_FILE"
+	curl -s -H "Authorization: Bearer $SOURCE_AUTH_TOKEN" "${JPD_A_URL}/access/api/v1/tokens" -o "$TOKENS_A_FILE"
+	curl -s -H "Authorization: Bearer $TARGET_AUTH_TOKEN" "${JPD_B_URL}/access/api/v1/tokens" -o "$TOKENS_B_FILE"
 
 	# Quick sanity check: warn loudly (not just a silent null) if normalization couldn't find
 	# a usable name field anywhere, so it's obvious at the console rather than discovered later
@@ -823,15 +874,15 @@ if [ "$jpd7" == "yes" ];then
 
 	if [ "$unknownUsers" -gt 0 ]; then
 		echo "WARNING: $unknownUsers source user(s) came back with an unrecognized name field."
-		echo "         Inspect it with: jq '.users[0]' $USERS_A_FILE"
+		echo "         Inspect the raw response with: curl -s -H \"Authorization: Bearer \$SOURCE_AUTH_TOKEN\" \"${JPD_A_URL}/access/api/v2/users?limit=1\" | jq ."
 	fi
 	if [ "$unknownGroups" -gt 0 ]; then
 		echo "WARNING: $unknownGroups source group(s) came back with an unrecognized name field - this is likely why groups were showing as null/blank."
-		echo "         Inspect it with: jq '.groups[0]' $GROUPS_A_FILE"
+		echo "         Inspect the raw response with: curl -s -H \"Authorization: Bearer \$SOURCE_AUTH_TOKEN\" \"${JPD_A_URL}/access/api/v2/groups?limit=1\" | jq ."
 	fi
 	if [ "$unknownPerms" -gt 0 ]; then
 		echo "WARNING: $unknownPerms source permission(s) came back with an unrecognized name field."
-		echo "         Inspect it with: jq '.permissions[0]' $PERMISSIONS_A_FILE"
+		echo "         Inspect the raw response with: curl -s -H \"Authorization: Bearer \$SOURCE_AUTH_TOKEN\" \"${JPD_A_URL}/access/api/v2/permissions?limit=1\" | jq ."
 	fi
 fi
 
