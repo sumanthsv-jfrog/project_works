@@ -21,11 +21,13 @@ OUTPUT_REMOTE_CSV="remote_repos_comparison.csv"
 ONLY_IN_SOURCE_REMOTE="only_in_source_remote.csv"
 ONLY_IN_TARGET_REMOTE="only_in_target_remote.csv"
 OUTPUT_REMOTE_CONFIG_CSV="remote_repos_config_comparison.csv"
+ONLY_IN_TARGET_REMOTE_CONFIG="only_in_target_remote_config.csv"
 
 OUTPUT_VIRTUAL_CSV="virtual_repos_comparison.csv"
 ONLY_IN_SOURCE_VIRTUAL="only_in_source_virtual.csv"
 ONLY_IN_TARGET_VIRTUAL="only_in_target_virtual.csv"
 OUTPUT_VIRTUAL_CONFIG_CSV="virtual_repos_config_comparison.csv"
+ONLY_IN_TARGET_VIRTUAL_CONFIG="only_in_target_virtual_config.csv"
 
 USERS_A_FILE="jpd_a_users.json"
 USERS_B_FILE="jpd_b_users.json"
@@ -290,13 +292,30 @@ echo "RemoteRepoName" > "$ONLY_IN_SOURCE_REMOTE"
 echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE"
 
 echo "Processing Remote Repos Details"
-jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STORAGE_A_FILE" | while read -r repo; do
 
+# Sourced from the repository CONFIGURATION list (.REMOTE[]), not storageinfo's CACHE
+# entries - storageinfo only reports a remote repo once something has actually been
+# cached through it, so a configured-but-never-used remote repo was silently absent from
+# the old storageinfo-based count. The configuration list reflects every remote repo
+# that's actually defined, which also makes this card's numbers consistent with the
+# Remote Repo Configuration card below (same underlying source). Target always reads
+# from REPOCONFIG_B_FILE's .REMOTE[] regardless of version, same as the config functions.
+if [ "$jpd7" == "yes" ]; then
+    sourceRemoteKeys=$(jq -r '.REMOTE[].key' "$REPOCONFIG_A_FILE")
+else
+    # 6.x source: REPOCONFIG_A_FILE holds the raw XML from /system/configuration - convert
+    # the same way RemoteRepoConfigDetails2 does, so both read the identical derived file.
+    REMOTE_REPOCONFIG_A_FILE="jpd_a_remote_repoconfig.json"
+    awk '/<remoteRepositories>/,/<\/remoteRepositories>/' "$REPOCONFIG_A_FILE" | yq -p=xml -o=json '.' > "$REMOTE_REPOCONFIG_A_FILE"
+    sourceRemoteKeys=$(jq -r '.remoteRepositories.remoteRepository[].key' "$REMOTE_REPOCONFIG_A_FILE")
+fi
 
-    # Target Check
-    targetData=$(jq -r --arg repo "$repo" '.repositoriesSummaryList[] | select(.repoKey==$repo)' "$STORAGE_B_FILE")
+echo "$sourceRemoteKeys" | while read -r repo; do
+    [ -z "$repo" ] && continue
 
-    if [ -n "$targetData" ]; then
+    targetCheck=$(jq -r --arg repo "$repo" '.REMOTE[] | select(.key==$repo) | .key' "$REPOCONFIG_B_FILE")
+
+    if [ -n "$targetCheck" ]; then
         exists="Yes"
     else
         exists="No"
@@ -307,10 +326,14 @@ jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STO
     echo "${repo},${exists}" >> "$OUTPUT_REMOTE_CSV"
 done
 
-jq -r '.repositoriesSummaryList[] | select(.repoType=="CACHE") | .repoKey' "$STORAGE_B_FILE" | while read -r repo; do
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repo; do
 
-    # Check if this repo key is MISSING from Source JSON
-    sourceCheck=$(jq -r --arg repo "$repo" '.repositoriesSummaryList[] | select(.repoKey==$repo) | .repoKey' "$STORAGE_A_FILE")
+    # Check if this repo key is MISSING from Source
+    if [ "$jpd7" == "yes" ]; then
+        sourceCheck=$(jq -r --arg repo "$repo" '.REMOTE[] | select(.key==$repo) | .key' "$REPOCONFIG_A_FILE")
+    else
+        sourceCheck=$(jq -r --arg repo "$repo" '.remoteRepositories.remoteRepository[] | select(.key==$repo) | .key' "$REMOTE_REPOCONFIG_A_FILE")
+    fi
 
     if [ -z "$sourceCheck" ]; then
         echo "${repo}" >> "$ONLY_IN_TARGET_REMOTE"
@@ -373,9 +396,14 @@ echo "Username,Status,Realm" > "$ONLY_IN_SOURCE_USERS"
 echo "Username,Status,Realm" > "$ONLY_IN_TARGET_USERS"
 
 echo "Processing Users Details..."
+# Matching is case/whitespace-tolerant (trim + lowercase both sides before comparing), so a
+# username that's otherwise identical but differs only by case or a stray trailing space
+# (e.g. "JSmith " vs "jsmith") is correctly recognized as the same account rather than
+# showing up as both "missing in target" and "only in target". The displayed name is still
+# whatever the API returned, unmodified - only the match predicate is normalized.
 jq -r '.users[] | "\(.username)|\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_A_FILE" | while IFS="|" read -r user statusA realmA; do
 
-    targetData=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | "\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_B_FILE")
+    targetData=$(jq -r --arg u "$user" '.users[] | select((.username|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($u|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | "\(.status // "N/A")|\(.realm // "N/A")"' "$USERS_B_FILE")
 
     if [ -n "$targetData" ]; then
         exists="Yes"
@@ -392,7 +420,7 @@ jq -r '.users[] | "\(.username)|\(.status // "N/A")|\(.realm // "N/A")"' "$USERS
 done
 
 jq -r '.users[].username' "$USERS_B_FILE" | while read -r user; do
-    sourceCheck=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .username' "$USERS_A_FILE")
+    sourceCheck=$(jq -r --arg u "$user" '.users[] | select((.username|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($u|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .username' "$USERS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         statusB=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .status // "N/A"' "$USERS_B_FILE")
         realmB=$(jq -r --arg u "$user" '.users[] | select(.username==$u) | .realm // "N/A"' "$USERS_B_FILE")
@@ -414,9 +442,10 @@ echo "GroupName" > "$ONLY_IN_SOURCE_GROUPS"
 echo "GroupName" > "$ONLY_IN_TARGET_GROUPS"
 
 echo "Processing Groups Details..."
+# Case/whitespace-tolerant match - see the comment in UsersDetails for why.
 jq -r '.groups[].name' "$GROUPS_A_FILE" | while read -r grp; do
 
-    targetCheck=$(jq -r --arg g "$grp" '.groups[] | select(.name==$g) | .name' "$GROUPS_B_FILE")
+    targetCheck=$(jq -r --arg g "$grp" '.groups[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($g|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$GROUPS_B_FILE")
 
     if [ -n "$targetCheck" ]; then
         exists="Yes"
@@ -429,7 +458,7 @@ jq -r '.groups[].name' "$GROUPS_A_FILE" | while read -r grp; do
 done
 
 jq -r '.groups[].name' "$GROUPS_B_FILE" | while read -r grp; do
-    sourceCheck=$(jq -r --arg g "$grp" '.groups[] | select(.name==$g) | .name' "$GROUPS_A_FILE")
+    sourceCheck=$(jq -r --arg g "$grp" '.groups[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($g|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$GROUPS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         echo "${grp}" >> "$ONLY_IN_TARGET_GROUPS"
     fi
@@ -452,9 +481,10 @@ echo "PermissionName" > "$ONLY_IN_SOURCE_PERMISSIONS"
 echo "PermissionName" > "$ONLY_IN_TARGET_PERMISSIONS"
 
 echo "Processing Permissions Details..."
+# Case/whitespace-tolerant match - see the comment in UsersDetails for why.
 jq -r '.permissions[].name' "$PERMISSIONS_A_FILE" | while read -r perm; do
 
-    targetCheck=$(jq -r --arg p "$perm" '.permissions[] | select(.name==$p) | .name' "$PERMISSIONS_B_FILE")
+    targetCheck=$(jq -r --arg p "$perm" '.permissions[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($p|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$PERMISSIONS_B_FILE")
 
     if [ -n "$targetCheck" ]; then
         exists="Yes"
@@ -467,7 +497,7 @@ jq -r '.permissions[].name' "$PERMISSIONS_A_FILE" | while read -r perm; do
 done
 
 jq -r '.permissions[].name' "$PERMISSIONS_B_FILE" | while read -r perm; do
-    sourceCheck=$(jq -r --arg p "$perm" '.permissions[] | select(.name==$p) | .name' "$PERMISSIONS_A_FILE")
+    sourceCheck=$(jq -r --arg p "$perm" '.permissions[] | select((.name|gsub("^\\s+|\\s+$";"")|ascii_downcase) == ($p|gsub("^\\s+|\\s+$";"")|ascii_downcase)) | .name' "$PERMISSIONS_A_FILE")
     if [ -z "$sourceCheck" ]; then
         echo "${perm}" >> "$ONLY_IN_TARGET_PERMISSIONS"
     fi
@@ -501,7 +531,8 @@ echo "1. Token Count Summary: $OUTPUT_TOKENS_CSV"
 RemoteRepoConfigDetails2() {
     
 
-echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget,DifferenceInConfig" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE_CONFIG"
 echo "Processing Remote Repo config comparision between JPDs"
 REMOTE_REPOCONFIG_A_FILE="jpd_a_remote_repoconfig.json"
 
@@ -535,16 +566,36 @@ jq -r '.remoteRepositories.remoteRepository[] | "\(.key)|\(.url // "N/A")|\(.pas
         TgtPasswordExists="N/A"
     fi
 
-    # Now you have: $SrcPasswordExists and $TgtPasswordExists
-    # Update your echo command to include these new columns
-    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists" >> "$OUTPUT_REMOTE_CONFIG_CSV"
+    # DifferenceInConfig flags a URL or password-presence mismatch on a repo that exists on
+    # both sides - N/A when it doesn't exist in target at all (nothing to diff against).
+    if [ "$exists" == "Yes" ]; then
+        if [ "$urlA" != "$urlB" ] || [ "$SrcPasswordExists" != "$TgtPasswordExists" ]; then
+            isDiff="Yes"
+        else
+            isDiff="No"
+        fi
+    else
+        isDiff="N/A"
+    fi
+
+    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists,$isDiff" >> "$OUTPUT_REMOTE_CONFIG_CSV"
 done
+
+# Reverse direction: remote repo configs that exist in target but not in source
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.remoteRepositories.remoteRepository[] | select(.key == $repo) | .key' "$REMOTE_REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_REMOTE_CONFIG"
+    fi
+done
+
 echo "Remote Repos Config comparison complete! Saved to: $OUTPUT_REMOTE_CONFIG_CSV"
 }
 
 RemoteRepoConfigDetails()
 {       
-echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "SourceRepoName,SourceURL,SourcePasswordExists,TargetRepoName,TargetURL,TargetPasswordExists,ExistsInTarget,DifferenceInConfig" > "$OUTPUT_REMOTE_CONFIG_CSV"
+echo "RemoteRepoName" > "$ONLY_IN_TARGET_REMOTE_CONFIG"
 echo "Processing Remote Repo config comparision between JPDs"
 jq -r '.REMOTE[] | "\(.key)|\(.url // "N/A")|\(.password // "")"' "$REPOCONFIG_A_FILE" | while IFS="|" read -r repoA urlA passA; do
 
@@ -575,10 +626,29 @@ jq -r '.REMOTE[] | "\(.key)|\(.url // "N/A")|\(.password // "")"' "$REPOCONFIG_A
         TgtPasswordExists="N/A"
     fi
 
-    # Now you have: $SrcPasswordExists and $TgtPasswordExists
-    # Update your echo command to include these new columns
-    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists" >> "$OUTPUT_REMOTE_CONFIG_CSV"
+    # DifferenceInConfig flags a URL or password-presence mismatch on a repo that exists on
+    # both sides - N/A when it doesn't exist in target at all (nothing to diff against).
+    if [ "$exists" == "Yes" ]; then
+        if [ "$urlA" != "$urlB" ] || [ "$SrcPasswordExists" != "$TgtPasswordExists" ]; then
+            isDiff="Yes"
+        else
+            isDiff="No"
+        fi
+    else
+        isDiff="N/A"
+    fi
+
+    echo "$repoA,$urlA,$SrcPasswordExists,$repoA,$urlB,$TgtPasswordExists,$exists,$isDiff" >> "$OUTPUT_REMOTE_CONFIG_CSV"
 done
+
+# Reverse direction: remote repo configs that exist in target but not in source
+jq -r '.REMOTE[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.REMOTE[] | select(.key == $repo) | .key' "$REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_REMOTE_CONFIG"
+    fi
+done
+
 echo "Remote Repos Config comparison complete! Saved to: $OUTPUT_REMOTE_CONFIG_CSV"
 }
 
@@ -590,6 +660,7 @@ VirtualRepoConfigDetails()
 # Column 8 (isDiff) will flag if the underlying repository lists don't match
 HEADER="SourceRepoName,SourceRepositories,SourceDefaultDeploy,TargetRepoName,TargetRepositories,TargetDefaultDeploy,ExistsInTarget,DifferenceInRepos"
 echo "$HEADER" > "$OUTPUT_VIRTUAL_CONFIG_CSV"
+echo "VirtualRepoName" > "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
 
 echo "Processing Virtual Repos config comparision between JPDs"
 
@@ -624,6 +695,14 @@ jq -r '.VIRTUAL[] | "\(.key)|\(.repositories | sort | join(";"))|\(.defaultDeplo
     echo "${repoA},\"${childrenA}\",${deployA},${repoB},\"${childrenB}\",${deployB},${exists},${isDiff}" >> "$OUTPUT_VIRTUAL_CONFIG_CSV"
 done
 
+# Reverse direction: virtual repo configs that exist in target but not in source
+jq -r '.VIRTUAL[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.VIRTUAL[] | select(.key == $repo) | .key' "$REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
+    fi
+done
+
 echo "------------------------------------------------"
 echo "Virtual Repos Config comparison complete! Saved to: $OUTPUT_VIRTUAL_CONFIG_CSV"
 }
@@ -634,6 +713,7 @@ VirtualRepoConfigDetails2() {
 # Column 8 (isDiff) will flag if the underlying repository lists don't match
 HEADER="SourceRepoName,SourceRepositories,SourceDefaultDeploy,TargetRepoName,TargetRepositories,TargetDefaultDeploy,ExistsInTarget,DifferenceInRepos"
 echo "$HEADER" > "$OUTPUT_VIRTUAL_CONFIG_CSV"
+echo "VirtualRepoName" > "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
 
 echo "Processing Virtual Repos config comparision between JPDs"
 
@@ -669,6 +749,14 @@ jq -r '.virtualRepositories.virtualRepository[] |"\(.key)|\(if (.repositories.re
 
     # Append to CSV
     echo "${repoA},\"${childrenA}\",${deployA},${repoB},\"${childrenB}\",${deployB},${exists},${isDiff}" >> "$OUTPUT_VIRTUAL_CONFIG_CSV"
+done
+
+# Reverse direction: virtual repo configs that exist in target but not in source
+jq -r '.VIRTUAL[].key' "$REPOCONFIG_B_FILE" | while read -r repoB; do
+    sourceCheck=$(jq -r --arg repo "$repoB" '.virtualRepositories.virtualRepository[] | select(.key == $repo) | .key' "$VIRTUAL_REPOCONFIG_A_FILE")
+    if [ -z "$sourceCheck" ]; then
+        echo "${repoB}" >> "$ONLY_IN_TARGET_VIRTUAL_CONFIG"
+    fi
 done
 
 echo "------------------------------------------------"
